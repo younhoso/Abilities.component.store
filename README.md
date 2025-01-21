@@ -1,2 +1,1 @@
-# component-store
-component-store
+## component 스토어 만들기

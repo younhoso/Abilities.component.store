@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 
 import type { Metadata, Viewport } from 'next';
 
-import AuthProvider from '@/provider/AuthProvider';
+import AuthProvider from '@/provider/ClientSessionProvider';
+import ClientSessionProvider from '@/provider/ClientSessionProvider';
 import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';
 
@@ -39,11 +40,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <body className={gmarket.className}>
-        <AuthProvider>
+        <ClientSessionProvider>
           <CustomThemeProvider>
             <ReactQueryProvider>{children}</ReactQueryProvider>
           </CustomThemeProvider>
-        </AuthProvider>
+        </ClientSessionProvider>
         <div id="GeneralLayoutContainer"></div>
       </body>
     </html>

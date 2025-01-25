@@ -1,5 +1,6 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
 import { ReactNode } from 'react';
 
 import clsx from 'clsx';
@@ -11,6 +12,10 @@ import { TemplateStyled } from '@/styles/pageStyled/TemplateStyled';
 import sitemap from './sitemap';
 
 export default function CommonTemplate({ children }: { children: ReactNode }) {
+  const { status } = useSession();
+
+  if (status === 'loading') return <p>Loading...</p>;
+
   return (
     <TemplateStyled className={clsx('Template')}>
       <Header category={() => sitemap()} />

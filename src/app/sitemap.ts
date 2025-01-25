@@ -1,7 +1,5 @@
 import { MetadataRoute } from 'next';
 
-import { title } from 'process';
-
 export interface Category {
   title: string;
   url: string;
@@ -11,6 +9,13 @@ export interface Category {
 }
 
 const defaultSiteMaps: MetadataRoute.Sitemap = [
+  // stickyNavi
+  {
+    url: '/auth/signin',
+    lastModified: new Date(),
+    changeFrequency: 'yearly',
+    priority: 0.9,
+  },
   //경고 창
   {
     url: '/alert',
@@ -148,7 +153,7 @@ const defaultSiteMaps: MetadataRoute.Sitemap = [
 
 const tileSiteMaps = [
   {
-    title: '경고 창',
+    title: '로그인',
   },
   {
     title: '컴펌 창',

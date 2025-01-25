@@ -11,8 +11,6 @@ export async function middleware(req: NextRequest) {
 
   const redirectTo = (dest: string) => NextResponse.redirect(new URL(dest, url));
 
-  console.log('session:', session);
-
   if (!session) {
     // 로그인 상태가 아니면, 로그인 페이지는 접근 가능, 나머지는 그대로 유지
     if (isAuthPage) {

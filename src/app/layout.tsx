@@ -6,6 +6,7 @@ import AuthProvider from '@/provider/ClientSessionProvider';
 import ClientSessionProvider from '@/provider/ClientSessionProvider';
 import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';
+import RecoilProvider from '@/provider/RecoilProvider';
 
 import { gmarket } from '../libs/fonts';
 
@@ -40,11 +41,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <body className={gmarket.className}>
-        <ClientSessionProvider>
-          <CustomThemeProvider>
-            <ReactQueryProvider>{children}</ReactQueryProvider>
-          </CustomThemeProvider>
-        </ClientSessionProvider>
+        <RecoilProvider>
+          <ClientSessionProvider>
+            <CustomThemeProvider>
+              <ReactQueryProvider>{children}</ReactQueryProvider>
+            </CustomThemeProvider>
+          </ClientSessionProvider>
+        </RecoilProvider>
         <div id="GeneralLayoutContainer"></div>
       </body>
     </html>

@@ -1,7 +1,16 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import NextAuth, { Account, NextAuthOptions, Session, User } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
 import GoogleProvider from 'next-auth/providers/google';
 import KakaoProvider from 'next-auth/providers/kakao';
 import NaverProvider from 'next-auth/providers/naver';
+
+const MEMBER = 'member';
+const GOOGLE = 'google';
+const KAKAO = 'kakao';
+const NAVER = 'naver';
+const REFRESH_ACCESS_TOKEN = 'refresh';
+
+const allProviders = [MEMBER, GOOGLE, KAKAO, NAVER, REFRESH_ACCESS_TOKEN];
 
 const authOptions: NextAuthOptions = {
   pages: {
@@ -24,15 +33,22 @@ const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET!,
   callbacks: {
-    async jwt({ token, account, profile }) {
-      if (account) {
+    async jwt({ token, account, user }: { token: JWT; user: User; account: Account | null }) {
+      if (account?.provider && allProviders.includes(account?.provider)) {
         token.accessToken = account.access_token;
+
+        token.refreshTokenInfo = {
+          token: account.refresh_token,
+          expiresAt: account.refresh_token_expires_in,
+        };
       }
-      return token;
+      return {
+        ...token,
+        ...user,
+      };
     },
-    async session({ session, token }) {
-      session.accessToken = token.accessToken as string | undefined;
-      return session;
+    async session({ session, token }: { session: Session; token: JWT }): Promise<Session> {
+      return { ...session, ...token };
     },
   },
 };

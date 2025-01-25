@@ -1,13 +1,14 @@
 'use client';
 
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 
+import { useHandleIsSignIn } from '@/hooks/useHandleIsSignIn';
 import { HomePageStyled } from '@/styles/pageStyled/HomePageStyled';
 
 export default function HomePage() {
-  const { data: session } = useSession();
+  const { isSignIn } = useHandleIsSignIn();
 
-  if (session) {
+  if (isSignIn) {
     return <div onClick={() => signOut()}>로그아웃</div>;
   }
 

@@ -1,9 +1,13 @@
-import NextAuth, { AuthOptions, NextAuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import KakaoProvider from 'next-auth/providers/kakao';
 import NaverProvider from 'next-auth/providers/naver';
 
-export const authOptions: AuthOptions = {
+const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: '/auth/signin', // 인증되지 않은 사용자는 이 페이지로 이동
+    signOut: '/auth/signout',
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_ID!,
@@ -14,11 +18,11 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
     }),
     NaverProvider({
-      clientId: process.env.NAVER_CLIENT_ID!,
-      clientSecret: process.env.NAVER_CLIENT_SECRET!,
+      clientId: process.env.KAKAO_CLIENT_ID!,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET!,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET!,
   callbacks: {
     async jwt({ token, account, profile }) {
       if (account) {
@@ -33,5 +37,5 @@ export const authOptions: AuthOptions = {
   },
 };
 
-const handler: NextAuthOptions = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

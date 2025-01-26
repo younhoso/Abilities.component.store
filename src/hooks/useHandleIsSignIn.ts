@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useRecoilStateLoadable, useRecoilValueLoadable } from 'recoil';
 
+import { signIn, signOut } from '@/libs/customNextAuth';
 import { isSignInSelector } from '@/stores/isSignIn';
 
 export const useHandleIsSignIn = () => {
@@ -13,5 +14,5 @@ export const useHandleIsSignIn = () => {
     setIsLoading(state === 'loading');
   }, [state]);
 
-  return { isSignIn: isSignInContents === true, setIsSignIn, isLoading };
+  return { isSignIn: isSignInContents === true, setIsSignIn, isLoading, signIn, signOut };
 };

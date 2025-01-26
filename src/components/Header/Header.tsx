@@ -10,9 +10,9 @@ import Wrapper from '@/provider/WrapperProvider';
 
 import { HeaderStyled } from './styled';
 
-interface HeaderProps {
+type HeaderProps = {
   category: () => Category[];
-}
+};
 
 export default function Header({ category }: HeaderProps) {
   const pathname = usePathname();

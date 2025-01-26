@@ -1,22 +1,28 @@
 'use client';
 
-import { signOut } from 'next-auth/react';
+import { useEffect } from 'react';
 
 import Link from 'next/link';
 
 import { useHandleIsSignIn } from '@/hooks/useHandleIsSignIn';
-import { HomePageStyled } from '@/styles/pageStyled/HomePageStyled';
+import { SignInPageStyled } from '@/styles/pageStyled/SigninUserPageStyled';
 
-export default function HomePage() {
-  const { isSignIn } = useHandleIsSignIn();
+export default function SigninPage() {
+  const { isSignIn, signOut } = useHandleIsSignIn();
+
+  useEffect(() => {
+    if (!isSignIn) {
+      return;
+    }
+  }, [isSignIn]);
 
   if (isSignIn) {
     return <div onClick={() => signOut()}>로그아웃</div>;
   }
 
   return (
-    <HomePageStyled>
-      <Link href={'/auth/signin'}>로그인 하기</Link>
-    </HomePageStyled>
+    <SignInPageStyled>
+      <Link href={'/auth/signin'}>Log in</Link>
+    </SignInPageStyled>
   );
 }

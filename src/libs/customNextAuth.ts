@@ -1,4 +1,4 @@
-import { getSession, signIn } from 'next-auth/react';
+import { getSession, signIn, signOut } from 'next-auth/react';
 
 import { Session } from 'next-auth';
 
@@ -36,15 +36,15 @@ export const getRefreshSession = memoize(
     }
 
     // 리프레시 토큰(refresh token)을 사용해 새로운 액세스 토큰(access token)을 요청하고 세션을 갱신
-    const res = await signIn('refresh', {
-      refreshToken: session?.refreshTokenInfo?.token,
-      redirect: false,
-    });
+    // const res = await signIn('refresh', {
+    //   refreshToken: session?.refreshTokenInfo?.token,
+    //   redirect: false,
+    // });
 
-    if (!res?.ok) {
-      console.error('Refresh token failed:', res?.error);
-      return null;
-    }
+    // if (!res?.ok) {
+    //   console.error('Refresh token failed:', res?.error);
+    //   return null;
+    // }
 
     session = await getSession();
     return session;
@@ -52,3 +52,5 @@ export const getRefreshSession = memoize(
 
   { maxAge: 10000 },
 );
+
+export { signIn, signOut };

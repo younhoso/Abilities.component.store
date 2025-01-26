@@ -1,9 +1,6 @@
 import { getProviders } from 'next-auth/react';
 
-import clsx from 'clsx';
-
 import Signin from '@/components/Signin/Signin';
-import { SignPageStyled } from '@/styles/pageStyled/SignPageStyled';
 
 type SignPageProps = {
   searchParams: {
@@ -11,12 +8,8 @@ type SignPageProps = {
   };
 };
 
-export default async function SignPage({ searchParams: { callbackUrl } }: SignPageProps) {
+export default async function SigninUserPage({ searchParams: { callbackUrl } }: SignPageProps) {
   const providers = (await getProviders()) ?? {};
 
-  return (
-    <SignPageStyled className={clsx('Sign')}>
-      <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />
-    </SignPageStyled>
-  );
+  return <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />;
 }

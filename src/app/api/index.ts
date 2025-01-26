@@ -7,7 +7,7 @@ const API_KEY_TOKEN = process.env.API_KEY_TOKEN!;
 
 const infoApi = {
   creatHeaders() {
-    const headers: Record<string, string> = {
+    const headers: { [key: string]: string } = {
       'Content-Type': 'application/json',
     };
     headers['Authorization'] = `Bearer ${API_KEY_TOKEN}`;
@@ -32,7 +32,7 @@ export async function createFetchAPI<P extends string, D>(path: P = '' as P, dat
     // 네트워크 오류 혹은 json 변환 오류등
     throw new Error('API 요청 처리 중 문제가 발생했습니다.');
   }
-};
+}
 
 export async function getFetchAPI(path: string = '') {
   try {

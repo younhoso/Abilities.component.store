@@ -27,8 +27,8 @@ const authOptions: NextAuthOptions = {
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
     }),
     NaverProvider({
-      clientId: process.env.KAKAO_CLIENT_ID!,
-      clientSecret: process.env.KAKAO_CLIENT_SECRET!,
+      clientId: process.env.NAVER_CLIENT_ID!,
+      clientSecret: process.env.NAVER_CLIENT_SECRET!,
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET!,
@@ -39,7 +39,7 @@ const authOptions: NextAuthOptions = {
 
         token.refreshTokenInfo = {
           token: account.refresh_token,
-          expiresAt: account.refresh_token_expires_in,
+          expiresAt: account.expires_at,
         };
       }
       return {

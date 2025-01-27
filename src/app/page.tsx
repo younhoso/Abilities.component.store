@@ -1,5 +1,3 @@
-'use client';
-
 import { HomePageStyled } from '@/styles/pageStyled/HomePageStyled';
 
 export default function HomePage() {

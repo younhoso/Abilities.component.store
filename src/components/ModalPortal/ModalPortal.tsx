@@ -4,14 +4,13 @@ import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type ModalPortalProps = {
-  id?: string;
   children: ReactNode;
 };
 
 // 템플릿 생성 함수
-const createTemplateNode = (id: string): Element | null => {
+const createTemplateNode = (): Element | null => {
   const template = `
-    <div id="${id}">
+    <div id="ModalRoot">
       <!-- 모달 콘텐츠가 여기에 삽입됩니다. -->
     </div>
   `;
@@ -20,14 +19,13 @@ const createTemplateNode = (id: string): Element | null => {
   return doc.body.firstElementChild; // 생성된 DOM 노드를 반환
 };
 
-export default function ModalPortal({ id = 'ModalRoot', children }: ModalPortalProps) {
+export default function ModalPortal({ children }: ModalPortalProps) {
   const [portalNode, setPortalNode] = useState<Element | null>(null);
 
   useEffect(() => {
-    let node = document.querySelector(`#${id}`);
+    let node = document.querySelector('#ModalRoot');
     if (!node) {
-      node = createTemplateNode(id); // 템플릿을 파싱하여 DOM 노드 생성
-      console.log(node);
+      node = createTemplateNode(); // 템플릿을 파싱하여 DOM 노드 생성
       if (node) {
         document.body.appendChild(node);
       }
@@ -39,7 +37,7 @@ export default function ModalPortal({ id = 'ModalRoot', children }: ModalPortalP
         document.body.removeChild(node);
       }
     };
-  }, [id]);
+  }, []);
 
   if (!portalNode) {
     return null;

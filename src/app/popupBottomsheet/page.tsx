@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -19,6 +19,10 @@ const images = [
 
 export default function PopupBottomsheetPage() {
   const [openModal, setOpenMoal] = useState(false);
+
+  useEffect(() => {
+    setOpenMoal(true);
+  }, []);
 
   return (
     <PopupBottomsheetPageStyled className={clsx('PopupBottomsheetPage')}>

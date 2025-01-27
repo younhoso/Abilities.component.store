@@ -36,18 +36,16 @@ export default function Bottomsheet({
 
   const elementBoxRef = useRef<HTMLDivElement>(null); // 요소 상자를 위한 ref를 설정합니다.
   const [isMobileDevice, setIsMobileDevice] = useState(false);
+  useDraggable(elementBoxRef, v => setOpenMoal(v), mode === 'popupBottomsheet');
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
     setIsMobileDevice(mobileRegex.test(userAgent));
   }, []);
 
-  // useDraggable 훅을 사용하여 드래그 기능을 추가합니다.
-  useDraggable(elementBoxRef, elementBoxRef, v => setOpenMoal(v), mode === 'popupBottomsheet');
-
   return (
     <ModalDraggableStyled className={clsx('ModalDraggable')}>
-      <ModalPortal id="GeneralLayoutContainer">
+      <ModalPortal>
         <AnimatePresence>
           {openModal && (
             <ModalContents isShow={false} onClose={() => setOpenMoal(false)}>
@@ -64,9 +62,7 @@ export default function Bottomsheet({
                 >
                   {title && <div className="headerBottomsheet">{title}</div>}
                   {barBottomsheet && <div className="barBottomsheet"></div>}
-                  <div className={clsx('bodyBottomsheet')} ref={elementBoxRef}>
-                    {children}
-                  </div>
+                  <div className={clsx('bodyBottomsheet')}>{children}</div>
                 </div>
               </motion.div>
             </ModalContents>

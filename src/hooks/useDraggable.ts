@@ -15,9 +15,8 @@ const initialDragState: DragState = {
 
 export const useDraggable = (
   target: RefObject<HTMLElement>,
-  elementBox: RefObject<HTMLElement>,
   setOpenModal: (v: boolean) => void,
-  isDraggable = true,
+  isDraggable = false,
 ) => {
   const [dragState, setDragState] = useState<DragState>(initialDragState);
 
@@ -43,9 +42,9 @@ export const useDraggable = (
       });
 
       if (dragState.isDragging && dragState.startPosition && dragState.currentPosition) {
-        if (elementBox.current) {
-          elementBox.current.style.transition = '0.15s';
-          elementBox.current.style.transform = `translateY(${Math.floor(deltaY)}%)`;
+        if (target.current) {
+          target.current.style.transition = '0.15s';
+          target.current.style.transform = `translateY(${Math.floor(deltaY)}%)`;
         }
       }
     }
@@ -57,8 +56,8 @@ export const useDraggable = (
       const deltaY = currentPosition?.y - startPosition.y;
       const shouldMoveElement = Math.floor(deltaY) > 100; //touch Move 범위가 100 이상일때
 
-      elementBox.current &&
-        (elementBox.current.style.transform = `translateY(${shouldMoveElement ? '100%' : `${0}px`})`);
+      target.current &&
+        (target.current.style.transform = `translateY(${shouldMoveElement ? '100%' : `${0}px`})`);
 
       if (shouldMoveElement) {
         setOpenModal(false);

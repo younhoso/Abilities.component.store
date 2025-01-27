@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { RefObject, useEffect, useState } from 'react';
 
 type DragState = {
@@ -16,6 +17,7 @@ export const useDraggable = (
   target: RefObject<HTMLElement>,
   elementBox: RefObject<HTMLElement>,
   setOpenModal: (v: boolean) => void,
+  isDraggable = true,
 ) => {
   const [dragState, setDragState] = useState<DragState>(initialDragState);
 
@@ -67,6 +69,8 @@ export const useDraggable = (
   };
 
   useEffect(() => {
+    if (isDraggable) return; // 드래그 비활성화
+
     const element = target.current;
     if (element) {
       element.addEventListener('touchstart', touchStart);

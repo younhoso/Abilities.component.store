@@ -11,20 +11,29 @@ import { mobileRegex } from '@/utils/regExp';
 import { ModalDraggableStyled } from './styled';
 
 type BottomsheetProps = {
+  mode?: 'basic' | 'popupBottomsheet';
   title?: ReactNode;
   barBottomsheet?: boolean;
   openModal: boolean;
   setOpenMoal: (v: boolean) => void;
   heightFull?: boolean;
+  children?: ReactNode;
 };
 
 export default function Bottomsheet({
+  mode = 'basic',
   title,
   barBottomsheet,
   openModal,
   setOpenMoal,
   heightFull = false,
+  children,
 }: BottomsheetProps) {
+  const modeClasses = {
+    basic: 'basic',
+    popupBottomsheet: 'popupBottomsheet',
+  };
+
   const elementBoxRef = useRef<HTMLDivElement>(null); // 요소 상자를 위한 ref를 설정합니다.
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
@@ -34,7 +43,7 @@ export default function Bottomsheet({
   }, []);
 
   // useDraggable 훅을 사용하여 드래그 기능을 추가합니다.
-  useDraggable(elementBoxRef, elementBoxRef, v => setOpenMoal(v));
+  useDraggable(elementBoxRef, elementBoxRef, v => setOpenMoal(v), mode === 'popupBottomsheet');
 
   return (
     <ModalDraggableStyled className={clsx('ModalDraggable')}>
@@ -49,20 +58,14 @@ export default function Bottomsheet({
                 exit={{ opacity: 0, y: '100%' }}
                 className={clsx('motion', isMobileDevice && 'isMobileDevice')}
               >
-                <div className={clsx('draggable', { heightFull: heightFull })} ref={elementBoxRef}>
+                <div
+                  className={clsx('draggable', modeClasses[mode], { heightFull: heightFull })}
+                  ref={elementBoxRef}
+                >
                   {title && <div className="headerBottomsheet">{title}</div>}
                   {barBottomsheet && <div className="barBottomsheet"></div>}
-                  <div className="bodyBottomsheet" ref={elementBoxRef}>
-                    <ul>
-                      <li>Share</li>
-                      <li>Get link</li>
-                      <li>Edit name</li>
-                      <li>Delete collection</li>
-                      <li>Move</li>
-                      <li>Star</li>
-                      <li>Rename</li>
-                      <li>Remove</li>
-                    </ul>
+                  <div className={clsx('bodyBottomsheet')} ref={elementBoxRef}>
+                    {children}
                   </div>
                 </div>
               </motion.div>

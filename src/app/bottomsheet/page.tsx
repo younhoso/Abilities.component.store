@@ -13,7 +13,18 @@ export default function DraggableEventPage() {
   return (
     <DraggableEventStyled className={clsx('DraggablePage')}>
       <div>Bottomsheet</div>
-      <Bottomsheet openModal={openModal} setOpenMoal={v => setOpenMoal(v)} />
+      <Bottomsheet openModal={openModal} setOpenMoal={v => setOpenMoal(v)}>
+        <ul>
+          <li>Share</li>
+          <li>Get link</li>
+          <li>Edit name</li>
+          <li>Delete collection</li>
+          <li>Move</li>
+          <li>Star</li>
+          <li>Rename</li>
+          <li>Remove</li>
+        </ul>
+      </Bottomsheet>
 
       <div onClick={() => setOpenMoal(true)}>
         <button>Bottomsheet 버튼</button>

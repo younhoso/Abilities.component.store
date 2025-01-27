@@ -6,6 +6,7 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import StyledComponentsRegistry from '@/libs/registry';
 import { InitGlobalStyled } from '@/styles/init';
+import { SwiperStyled } from '@/styles/swiper';
 import { colors, fontSizes, fontWeight } from '@/styles/theme';
 
 declare module 'styled-components' {
@@ -27,6 +28,7 @@ export default function CustomThemeProvider({ children }: { children: ReactNode 
     <StyledComponentsRegistry>
       <ThemeProvider theme={theme}>
         <InitGlobalStyled />
+        <SwiperStyled />
         {children}
       </ThemeProvider>
     </StyledComponentsRegistry>

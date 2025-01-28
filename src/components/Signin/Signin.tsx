@@ -34,7 +34,11 @@ export default function Signin({ providers, callbackUrl }: SigninProps) {
       <p className="loginText">SNS 로그인</p>
       {Object.values(providers).map(({ id, name }) => {
         return (
-          <div key={name} className={clsx(`item ${id}`)}>
+          <div
+            key={name}
+            className={clsx(`item ${id}`)}
+            onClick={() => signIn(id, { callbackUrl })}
+          >
             {/* SVG 로고 렌더링 */}
             {isValidProviderId(id) && (
               <Image
@@ -45,7 +49,7 @@ export default function Signin({ providers, callbackUrl }: SigninProps) {
                 className="provider-logo"
               />
             )}
-            <button onClick={() => signIn(id, { callbackUrl })}>Sign in with {name}</button>
+            <button>Sign in with {name}</button>
           </div>
         );
       })}

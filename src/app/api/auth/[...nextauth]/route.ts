@@ -19,8 +19,8 @@ const authOptions: NextAuthOptions = {
   },
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_OAUTH_ID!,
-      clientSecret: process.env.GOOGLE_OAUTH_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID!,

@@ -17,8 +17,12 @@ export const metadata: Metadata = {
     default: metaTitle,
   },
   description: 'CreateFix',
+  metadataBase: new URL('https://creayer-fix-component-store.vercel.app'),
   icons: {
     icon: [{ url: '/favicon.ico', rel: 'shortcut icon' }],
+  },
+  openGraph: {
+    images: '/public/og-image.png',
   },
   robots: {
     index: true,

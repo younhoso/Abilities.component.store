@@ -21,7 +21,6 @@ export default function CommonTemplate({ children }: { children: ReactNode }) {
       <Header category={() => sitemap()} />
       <div className="content">{children}</div>
       <Footer />
-      {/* <button onClick={ () => handle()}>Click my name!</button> */}
     </TemplateStyled>
   );
 }

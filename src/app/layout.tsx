@@ -9,14 +9,14 @@ import RecoilProvider from '@/provider/RecoilProvider';
 
 import { gmarket } from '../libs/fonts';
 
-const metaTitle = 'CreateFix';
+const metaTitle = 'CreayerFix';
 
 export const metadata: Metadata = {
   title: {
     template: metaTitle + ' | %s',
     default: metaTitle,
   },
-  description: 'CreateFix',
+  description: 'CreayerFix',
   metadataBase: new URL('https://creayer-fix-component-store.vercel.app'),
   icons: {
     icon: [{ url: '/favicon.ico', rel: 'shortcut icon' }],

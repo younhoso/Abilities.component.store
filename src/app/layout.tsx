@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 
 import type { Metadata, Viewport } from 'next';
 
-import AuthProvider from '@/provider/ClientSessionProvider';
 import ClientSessionProvider from '@/provider/ClientSessionProvider';
 import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';

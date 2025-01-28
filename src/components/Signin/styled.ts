@@ -12,7 +12,7 @@ export const SigninStyled = styled.div`
   gap: 20px;
 
   .item {
-    width: 26%;
+    width: 280px;
     display: flex;
     justify-content: center;
     align-items: center;

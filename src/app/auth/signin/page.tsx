@@ -10,7 +10,7 @@ type SignPageProps = {
 
 export default async function SigninUserPage({ searchParams: { callbackUrl } }: SignPageProps) {
   const providers = (await getProviders()) ?? {};
-  console.log(providers);
+  console.log('providers:,', providers);
 
   return <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />;
 }

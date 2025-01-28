@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import clsx from 'clsx';
 
-import Alert from '@/components/Alert';
 import Confirm from '@/components/Confirm';
 
 export default function ConfirmPage() {

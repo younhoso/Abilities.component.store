@@ -14,8 +14,7 @@ import sitemap from './sitemap';
 export default function CommonTemplate({ children }: { children: ReactNode }) {
   const { isLoading } = useHandleIsSignIn();
 
-  if (isLoading) return <p>Loading...!!</p>;
-
+  // if (isLoading) return <p>Loading...!!</p>;
   return (
     <TemplateStyled className={clsx('Template')}>
       <Header category={() => sitemap()} />

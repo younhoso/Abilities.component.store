@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
-import StyledComponentsRegistry from '@/libs/registry';
+import StyledComponentsRegistry from '@/libs/StyledRegistry';
 import { InitGlobalStyled } from '@/styles/init';
 import { SwiperStyled } from '@/styles/swiper';
 import { colors, fontSizes, fontWeight } from '@/styles/theme';

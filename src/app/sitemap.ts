@@ -93,7 +93,7 @@ const defaultSiteMaps: MetadataRoute.Sitemap = [
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //13 Editor(에디터)
+  //13 pointermove
   {
     url: '/pointermove',
     lastModified: new Date(),
@@ -121,35 +121,42 @@ const defaultSiteMaps: MetadataRoute.Sitemap = [
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //17 date time
+  //17 countdown Timer
+  {
+    url: '/countdownTimer',
+    lastModified: new Date(),
+    changeFrequency: 'yearly',
+    priority: 0.9,
+  },
+  //18 date time
   {
     url: '/dateTime',
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //18 Tabs
+  //19 Tabs
   {
     url: '/tabs',
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //19 Toggle
+  //20 Toggle
   {
     url: '/toggle',
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //20 stickyNavi
+  //21 stickyNavi
   {
     url: '/stickyNavi',
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 0.9,
   },
-  //21 signin
+  //22 signin
   {
     url: '/signin',
     lastModified: new Date(),
@@ -225,22 +232,26 @@ const tileSiteMaps = [
   },
   {
     id: 17,
-    title: 'dateTime',
+    title: 'countdownTimer',
   },
   {
     id: 18,
-    title: 'tabs',
+    title: 'dateTime',
   },
   {
     id: 19,
-    title: 'toggle',
+    title: 'tabs',
   },
   {
     id: 20,
-    title: 'stickyNavi',
+    title: 'toggle',
   },
   {
     id: 21,
+    title: 'stickyNavi',
+  },
+  {
+    id: 22,
     title: 'signin',
   },
 ];

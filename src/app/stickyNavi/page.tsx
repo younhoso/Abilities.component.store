@@ -23,7 +23,7 @@ export default function StickyNaviPage() {
     <StickyNavPageStyled className={clsx('StickyNavPage')}>
       <StickyNavi>
         <div>
-          <nav className={`sticky-nav ${activeSection === 'section-1' ? 'fixed' : ''}`}>
+          <nav className={`sticky-nav fixed`}>
             <ul>
               <li className={activeSection === 'section-1' ? 'active' : ''}>Section 1</li>
               <li className={activeSection === 'section-2' ? 'active' : ''}>Section 2</li>
@@ -32,27 +32,27 @@ export default function StickyNaviPage() {
           </nav>
 
           <section ref={sectionRefs[0].startRef} className="start-section">
-            Start Section
-          </section>
-          <section style={{ height: '800px' }}>Middle Content</section>
-          <section ref={sectionRefs[0].endRef} className="end-section">
-            End Section
-          </section>
-
-          <section ref={sectionRefs[1].startRef} className="start-section">
             Start Section1
           </section>
           <section style={{ height: '800px' }}>Middle Content1</section>
-          <section ref={sectionRefs[1].endRef} className="end-section">
+          <section ref={sectionRefs[0].endRef} className="end-section">
             End Section1
           </section>
 
-          <section ref={sectionRefs[2].startRef} className="start-section">
+          <section ref={sectionRefs[1].startRef} className="start-section">
             Start Section2
           </section>
           <section style={{ height: '800px' }}>Middle Content2</section>
-          <section ref={sectionRefs[2].endRef} className="end-section">
+          <section ref={sectionRefs[1].endRef} className="end-section">
             End Section2
+          </section>
+
+          <section ref={sectionRefs[2].startRef} className="start-section">
+            Start Section3
+          </section>
+          <section style={{ height: '800px' }}>Middle Content3</section>
+          <section ref={sectionRefs[2].endRef} className="end-section">
+            End Section3
           </section>
         </div>
       </StickyNavi>

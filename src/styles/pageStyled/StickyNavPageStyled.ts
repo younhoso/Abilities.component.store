@@ -8,6 +8,11 @@ export const StickyNavPageStyled = styled.div`
     right: 0;
     ul {
       display: flex;
+      li {
+        &.active {
+          font-weight: 700;
+        }
+      }
     }
     &.fixed {
       position: fixed;

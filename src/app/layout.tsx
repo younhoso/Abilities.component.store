@@ -51,7 +51,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </CustomThemeProvider>
           </ClientSessionProvider>
         </RecoilProvider>
-        <div id="GeneralLayoutContainer"></div>
       </body>
     </html>
   );

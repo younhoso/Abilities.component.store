@@ -6,14 +6,12 @@ import useCountdown from '@/hooks/useCountdown';
 import { CountdownTimerPageStyled } from '@/styles/pageStyled/CountdownTimerPageStyled';
 
 export default function CountdownTimerPage() {
-  const timeLeft = useCountdown('2025-02-12T23:59:59');
-
-  if (!timeLeft) return <p>로딩중...</p>;
+  const [days, hours, minutes, seconds] = useCountdown('2025-02-20T23:59:59');
 
   return (
     <CountdownTimerPageStyled className={clsx('CountdownTimerPage')}>
       <h1>
-        {timeLeft.days}일 {timeLeft.hours}시간 {timeLeft.minutes}분 {timeLeft.seconds}초 남음
+        {days}일 {hours}시간 {minutes}분 {seconds}초 남음
       </h1>
     </CountdownTimerPageStyled>
   );

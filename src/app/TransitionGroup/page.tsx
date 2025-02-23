@@ -28,12 +28,17 @@ export default function TransitionGroupPage() {
   return (
     <TransitionGroupPageStyled className={clsx('TransitionGroupPage')}>
       <h2>TransitionGroup 컴포넌트 사용 예시</h2>
-      <button onClick={addItem}>Add Item</button>
-      <TransitionGroup x={50} y={0} opacity={0} duration={0.5}>
+      <button onClick={addItem}>Add Item 버튼</button>
+      <TransitionGroup x={0} y={[50, -50]} opacity={0} duration={0.5}>
         {items.map(item => (
-          <div key={item.id} onClick={() => removeItem(item.id)} className="inner">
-            <p className="title">{item.title}</p>
-            <p className="text">{item.text}</p>
+          <div key={item.id} className="inner">
+            <div className="header">
+              <p className="title">{item.title}</p>
+              <p className="text">{item.text}</p>
+            </div>
+            <span className="remove" onClick={() => removeItem(item.id)}>
+              삭제
+            </span>
           </div>
         ))}
       </TransitionGroup>

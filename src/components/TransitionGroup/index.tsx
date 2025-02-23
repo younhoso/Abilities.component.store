@@ -5,12 +5,17 @@ import React, { ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type TransitionGroupProps = {
-  y?: number;
-  x?: number;
+  y?: number | [number, number];
+  x?: number | [number, number];
   opacity?: number;
   duration?: number;
   children: ReactNode;
 };
+
+// 튜플인지 확인하는 타입 가드
+function isTuple(value: unknown): value is [number, number] {
+  return Array.isArray(value) && value.length === 2;
+}
 
 export default function TransitionGroup({
   x = 0,
@@ -19,6 +24,10 @@ export default function TransitionGroup({
   duration = 0.3,
   children,
 }: TransitionGroupProps) {
+  // x, y[등장 시 값, 사라질 때 값] 값이 단일 값이면 배열로 변환
+  const [initialX, exitX] = isTuple(x) ? x : [x, x];
+  const [initialY, exitY] = isTuple(y) ? y : [y, y];
+
   return (
     <AnimatePresence>
       {React.Children.map(children, child => {
@@ -29,8 +38,8 @@ export default function TransitionGroup({
               key={child.key?.toString()} // key가 있어야 애니메이션이 정상 작동
               initial={{
                 opacity: opacity ?? 0,
-                x: x ?? 0,
-                y: y ?? 0,
+                x: initialX,
+                y: initialY,
               }}
               animate={{
                 opacity: 1,
@@ -39,8 +48,8 @@ export default function TransitionGroup({
               }}
               exit={{
                 opacity: 0,
-                x: -(x ?? 0), // x나 y 값이 음수일 때 반대 방향으로 애니메이션
-                y: -(y ?? 0),
+                x: exitX, // x나 y 값이 음수일 때 반대 방향으로 애니메이션
+                y: exitY,
               }}
               transition={{ duration: duration ?? 0.3 }}
             >

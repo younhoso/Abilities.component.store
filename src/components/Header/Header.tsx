@@ -5,13 +5,13 @@ import { usePathname } from 'next/navigation';
 
 import clsx from 'clsx';
 
-import { Category } from '@/app/sitemap';
+import { TitleSiteMap } from '@/app/sitemap';
 import Wrapper from '@/provider/WrapperProvider';
 
 import { HeaderStyled } from './styled';
 
 type HeaderProps = {
-  category: () => Category[];
+  category: () => TitleSiteMap[];
 };
 
 export default function Header({ category }: HeaderProps) {

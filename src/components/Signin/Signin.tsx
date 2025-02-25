@@ -23,7 +23,7 @@ const icons = {
   naver: naverIcon,
 } as const;
 
-// 런타임에서 id가 icons의 키인지 확인하는 함수
+// 런타임때 id가 'google' | 'kakao' | 'naver' 중 하나인지 판별하는 역할하는 함수
 function isValidProviderId(id: string): id is keyof typeof icons {
   return id in icons;
 }

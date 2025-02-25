@@ -1,5 +1,7 @@
 import { ChangeEvent, forwardRef } from 'react';
 
+import Image from 'next/image';
+
 import clsx from 'clsx';
 
 import { ImageFileStyled } from './styled';
@@ -38,7 +40,7 @@ export default forwardRef<HTMLInputElement, ImageFileProps>(function ImageFile(
           )}
         </div>
 
-        {imageSrc && <img src={imageSrc} alt="이미지 미리보기" />}
+        {imageSrc && <Image src={imageSrc} alt="이미지 미리보기" />}
       </label>
     </ImageFileStyled>
   );

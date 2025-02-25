@@ -178,7 +178,7 @@ const titleSite = [
   { title: 'Transition Group', url: '/transitionGroup' },
 ];
 
-export function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap(): MetadataRoute.Sitemap {
   return siteMaps.map(item => ({
     url: item.url,
     lastModified: new Date(),

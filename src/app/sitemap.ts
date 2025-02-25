@@ -147,6 +147,12 @@ const siteMaps: Category[] = [
   },
   {
     url: '/transitionGroup',
+    priority: 0.5,
+    lastModified: new Date(),
+    changeFrequency: '',
+  },
+  {
+    url: '',
     priority: 0.9,
     lastModified: new Date(),
     changeFrequency: '',
@@ -179,18 +185,18 @@ const titleSite = [
   { title: '', url: '' },
 ];
 
+export function titleSiteMap(): TitleSiteMap[] {
+  return titleSite.map(item => ({
+    title: item.title,
+    url: item.url,
+  }));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return siteMaps.map(item => ({
     url: item.url,
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: item.priority,
-  }));
-}
-
-export function titleSiteMap(): TitleSiteMap[] {
-  return titleSite.map(item => ({
-    title: item.title,
-    url: item.url,
   }));
 }

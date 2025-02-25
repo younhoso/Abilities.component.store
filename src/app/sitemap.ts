@@ -146,7 +146,7 @@ const siteMaps: Category[] = [
     changeFrequency: '',
   },
   {
-    url: '/transitionGroup',
+    url: '/transition',
     priority: 0.5,
     lastModified: new Date(),
     changeFrequency: '',
@@ -181,7 +181,7 @@ const titleSite = [
   { title: 'Toggle', url: '/toggle' },
   { title: 'Sticky Navi', url: '/stickyNavi' },
   { title: 'Sign In', url: '/signin' },
-  { title: 'Transition Group', url: '/transitionGroup' },
+  { title: 'Transition', url: '/transition' },
   { title: '', url: '' },
 ];
 

@@ -63,5 +63,12 @@ export async function GET() {
     };
   });
 
-  return NextResponse.json(updatedUsers);
+  const response = NextResponse.json(updatedUsers);
+
+  // CORS 헤더 추가
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  return response;
 }

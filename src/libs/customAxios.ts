@@ -28,11 +28,6 @@ export const customAxios = ({
           process.env.NEXT_PUBLIC_SHOPBY_CLIENT_ID ?? 'x+qbJGxgUeET3/KGqHj48g==';
       }
 
-      // 특정 조건에 따라 baseURL을 동적으로 설정
-      if (config.url?.includes('/api/membership')) {
-        config.baseURL = 'http://localhost:3000'; // 다른 URL을 설정
-      }
-
       return config;
     },
     error => Promise.reject(error),

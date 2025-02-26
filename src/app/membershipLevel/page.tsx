@@ -43,7 +43,7 @@ export default function MembershipLevelPage() {
     <div className={clsx('membershipLevel')}>
       <h2>회원 등급 리스트</h2>
       <p>
-        회원들 정보를 조회해서 사용한 지난달 액수를 기준으로 'welcome', '치빡이', 'VIP', 'VVIP'
+        회원들 정보를 조회해서 사용한 지난달 액수를 기준으로 welcome, 치빡이, VIP, VVIP
         <br />
         4등급 기준으로 나눠서 현재 등급을 보여주는 로직
       </p>

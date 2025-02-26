@@ -40,7 +40,7 @@ export default function MembershipLevelPage() {
 
   return (
     <div className={clsx('membershipLevel')}>
-      <h2>회원 등급 리스트</h2>
+      <h2>회원 등급 데이터 리스트 조회</h2>
       <p>
         회원들 정보를 조회해서 사용한 지난달 액수를 기준으로 welcome, 치빡이, VIP, VVIP
         <br />

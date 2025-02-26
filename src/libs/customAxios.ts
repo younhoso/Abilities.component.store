@@ -3,11 +3,15 @@
  */
 import axios from 'axios';
 
-export const API_HOST = 'https://jsonplaceholder.typicode.com';
+type customAxiosType = {
+  baseURL?: string;
+};
 
-export const customAxios = () => {
+export const customAxios = ({
+  baseURL = 'https://jsonplaceholder.typicode.com',
+}: customAxiosType = {}) => {
   const instance = axios.create({
-    baseURL: API_HOST,
+    baseURL,
     withCredentials: false,
   });
 
@@ -65,10 +69,11 @@ type Headers = {
   [key: string]: string;
 };
 
-/* 서버와 통신 시 동적 추가 헤더를 설정하는 함수 */
+/**
+ *  서버와 통신 시 동적 추가 헤더를 설정하는 함수
+ */
 export const createHeaders = (additionalHeaders: Headers): Headers => {
   return {
     ...additionalHeaders,
   };
 };
-/* 서버와 통신 시 동적 추가 헤더를 설정하는 함수 // */

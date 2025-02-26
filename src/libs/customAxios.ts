@@ -3,11 +3,15 @@
  */
 import axios from 'axios';
 
-export const API_HOST = 'https://jsonplaceholder.typicode.com';
+type customAxiosType = {
+  baseURL?: string;
+};
 
-export const customAxios = () => {
+export const customAxios = ({
+  baseURL = 'https://jsonplaceholder.typicode.com',
+}: customAxiosType = {}) => {
   const instance = axios.create({
-    baseURL: API_HOST,
+    baseURL,
     withCredentials: false,
   });
 
@@ -22,6 +26,11 @@ export const customAxios = () => {
 
         config.headers['clientid'] =
           process.env.NEXT_PUBLIC_SHOPBY_CLIENT_ID ?? 'x+qbJGxgUeET3/KGqHj48g==';
+      }
+
+      // 특정 조건에 따라 baseURL을 동적으로 설정
+      if (config.url?.includes('/api/membership')) {
+        config.baseURL = 'http://localhost:3000'; // 다른 URL을 설정
       }
 
       return config;
@@ -65,10 +74,11 @@ type Headers = {
   [key: string]: string;
 };
 
-/* 서버와 통신 시 동적 추가 헤더를 설정하는 함수 */
+/**
+ *  서버와 통신 시 동적 추가 헤더를 설정하는 함수
+ */
 export const createHeaders = (additionalHeaders: Headers): Headers => {
   return {
     ...additionalHeaders,
   };
 };
-/* 서버와 통신 시 동적 추가 헤더를 설정하는 함수 // */

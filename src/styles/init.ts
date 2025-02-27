@@ -17,6 +17,15 @@ export const InitGlobalStyled = memo(createGlobalStyle`
     height:100%;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: #d3d3d3;
+      ;
+    }
   }
   body.modal-open {
     overflow: hidden;

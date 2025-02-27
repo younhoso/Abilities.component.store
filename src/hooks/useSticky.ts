@@ -37,6 +37,7 @@ export const useSticky = ({ sections, offset = 0 }: UseStickyOptions) => {
   }, [sections, offset]);
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);

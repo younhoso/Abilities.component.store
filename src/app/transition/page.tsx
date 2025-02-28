@@ -12,6 +12,8 @@ export default function TransitionGroupPage() {
     { id: 1, title: 'title', text: 'Item 1' },
     { id: 2, title: 'title', text: 'Item 2' },
     { id: 3, title: 'title', text: 'Item 3' },
+    { id: 4, title: 'title', text: 'Item 4' },
+    { id: 5, title: 'title', text: 'Item 5' },
   ]);
 
   const addItem = () => {
@@ -29,7 +31,7 @@ export default function TransitionGroupPage() {
     <TransitionGroupPageStyled className={clsx('TransitionGroupPage')}>
       <h2>TransitionGroup 컴포넌트 사용 예시</h2>
       <button onClick={addItem}>Add Item 버튼</button>
-      <TransitionGroup x={0} y={[50, -50]} opacity={0} duration={0.5}>
+      <TransitionGroup x={0} y={[50, -50]} opacity={0} duration={0.3} delay={0.1}>
         {items.map(item => (
           <div key={item.id} className="inner">
             <div className="header">

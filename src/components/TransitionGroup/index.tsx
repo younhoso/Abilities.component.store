@@ -8,7 +8,8 @@ type TransitionGroupProps = {
   y?: number | [number, number];
   x?: number | [number, number];
   opacity?: number;
-  duration?: number;
+  duration?: number; // 전체 아이템 듀레이션
+  delay?: number; // 개별 아이템 간 딜레이
   children: ReactNode;
 };
 
@@ -22,6 +23,7 @@ export default function TransitionGroup({
   y = 10,
   opacity = 0,
   duration = 0.3,
+  delay = 0.1,
   children,
 }: TransitionGroupProps) {
   // x, y[등장 시 값, 사라질 때 값] 값이 단일 값이면 배열로 변환
@@ -30,7 +32,7 @@ export default function TransitionGroup({
 
   return (
     <AnimatePresence>
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           return (
             <motion.div
@@ -51,7 +53,7 @@ export default function TransitionGroup({
                 x: exitX, // x나 y 값이 음수일 때 반대 방향으로 애니메이션
                 y: exitY,
               }}
-              transition={{ duration: duration ?? 0.3 }}
+              transition={{ duration: duration, delay: index * delay }}
             >
               {child}
             </motion.div>

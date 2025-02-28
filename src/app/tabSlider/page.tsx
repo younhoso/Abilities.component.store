@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import clsx from 'clsx';
 
+import useTabs from '@/hooks/useTabs';
 import { useTabSlider } from '@/hooks/useTabsSlider';
 import { TabSliderPageStyled } from '@/styles/pageStyled/TabSliderPageStyled';
 
@@ -35,8 +36,8 @@ const items = [
  * 자세한것은 아래 코드 참고
  */
 export default function TabSliderPage() {
-  const { activeIndex, sliderRef, handleClick } = useTabSlider({
-    initialIndex: 0,
+  const { activeKey, handleTabs } = useTabs(items[0]);
+  const { sliderRef, handleSliderClick } = useTabSlider({
     direction: 'horizontal',
   });
 
@@ -44,9 +45,9 @@ export default function TabSliderPage() {
     <TabSliderPageStyled direction={'horizontal'} className={clsx('TabSliderPage')} ref={sliderRef}>
       {items.map((item, index) => (
         <li
-          key={index}
-          className={`slider-item ${index === activeIndex ? 'active' : ''}`}
-          onClick={() => handleClick(index)}
+          key={item}
+          className={`slider-item ${item === activeKey ? 'active' : ''}`}
+          onClick={() => (handleTabs(item), handleSliderClick(index))}
         >
           <Link className="nav_link" href={'#0'} role="tab">
             {item}

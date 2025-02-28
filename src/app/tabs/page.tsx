@@ -82,7 +82,7 @@ const prayerTopicData = {
 };
 
 export default function TabPage() {
-  const { activeKey, tabSwitch } = useTabs(initialTabs[0]);
+  const { activeKey, handleTabs } = useTabs(initialTabs[0]);
 
   // 선택된 탭에 해당하는 데이터를 필터링
   const filteredPrayerTopics = prayerTopicData?.data.filter(
@@ -98,7 +98,7 @@ export default function TabPage() {
             <button
               key={item.label}
               className={clsx(item === activeKey ? 'isActive' : null, 'name')}
-              onClick={() => tabSwitch(item)}
+              onClick={() => handleTabs(item)}
             >
               {item.label}
               {item === activeKey ? <motion.div className="underBg" layoutId="underBg" /> : null}

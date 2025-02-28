@@ -10,13 +10,13 @@ export const TabSliderPageStyled = styled.div<TabSliderPageStyledProps>`
   display: flex;
   flex-direction: ${({ direction }) => (direction === 'vertical' ? 'column' : 'row')};
   gap: 20px;
-  overflow: auto;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap; /* 한 줄 유지 */
+
   background-image: linear-gradient(to right, #7a4ef8 0, #7f51f6 50%, #8f5aee 100%);
   scrollbar-width: none;
   -ms-overflow-style: none;
-  ::-webkit-scrollbar {
-    display: none; /* 웹킷 기반 브라우저에서 스크롤바를 숨김 */
-  }
 
   .slider-item {
     text-align: center;

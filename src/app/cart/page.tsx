@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { CartPageStyle } from '@/styles/pageStyled/CartPageStyle';
+import { formatPriceCommas } from '@/utils/regExp';
 
 type productsType = {
   id: number;
@@ -17,24 +18,20 @@ const products: productsType[] = [
   { id: 2, name: '긴팔티', price: 20000, quantity: 1, is_selected: true },
   { id: 3, name: '핸드폰케이스', price: 15000, quantity: 1, is_selected: false },
   { id: 4, name: '후드티', price: 30000, quantity: 1, is_selected: true },
-  { id: 5, name: '바지', price: 25000, quantity: 1, is_selected: true },
+  { id: 5, name: '바지', price: 25000, quantity: 1, is_selected: false },
 ];
 
 export default function CartPage() {
   const [items, setItems] = useState(products);
   const [total, setTotal] = useState(0);
 
-  const total_price = () => {
-    const totalPrice = items
-      .filter(item => item.is_selected)
-      .reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotal(totalPrice);
-  };
-
   const toggleItemSelection = (id: number) => {
     const newItems = [...items];
-    newItems[id].is_selected = !newItems[id].is_selected;
-    setItems(newItems);
+    const index = newItems.findIndex(item => item.id === id);
+    if (index !== -1) {
+      newItems[index].is_selected = !newItems[index].is_selected;
+      setItems(newItems);
+    }
   };
 
   const updateItemQuantity = (id: number, quantity: number) => {
@@ -48,7 +45,11 @@ export default function CartPage() {
   };
 
   useEffect(() => {
-    total_price();
+    const totalPrice = items
+      .filter(item => item.is_selected)
+      .reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    setTotal(totalPrice);
   }, [items]);
 
   return (
@@ -56,17 +57,21 @@ export default function CartPage() {
       <div>
         <h2>Shopping Cart</h2>
         <ul>
-          {items.map((item, idx) => {
+          {items.map(item => {
             return (
               <li key={item.id}>
                 <div className="inner">
                   <input
+                    id={`item-checkbox-${item.id}`}
                     type="checkbox"
                     checked={item.is_selected}
-                    onChange={() => toggleItemSelection(idx)}
+                    onChange={() => toggleItemSelection(item.id)}
                   />
-                  <p>{item.name}</p>
-                  <p>{item.price}원</p>
+                  <label htmlFor={`item-checkbox-${item.id}`}>
+                    <h2>{item.name}</h2>
+                  </label>
+
+                  <p>{formatPriceCommas(item.price)}원</p>
                   <input
                     className="box"
                     type="text"
@@ -79,7 +84,7 @@ export default function CartPage() {
             );
           })}
         </ul>
-        <h3>Total: {total}WON</h3>
+        <h3>Total: {formatPriceCommas(total)}원</h3>
       </div>
     </CartPageStyle>
   );

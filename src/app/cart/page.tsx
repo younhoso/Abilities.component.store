@@ -24,13 +24,6 @@ export default function CartPage() {
   const [items, setItems] = useState(products);
   const [total, setTotal] = useState(0);
 
-  const total_price = () => {
-    const totalPrice = items
-      .filter(item => item.is_selected)
-      .reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setTotal(totalPrice);
-  };
-
   const toggleItemSelection = (id: number) => {
     const newItems = [...items];
     newItems[id].is_selected = !newItems[id].is_selected;
@@ -48,7 +41,11 @@ export default function CartPage() {
   };
 
   useEffect(() => {
-    total_price();
+    const totalPrice = items
+      .filter(item => item.is_selected)
+      .reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    setTotal(totalPrice);
   }, [items]);
 
   return (

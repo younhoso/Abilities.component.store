@@ -3,7 +3,6 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import { TitleSiteMap } from '@/app/sitemap';
-import Wrapper from '@/provider/WrapperProvider';
 
 import { SideNavStyled } from './styled';
 
@@ -13,21 +12,19 @@ type SideNavProps = {
 
 export default function SideNav({ category }: SideNavProps) {
   return (
-    <SideNavStyled className={clsx('SideNav')}>
-      <Wrapper>
-        <div className="inner">
-          <Link href={'/'}></Link>
-          <ul className="CategoryInner">
-            {category().map(v => {
-              return (
-                <li key={v.title}>
-                  <Link href={v.url}>{v.title}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </Wrapper>
+    <SideNavStyled className={clsx('sideNav')}>
+      <div className="inner">
+        <Link href={'/'}></Link>
+        <ul className="categoryInner">
+          {category().map(v => {
+            return (
+              <li key={v.title}>
+                <Link href={v.url}>{v.title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </SideNavStyled>
   );
 }

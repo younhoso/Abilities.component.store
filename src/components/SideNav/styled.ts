@@ -8,4 +8,5 @@ export const SideNavStyled = styled.div`
   left: 0;
   background-color: ${props => props.theme.colors.gray7f7};
   border-right: 1px solid ${props => props.theme.colors.gray4e4};
+  padding: 20px;
 `;

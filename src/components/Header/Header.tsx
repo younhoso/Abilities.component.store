@@ -10,6 +10,8 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <HeaderStyled className={clsx('Header', { mainHeader: pathname === '/' })}>Header</HeaderStyled>
+    <HeaderStyled className={clsx('Header', { mainHeader: pathname === '/' })}>
+      <div className="inner">Header</div>
+    </HeaderStyled>
   );
 }

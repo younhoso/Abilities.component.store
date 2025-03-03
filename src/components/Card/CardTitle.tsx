@@ -5,5 +5,5 @@ import clsx from 'clsx';
 import { CardTitleStyled } from './styled';
 
 export default function CardTitle({ children }: { children: ReactNode }) {
-  return <CardTitleStyled className={clsx('cardTitle')}>{children}</CardTitleStyled>;
+  return <CardTitleStyled className={clsx('CardTitle')}>{children}</CardTitleStyled>;
 }

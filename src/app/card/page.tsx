@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 
 import Button from '@/components/Button/Button';
-import Card from '@/components/Card/Card';
+import Card from '@/components/Card';
 import CardContent from '@/components/Card/CardContent';
 import CardDescription from '@/components/Card/CardDescription';
 import CardFooter from '@/components/Card/CardFooter';

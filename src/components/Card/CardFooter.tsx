@@ -4,6 +4,11 @@ import clsx from 'clsx';
 
 import { CardFooterStyled } from './styled';
 
-export default function CardFooter({ children }: { children: ReactNode }) {
-  return <CardFooterStyled className={clsx('cardFooter')}>{children}</CardFooterStyled>;
+type CardFooterProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+export default function CardFooter({ className, children }: CardFooterProps) {
+  return <CardFooterStyled className={clsx('cardFooter', className)}>{children}</CardFooterStyled>;
 }

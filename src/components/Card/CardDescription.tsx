@@ -4,8 +4,15 @@ import clsx from 'clsx';
 
 import { CardDescriptionStyled } from './styled';
 
-export default function CardDescription({ children }: { children: ReactNode }) {
+type CardDescriptionProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+export default function CardDescription({ className, children }: CardDescriptionProps) {
   return (
-    <CardDescriptionStyled className={clsx('cardDescription')}>{children}</CardDescriptionStyled>
+    <CardDescriptionStyled className={clsx('cardDescription', className)}>
+      {children}
+    </CardDescriptionStyled>
   );
 }

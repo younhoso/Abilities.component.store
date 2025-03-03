@@ -9,7 +9,7 @@ import { ko } from 'date-fns/locale';
 import CustomDayPicker from '@/components/CustomDayPicker/CustomDayPicker';
 import { DaypickerPageStyled } from '@/styles/pageStyled/DaypickerPageStyled';
 
-export type initiallySelectedProps = {
+export type InitiallySelectedProps = {
   date: Date[];
 };
 
@@ -18,9 +18,9 @@ const initiallySelectedDates = {
 };
 
 export default function DaypickerPage() {
-  const [selectedDate, setSelectedDate] = useState<initiallySelectedProps>(initiallySelectedDates);
+  const [selectedDate, setSelectedDate] = useState<InitiallySelectedProps>(initiallySelectedDates);
 
-  const handleValueChange = <T extends initiallySelectedProps, K extends keyof T>(
+  const handleValueChange = <T extends InitiallySelectedProps, K extends keyof T>(
     key: K,
     value: T[K],
   ) => {

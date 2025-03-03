@@ -6,6 +6,6 @@ import { CardDescriptionStyled } from './styled';
 
 export default function CardDescription({ children }: { children: ReactNode }) {
   return (
-    <CardDescriptionStyled className={clsx('CardDescription')}>{children}</CardDescriptionStyled>
+    <CardDescriptionStyled className={clsx('cardDescription')}>{children}</CardDescriptionStyled>
   );
 }

@@ -20,9 +20,9 @@ export default function SideNav({ category }: SideNavProps) {
           <ul className="CategoryInner">
             {category().map(v => {
               return (
-                <div key={v.title}>
+                <li key={v.title}>
                   <Link href={v.url}>{v.title}</Link>
-                </div>
+                </li>
               );
             })}
           </ul>

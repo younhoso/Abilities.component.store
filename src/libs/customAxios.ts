@@ -3,7 +3,7 @@
  */
 import axios, { AxiosHeaders } from 'axios';
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://jsonplaceholder.typicode.com';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_SHOPBY_CLIENT_ID || 'x+qbJGxgUeET3/KGqHj48g==';
 
 export const customAxios = () => {

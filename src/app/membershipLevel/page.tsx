@@ -25,9 +25,7 @@ export default function MembershipLevelPage() {
   } = useQuery({
     queryKey: ['membershipLevel'],
     queryFn: async () => {
-      const { data } = await customAxios({
-        baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
-      }).get<User[]>('/api/membership');
+      const { data } = await customAxios().get<User[]>('/api/membership');
       return {
         membership: data,
       };

@@ -9,6 +9,7 @@ import Header from '@/components/Header/Header';
 import SideNav from '@/components/SideNav';
 import { useHandleIsSignIn } from '@/hooks/useHandleIsSignIn';
 import { TemplateStyled } from '@/styles/pageStyled/TemplateStyled';
+import { WrapperStyled } from '@/styles/pageStyled/WrapperStyled';
 
 import { titleSiteMap } from './sitemap';
 
@@ -19,8 +20,10 @@ export default function CommonTemplate({ children }: { children: ReactNode }) {
   return (
     <TemplateStyled className={clsx('Template')}>
       <Header />
-      <SideNav category={() => titleSiteMap()} />
-      <div className="content">{children}</div>
+      <div className="content">
+        <SideNav category={() => titleSiteMap()} />
+        <WrapperStyled>{children}</WrapperStyled>
+      </div>
       <Footer />
     </TemplateStyled>
   );

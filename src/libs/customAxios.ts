@@ -1,17 +1,13 @@
 /**
- * axios의 interceptors frame(구조)입니다.
+ * axios의 interceptors 구조 입니다.
  */
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 
-type customAxiosType = {
-  baseURL?: string;
-};
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://jsonplaceholder.typicode.com';
+const CLIENT_ID = process.env.NEXT_PUBLIC_SHOPBY_CLIENT_ID || 'x+qbJGxgUeET3/KGqHj48g==';
 
-export const customAxios = ({
-  baseURL = 'https://jsonplaceholder.typicode.com',
-}: customAxiosType = {}) => {
+export const customAxios = () => {
   const instance = axios.create({
-    baseURL,
     withCredentials: false,
   });
 
@@ -21,11 +17,9 @@ export const customAxios = ({
   instance.interceptors.request.use(
     async config => {
       if (config.headers) {
-        config.headers['Content-type'] = 'application/json; charset=UTF-8';
-        config.headers['Accept'] = 'application/json;';
-
-        config.headers['clientid'] =
-          process.env.NEXT_PUBLIC_SHOPBY_CLIENT_ID ?? 'x+qbJGxgUeET3/KGqHj48g==';
+        (config.headers as AxiosHeaders).set('Content-Type', 'application/json; charset=UTF-8');
+        (config.headers as AxiosHeaders).set('Accept', 'application/json');
+        (config.headers as AxiosHeaders).set('clientid', CLIENT_ID);
       }
 
       return config;
@@ -37,25 +31,20 @@ export const customAxios = ({
    * axios 응답을 받은 후에(error handling 포함) 작업 수행
    */
   instance.interceptors.response.use(
-    config => {
-      return config;
-    },
+    response => response,
     async error => {
-      const { config } = error;
-      if (error.response && error.response.status) {
-        switch (error.response.status) {
-          case 401:
-            if (window.location.pathname.includes('/sign/out')) {
-              break;
-            }
+      if (!error.response) return Promise.reject(error);
 
-            config.sent = true;
+      const { status } = error.response;
 
+      switch (status) {
+        case 401:
+          if (typeof window !== 'undefined' && !window.location.pathname.includes('/sign/out')) {
             window.location.href = '/sign/out?expired=true';
-            return Promise.reject(error);
-          default:
-            return Promise.reject(error);
-        }
+          }
+          break;
+        default:
+          break;
       }
 
       return Promise.reject(error);

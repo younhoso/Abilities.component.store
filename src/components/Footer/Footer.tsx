@@ -4,8 +4,6 @@ import { usePathname } from 'next/navigation';
 
 import clsx from 'clsx';
 
-import Wrapper from '@/provider/WrapperProvider';
-
 import { FooterStyled } from './styled';
 
 const footerInfo = {
@@ -18,14 +16,12 @@ export default function Footer() {
 
   return (
     <FooterStyled className={clsx('Footer', { mainFooter: pathname === '/' })}>
-      <Wrapper>
-        <div className="inner">
-          <div>
-            <span>{footerInfo.title.split('/')[0]}</span>/{footerInfo.title.split('/')[1]}
-          </div>
-          <div>{footerInfo.default}</div>
+      <div className="inner">
+        <div>
+          <span>{footerInfo.title.split('/')[0]}</span>/{footerInfo.title.split('/')[1]}
         </div>
-      </Wrapper>
+        <div>{footerInfo.default}</div>
+      </div>
     </FooterStyled>
   );
 }

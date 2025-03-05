@@ -4,13 +4,19 @@ import { ButtonStyled } from './styled';
 
 type ButtonProps = {
   mode: 'primary' | 'secondary' | 'disabled';
-  children: string;
   disabledBgColor?: string;
+  className?: string;
+  children: string;
 };
 
-export default function Button({ mode, disabledBgColor, children }: ButtonProps) {
+export default function Button({
+  mode = 'secondary',
+  disabledBgColor,
+  className,
+  children,
+}: ButtonProps) {
   return (
-    <ButtonStyled className={clsx('Button')}>
+    <ButtonStyled className={clsx('Button', className)}>
       {mode === 'disabled' && (
         <button
           className="disabled"

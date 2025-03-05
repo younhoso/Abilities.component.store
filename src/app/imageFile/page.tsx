@@ -69,7 +69,7 @@ export default function ImageFilePage() {
   };
 
   return (
-    <ImageFilePageStyled className={clsx('page')}>
+    <ImageFilePageStyled className={clsx('ImageFilePage')}>
       <ImageFile
         className={'w-[125px] h-[270px]'}
         ref={inputEl}

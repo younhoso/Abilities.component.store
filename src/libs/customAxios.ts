@@ -16,7 +16,7 @@ export const customAxios = ({
   });
 
   /**
-   * axios 요청 전 인터셉터
+   * axios 요청이 전달되기 전에 작업 수행
    */
   instance.interceptors.request.use(
     async config => {
@@ -34,7 +34,7 @@ export const customAxios = ({
   );
 
   /**
-   * axios 요청 후 인터셉터
+   * axios 응답을 받은 후에(error handling 포함) 작업 수행
    */
   instance.interceptors.response.use(
     config => {

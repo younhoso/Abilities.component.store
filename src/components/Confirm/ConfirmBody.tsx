@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { ConfirmBodyStyled } from './styled';
 
 type ConfirmBody = {
-  isClose?: Boolean;
+  isClose?: boolean;
   children: ReactNode;
 };
 

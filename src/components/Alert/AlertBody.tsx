@@ -6,7 +6,7 @@ import { AlertBodyStyled } from './styled';
 
 type AlertBody = {
   title?: ReactNode;
-  isClose?: Boolean;
+  isClose?: boolean;
   onClose: (v: boolean) => void;
   children: ReactNode;
 };

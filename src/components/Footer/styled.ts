@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const FooterStyled = styled.div`
   width: 100%;
   position: static;
+  padding: 20px 26px;
   &.mainFooter {
     position: fixed;
     bottom: 30px;

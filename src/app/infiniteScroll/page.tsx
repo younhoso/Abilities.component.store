@@ -28,11 +28,8 @@ export default function InfiniteScrollPage() {
   const {
     data: stores,
     isFetching,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
     isError,
-    isPending,
+    fetchNextPage,
   } = useInfiniteQuery({
     queryKey: ['fetchItems'],
     queryFn: fetchItems,
@@ -62,8 +59,9 @@ export default function InfiniteScrollPage() {
           })}
       </ul>
       <div>
-        {/* {(isPending || hasNextPage || isFetchingNextPage) && <div>로딩중...</div>} */}
-        <div className="w-full touch-none h-10 mb-10" ref={ref} />
+        {isFetching && <div>데이터를 로딩 중...</div>}
+        {isError && <div>데이터를 가져오는 데 실패했습니다.</div>}
+        <div className="infiniteScrolRef" ref={ref} />
       </div>
     </InfiniteScrollPageStyled>
   );

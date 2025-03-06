@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pretty": "yarn prettier 'src/**/*.{ts,js,tsx,jsx}' --write"
+    "pretty": "yarn prettier 'src/**/*.{ts,js,tsx,jsx}' --write",
+    "db": "json-server db.json --port 3001 --delay 1000"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.1",
@@ -31,7 +32,8 @@
     "react-quill": "^2.0.0",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.11",
-    "swiper": "^11.2.1"
+    "swiper": "^11.2.1",
+    "json-server": "0.17.4"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",

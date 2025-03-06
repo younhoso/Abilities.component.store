@@ -3,7 +3,7 @@ import { useState } from 'react';
 type AlertProps = {
   id?: number; // id는 내부적으로 추가되므로 선택적(optional) 속성
   message: string;
-  mode?: 'success' | 'error' | 'warning' | 'info'; // 더 다양한 타입 추가
+  mode?: 'success' | 'error' | 'warning' | 'info'; // 더 다양한 모드 추가
   duration?: number; // duration도 선택적(optional) 속성
 };
 

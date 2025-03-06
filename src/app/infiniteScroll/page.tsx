@@ -11,15 +11,15 @@ import { InfiniteScrollPageStyled } from '@/styles/pageStyled/InfiniteScrollPage
 
 export default function InfiniteScrollPage() {
   const ref = useRef<HTMLDivElement | null>(null);
-  const { isIntersecting, observe, unobserve } = useIntersectionObserver({
+  const { isIntersecting, observe } = useIntersectionObserver({
     threshold: 0.3,
   });
 
-  const fetchStores = async ({ pageParam = 1 }) => {
-    const { data } = await customAxios().get(`/api/stores?page=${pageParam}`, {
+  const fetchItems = async ({ pageParam = 1 }) => {
+    const { data } = await customAxios().get(`/posts`, {
       params: {
-        limit: 10,
-        page: pageParam,
+        _limit: 10,
+        _page: pageParam,
       },
     });
     return data;
@@ -28,45 +28,40 @@ export default function InfiniteScrollPage() {
   const {
     data: stores,
     isFetching,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
     isError,
-    isPending,
+    fetchNextPage,
   } = useInfiniteQuery({
-    queryKey: ['stores'],
-    queryFn: fetchStores,
+    queryKey: ['fetchItems'],
+    queryFn: fetchItems,
     getNextPageParam: (lastPage, pages) => {
-      return lastPage.data?.length > 0 ? lastPage.page + 1 : undefined;
+      return lastPage.length > 0 ? pages.length + 1 : undefined;
     },
     initialPageParam: 1,
   });
 
-  const fetchNext = useCallback(async () => {
-    const res = await fetchNextPage();
-    if (res.isError) {
-      console.log(res.error);
+  useEffect(() => {
+    if (ref.current) {
+      observe(ref.current);
     }
-  }, [fetchNextPage]);
+  }, [observe]);
 
   useEffect(() => {
-    let timerId: NodeJS.Timeout | undefined;
-    if (isIntersecting && hasNextPage) {
-      timerId = setTimeout(() => {
-        fetchNext();
-      }, 500);
-    }
-    return () => clearTimeout(timerId);
-  }, [fetchNext, isIntersecting, hasNextPage]);
+    if (isIntersecting) fetchNextPage();
+  }, [isIntersecting, fetchNextPage]);
 
   return (
-    <InfiniteScrollPageStyled className={clsx('InfiniteScrollPage')}>
+    <InfiniteScrollPageStyled className={clsx('infiniteScrollPage')}>
       <ul>
-        <li>리스트 항목들</li>
+        {stores?.pages
+          .flatMap(page => page)
+          .map(item => {
+            return <li key={item.id}>{item.title}</li>;
+          })}
       </ul>
       <div>
-        {(isPending || hasNextPage || isFetchingNextPage) && <div>로딩중...</div>}
-        <div className="w-full touch-none h-10 mb-10" ref={ref} />
+        {isFetching && <div>데이터를 로딩 중...</div>}
+        {isError && <div>데이터를 가져오는 데 실패했습니다.</div>}
+        <div className="infiniteScrolRef" ref={ref} />
       </div>
     </InfiniteScrollPageStyled>
   );

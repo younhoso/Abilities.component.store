@@ -10,8 +10,7 @@ import { customAxios } from '@/libs/customAxios';
 import { InfiniteScrollPageStyled } from '@/styles/pageStyled/InfiniteScrollPageStyled';
 
 export default function InfiniteScrollPage() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { isIntersecting, observe } = useIntersectionObserver({
+  const { isVisible, observe, elementRef } = useIntersectionObserver<HTMLDivElement>({
     threshold: 0.3,
   });
 
@@ -40,14 +39,14 @@ export default function InfiniteScrollPage() {
   });
 
   useEffect(() => {
-    if (ref.current) {
-      observe(ref.current);
+    if (elementRef.current) {
+      observe(elementRef.current);
     }
-  }, [observe]);
+  }, [elementRef, observe]);
 
   useEffect(() => {
-    if (isIntersecting) fetchNextPage();
-  }, [isIntersecting, fetchNextPage]);
+    if (isVisible) fetchNextPage();
+  }, [isVisible, fetchNextPage]);
 
   return (
     <InfiniteScrollPageStyled className={clsx('infiniteScrollPage')}>
@@ -61,7 +60,7 @@ export default function InfiniteScrollPage() {
       <div>
         {isFetching && <div>데이터를 로딩 중...</div>}
         {isError && <div>데이터를 가져오는 데 실패했습니다.</div>}
-        <div className="infiniteScrolRef" ref={ref} />
+        <div className="infiniteScrolRef" ref={elementRef} />
       </div>
     </InfiniteScrollPageStyled>
   );

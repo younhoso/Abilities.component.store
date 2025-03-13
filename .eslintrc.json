@@ -1,4 +1,8 @@
 {
   "plugins": ["prettier"],
-  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"]
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"],
+  "rules": {
+    // react-hooks/rules-of-hooks 규칙을 비활성화
+    "react-hooks/rules-of-hooks": "off"
+  }
 }

@@ -1,114 +1,49 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server1",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
-      "title": "json-server2",
-      "author": "typicode"
-    },
-    {
-      "id": 3,
-      "title": "json-server3",
-      "author": "typicode"
-    },
-    {
-      "id": 4,
-      "title": "json-server4",
-      "author": "typicode"
-    },
-    {
-      "id": 5,
-      "title": "json-server5",
-      "author": "typicode"
-    },
-    {
-      "id": 6,
-      "title": "json-server6",
-      "author": "typicode"
-    },
-    {
-      "id": 7,
-      "title": "json-server7",
-      "author": "typicode"
-    },
-    {
-      "id": 8,
-      "title": "json-server8",
-      "author": "typicode"
-    },
-    {
-      "id": 9,
-      "title": "json-server9",
-      "author": "typicode"
-    },
-    {
-      "id": 10,
-      "title": "json-server10",
-      "author": "typicode"
-    },
-    {
-      "id": 11,
-      "title": "json-server11",
-      "author": "typicode"
-    },
-    {
-      "id": 12,
-      "title": "json-server12",
-      "author": "typicode"
-    },
-    {
-      "id": 13,
-      "title": "json-server13",
-      "author": "typicode"
-    },
-    {
-      "id": 14,
-      "title": "json-server14",
-      "author": "typicode"
-    },
-    {
-      "id": 15,
-      "title": "json-server15",
-      "author": "typicode"
-    },
-    {
-      "id": 16,
-      "title": "json-server16",
-      "author": "typicode"
-    },
-    {
-      "id": 17,
-      "title": "json-server17",
-      "author": "typicode"
-    },
-    {
-      "id": 18,
-      "title": "json-server18",
-      "author": "typicode"
-    },
-    {
-      "id": 19,
-      "title": "json-server19",
-      "author": "typicode"
-    },
-    {
-      "id": 20,
-      "title": "json-server20",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "posts": [
+    { "id": 1, "title": "How to Learn JavaScript", "views": 345 },
+    { "id": 2, "title": "Next.js vs React: Which One to Choose?", "views": 567 },
+    { "id": 3, "title": "The Rise of TypeScript", "views": 789 },
+    { "id": 4, "title": "Building a Blog with Strapi", "views": 234 },
+    { "id": 5, "title": "Understanding Supabase", "views": 456 },
+    { "id": 6, "title": "Best UI Libraries for React", "views": 123 },
+    { "id": 7, "title": "Dark Mode in CSS: Tips & Tricks", "views": 987 },
+    { "id": 8, "title": "Deploying a Next.js App to Vercel", "views": 678 },
+    { "id": 9, "title": "State Management in React", "views": 432 },
+    { "id": 10, "title": "Is Tailwind CSS Worth It?", "views": 765 },
+    { "id": 11, "title": "React Query vs Redux: Pros & Cons", "views": 234 },
+    { "id": 12, "title": "How to Optimize Next.js Performance", "views": 567 },
+    { "id": 13, "title": "Best Practices for API Integration", "views": 321 },
+    { "id": 14, "title": "Understanding Server Components in Next.js", "views": 654 },
+    { "id": 15, "title": "Building a QR Code Generator", "views": 876 },
+    { "id": 16, "title": "Why You Should Use Storybook", "views": 234 },
+    { "id": 17, "title": "A Guide to Web Accessibility", "views": 765 },
+    { "id": 18, "title": "The Future of JAMstack", "views": 987 },
+    { "id": 19, "title": "Handling Forms in React", "views": 543 },
+    { "id": 20, "title": "SEO Strategies for Next.js", "views": 654 }
+  ],
+  "comments": [
+    { "id": 1, "text": "Great explanation! Helped me a lot.", "postId": 1 },
+    { "id": 2, "text": "I still prefer React over Next.js!", "postId": 2 },
+    { "id": 3, "text": "TypeScript made my code so much cleaner.", "postId": 3 },
+    { "id": 4, "text": "I love Strapi, best CMS so far.", "postId": 4 },
+    { "id": 5, "text": "Supabase feels like Firebase but better!", "postId": 5 },
+    { "id": 6, "text": "Tailwind CSS saved me so much time!", "postId": 10 },
+    { "id": 7, "text": "I had no idea about dark mode optimizations.", "postId": 7 },
+    { "id": 8, "text": "Vercel makes deployment super easy.", "postId": 8 },
+    { "id": 9, "text": "State management is always tricky!", "postId": 9 },
+    { "id": 10, "text": "Tailwind is a game changer!", "postId": 10 },
+    { "id": 11, "text": "Redux is too complicated sometimes.", "postId": 11 },
+    { "id": 12, "text": "Next.js performance optimizations are amazing!", "postId": 12 },
+    { "id": 13, "text": "Great guide on API integrations.", "postId": 13 },
+    { "id": 14, "text": "Server components are the future.", "postId": 14 },
+    { "id": 15, "text": "I just built a QR code generator!", "postId": 15 },
+    { "id": 16, "text": "Storybook is so useful for UI development.", "postId": 16 },
+    { "id": 17, "text": "Accessibility is often overlooked.", "postId": 17 },
+    { "id": 18, "text": "JAMstack is evolving fast!", "postId": 18 },
+    { "id": 19, "text": "Form handling in React can be tricky.", "postId": 19 },
+    { "id": 20, "text": "SEO is crucial for Next.js apps.", "postId": 20 }
+  ]
 }

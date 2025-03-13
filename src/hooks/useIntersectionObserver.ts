@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 function useIntersectionObserver({ threshold = 0.1, root = null, rootMargin = '0px' }) {
-  const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null); //현재 관찰 중인 요소 정보를 저장.
+  const [isIntersecting, setIsIntersecting] = useState(false); //요소가 화면에 보이는지 여부를 boolean 값으로 저장.
+  const observerRef = useRef<IntersectionObserver | null>(null); // IntersectionObserver 인스턴스를 저장하는 ref.
 
   const updateEntry = ([entry]: IntersectionObserverEntry[]): void => {
     setEntry(entry);

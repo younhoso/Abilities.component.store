@@ -16,11 +16,12 @@ CreayerFix(크리이어픽스)는 "Create(창조)"와 "Fix(고치다, 최적화�
 CreayerFix는 단순한 UI 라이브러리가 아닌, 생산성과 개발 경험을 향상시키는 도구입니다.\
 필요한 요소를 손쉽게 가져와 활용하며, 더 빠르고 견고한 개발을 경험하세요! 🚀
 
-## ⚒️개발 스팩
+## ⚒️개발 스택
 
 ![](https://img.shields.io/badge/typescript-3578e5?style=for-the-badge&logo=typescript&logoColor=white)
 ![](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white)
 ![](https://img.shields.io/badge/REACT-087ea4?style=for-the-badge&logo=REACT&logoColor=white)
+![](https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
 ![](https://img.shields.io/badge/styledComponents-db7093?style=for-the-badge&logo=styled-components&logoColor=white)
 ![](https://img.shields.io/badge/AXIOS-671ddf?style=for-the-badge&logo=AXIOS&logoColor=white)\
 ![](https://img.shields.io/badge/reactquery-ff4154?style=for-the-badge&logo=reactquery&logoColor=white)

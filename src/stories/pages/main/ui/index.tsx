@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FadeContent from '@/stories/shared/ui/FadeContent';
 import { Header } from '@/stories/widgets/Header';
 
 import './page.css';
@@ -21,7 +22,9 @@ const MainPage = () => {
       />
 
       <section className="storybook-page">
-        <h2>Pages in Storybook</h2>
+        <FadeContent delay={0.2} isObserver>
+          <h2>Pages in Storybook</h2>
+        </FadeContent>
         <p>
           We recommend building UIs with a{' '}
           <a href="https://componentdriven.org" target="_blank" rel="noopener noreferrer">

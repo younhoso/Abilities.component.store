@@ -66,5 +66,14 @@
     "storybook": "^8.6.11",
     "typescript": "^5",
     "vitest": "^3.0.9"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": "eslint --fix",
+    "**/*.{js,ts,jsx,tsx,css,scss,md}": "prettier --write"
   }
 }

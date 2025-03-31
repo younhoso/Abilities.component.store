@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FadeContent from '@/stories/shared/ui/FadeContent';
+import { FadeContent } from '@/stories/shared/ui';
 import { Header } from '@/stories/widgets/Header';
 
 import './page.css';

@@ -8,7 +8,7 @@ export const InitGlobalStyled = memo(createGlobalStyle`
   letter-spacing: -0.02em;
  }
 
- h1, h2, h3, h4, h5, h6{
+ h1, h2, h3, h4, h5, h6
   margin:0;
  }
 

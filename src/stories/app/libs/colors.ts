@@ -1,4 +1,4 @@
-import { Color } from '@/stories/shared/types';
+import { Color } from '@/stories/shared/types;
 
 export const GRAY_COLORS: Color[] = [
   { name: 'darkGray', hex: '#333333' }, // 짙은 회색

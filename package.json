@@ -14,7 +14,8 @@
     "pretty": "yarn prettier 'src/**/*.{ts,js,tsx,jsx}' --write",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "db": "json-server db.json --port 3001 --delay 1000"
+    "db": "json-server db.json --port 3001 --delay 1000",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.1",

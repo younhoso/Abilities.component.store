@@ -10,8 +10,5 @@
         "project": "./tsconfig.json"
       }
     }
-  },
-  "rules": {
-    "no-undef": "error"
   }
 }

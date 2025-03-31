@@ -9,7 +9,7 @@ type User = {
   name: string;
 };
 
-const MainPage = () => 
+const MainPage = () => {
   const [user, setUser] = React.useState<User>();
 
   return (

@@ -5,11 +5,11 @@ import { Header } from '@/stories/widgets/Header';
 
 import './page.css';
 
-type User = 
+type User = {
   name: string;
 };
 
-const MainPage = () => {
+const MainPage = () => 
   const [user, setUser] = React.useState<User>();
 
   return (

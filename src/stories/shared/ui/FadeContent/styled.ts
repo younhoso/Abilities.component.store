@@ -13,7 +13,7 @@ export const FadeContentStyled = styled.div<FadeContentProps>`
       opacity: 1;
     }
     &.animate {
-      animation: fadeIn 0.4s linear forwards;
+      animation: fadeIn 0.5s linear forwards;
 
       &.up {
         transform: translateY(80px);

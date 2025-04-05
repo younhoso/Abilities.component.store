@@ -9,7 +9,7 @@
       "template": "'use client';\n\nimport styled from 'styled-components';\n\ninterface ${folderName}Props {}\n\nexport const ${folderName}Styled = styled.div<${folderName}Props>``;"
     },
     {
-      "extension": ".stories.tsx",
+      "extension": ".stories.ts",
       "template": "import type { Meta, StoryObj } from '@storybook/react';\n\nimport ${folderName} from '.';\n\nconst meta: Meta<typeof ${folderName}> = {\n\ttitle: '${folderName}',\n\tcomponent: ${folderName},\n\ttags: ['autodocs'],\n\tparameters: {\n\t\tbackgrounds: {\n\t\t\tdefault: 'light',\n\t\t},\n\t},\n\targTypes: {}\n};\n\nexport default meta;\n\ntype Story = StoryObj<typeof ${folderName}>;\n\nexport const Default: Story = {\n\targs: {}\n};"
     }
   ]

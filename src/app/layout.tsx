@@ -7,7 +7,7 @@ import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import RecoilProvider from '@/provider/RecoilProvider';
 
-import { gmarket } from '../libs/fonts';
+import { PRETENDARD } from '../libs/fonts';
 
 const metaTitle = 'CreayerFix';
 
@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body className={gmarket.className}>
+      <body className={PRETENDARD.className}>
         <RecoilProvider>
           <ClientSessionProvider>
             <CustomThemeProvider>

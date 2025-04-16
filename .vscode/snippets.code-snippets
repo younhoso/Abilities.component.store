@@ -20,14 +20,14 @@
   "React Function Compont": {
     "prefix": "rfc",
     "body": [
-      "import { ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled } from './styled';",
+      "import { ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled } from '@/styles/pages/${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled';",
       "",
       "interface Props {}",
       "",
       "const ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/} = ({}: Props) => {",
       " $3",
       " return (",
-      "   <${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled className={clsx('')}>",
+      "   <${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled className={cx('')}>",
       "   </${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled>",
       " );",
       "};",

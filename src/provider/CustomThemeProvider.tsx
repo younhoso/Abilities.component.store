@@ -5,9 +5,9 @@ import { ReactNode } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import StyledComponentsRegistry from '@/libs/StyledRegistry';
+import { InitGlobalStyled } from '@/stories/app/styles/init';
+import { SwiperStyled } from '@/stories/app/styles/swiper';
 import { colors, fontSizes, fontWeight } from '@/stories/app/styles/theme';
-import { InitGlobalStyled } from '@/styles/init';
-import { SwiperStyled } from '@/styles/swiper';
 
 declare module 'styled-components' {
   export interface DefaultTheme {

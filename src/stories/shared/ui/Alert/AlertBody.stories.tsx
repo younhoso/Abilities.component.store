@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Alert from '.';
+import { Alert } from '.';
 
 const meta: Meta<typeof Alert> = {
   title: 'Shared/Alert',
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
   args: {
-    isOpenModal: false,
+    isOpenModal: true,
     setIsOpenModal: () => {},
   },
 };

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 
 import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';

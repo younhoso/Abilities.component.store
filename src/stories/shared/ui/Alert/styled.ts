@@ -28,7 +28,6 @@ export const AlertBodyStyled = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #999;
     position: absolute;
     right: 20px;
     top: 20px;

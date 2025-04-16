@@ -2,36 +2,36 @@ import clsx from 'clsx';
 
 import ModalContents from '@/components/ModalContents/ModalContents';
 import ModalPortal from '@/components/ModalPortal/ModalPortal';
-import { Button } from '@/stories/shared/ui/Button';
+import { Button, ButtonItem } from '@/stories/shared/ui/Button';
 
-import AlertBody from './AlertBody';
+import AlertContents from './AlertContents';
 import { AlertStyled } from './styled';
 
-type AlertProps = {
+interface Props {
   isOpenModal: boolean;
   setIsOpenModal: (v: boolean) => void;
-};
+}
 
-const Alert = ({ isOpenModal, setIsOpenModal }: AlertProps) => {
+const BaseAlert = ({ isOpenModal, setIsOpenModal }: Props) => {
   return (
     <AlertStyled className={clsx('Alert')}>
       {isOpenModal && (
         <ModalPortal>
           <ModalContents isShow={false} onClose={setIsOpenModal}>
-            <AlertBody
-              isClose={true}
-              onClose={setIsOpenModal}
-              title={
+            <AlertContents
+              desc={
                 <>
-                  Alert창 내용 입니다.~
+                  Alert창 내용 입니다.!
                   <br />
-                  sdfsdfsdsdfsdf
+                  Alert창, Alert창
                 </>
               }
             >
-              <Button mode="disabled">disabled</Button>
-              <Button mode="primary">primary</Button>
-            </AlertBody>
+              <Button className="">
+                <ButtonItem mode="secondary">취소</ButtonItem>
+                <ButtonItem mode="primary">확인</ButtonItem>
+              </Button>
+            </AlertContents>
           </ModalContents>
         </ModalPortal>
       )}
@@ -39,4 +39,6 @@ const Alert = ({ isOpenModal, setIsOpenModal }: AlertProps) => {
   );
 };
 
-export default Alert;
+export const Alert = Object.assign(BaseAlert, {
+  AlertContents,
+});

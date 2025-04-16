@@ -1,25 +1,21 @@
+import { ReactNode } from 'react';
+
 import { cx } from '@/utils/cx';
 
+import ButtonItem from './ButtonItem';
 import { ButtonStyled } from './styled';
 
-interface ButtonProps extends PropsWithChildren {
-  mode: 'primary' | 'secondary' | 'disabled';
+interface Props extends PropsWithChildren {
   className?: string;
-  children: string;
+  children: ReactNode;
 }
 
-const BaseButton = ({ mode = 'secondary', className, children }: ButtonProps) => {
-  return (
-    <ButtonStyled className={cx('Button', className)}>
-      {mode === 'disabled' && (
-        <button className="disabled" disabled={mode === 'disabled' ? true : false}>
-          {children}
-        </button>
-      )}
-      {mode === 'secondary' && <button className="secondary">{children}</button>}
-      {mode === 'primary' && <button className="primary">{children}</button>}
-    </ButtonStyled>
-  );
+const BaseButton = ({ className, children }: Props) => {
+  return <ButtonStyled className={cx('buttonInner', className)}>{children}</ButtonStyled>;
 };
 
-export const Button = Object.assign(BaseButton, {});
+export const Button = Object.assign(BaseButton, {
+  ButtonItem,
+});
+
+export { ButtonItem };

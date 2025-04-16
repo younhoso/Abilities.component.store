@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const ButtonStyled = styled.div`
+  width: 100%;
   display: flex;
-  flex: 1;
+  gap: 10px;
+  justify-content: space-between;
+
   button {
     border: 1px solid #eee;
     padding: 16px;
@@ -28,8 +31,6 @@ export const ButtonStyled = styled.div`
   }
 `;
 
-export const ButtonInnerStyled = styled.div`
+export const ButtonItemStyled = styled.div`
   width: 100%;
-  display: flex;
-  gap: 10px;
 `;

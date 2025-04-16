@@ -10,11 +10,10 @@ export default function AlertPage() {
   const [openModal, setOpenMoal] = useState(false);
 
   return (
-    <div className={clsx('Alert')}
+    <div className={clsx('Alert')}>
       <div onClick={() => setOpenMoal(true)}>
         <button>Alert 버튼</button>
       </div>
-
       <Alert isOpenModal={openModal} setOpenMoal={setOpenMoal} />
     </div>
   );

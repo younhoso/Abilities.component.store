@@ -1,43 +1,25 @@
-import React from 'react';
+import { cx } from '@/utils/cx';
 
-import './button.css';
+import { ButtonStyled } from './styled';
 
-export interface ButtonProps {
-  /** Is this the principal call to action on the page? */
-  primary?: boolean;
-  /** What background color to use */
-  backgroundColor?: string;
-  /** How large should the button be? */
-  size?: 'small' | 'medium' | 'large';
-  /** Button contents */
-  label: string;
-  /** Optional click handler */
-  onClick?: () => void;
+interface ButtonProps extends PropsWithChildren {
+  mode: 'primary' | 'secondary' | 'disabled';
+  className?: string;
+  children: string;
 }
 
-/** Primary UI component for user interaction */
-const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+const BaseButton = ({ mode = 'secondary', className, children }: ButtonProps) => {
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      {...props}
-    >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
+    <ButtonStyled className={cx('Button', className)}>
+      {mode === 'disabled' && (
+        <button className="disabled" disabled={mode === 'disabled' ? true : false}>
+          {children}
+        </button>
+      )}
+      {mode === 'secondary' && <button className="secondary">{children}</button>}
+      {mode === 'primary' && <button className="primary">{children}</button>}
+    </ButtonStyled>
   );
 };
 
-export default Button;
+export const Button = Object.assign(BaseButton, {});

@@ -25,3 +25,11 @@ export const fontWeight = {
   medium: 500,
   bold: 700,
 };
+
+export const colors = {
+  black: '#000',
+  white: '#fff',
+  gray7f7: '#f7f7f7',
+  gray4e4: '#e4e4e4',
+  main260: '#f31260',
+};

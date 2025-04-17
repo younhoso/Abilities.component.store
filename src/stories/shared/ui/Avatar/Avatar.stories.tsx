@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentType } from 'react';
 
 import profile2 from 'public/profile2.png';
+import profile3 from 'public/profile3.png';
 import profile from 'public/profile.png';
 
 import { Avatar, AvatarImage } from '.';
@@ -48,7 +49,7 @@ export const AvatarGroup: AvatarImageStory = {
     size: 'md',
   },
   render: args => {
-    const sources = [profile, profile2, profile];
+    const sources = [profile, profile2, profile3];
 
     return (
       <Avatar>

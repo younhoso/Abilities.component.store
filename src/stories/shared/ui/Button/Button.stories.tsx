@@ -34,9 +34,9 @@ export const PrimaryMode: Story = {
 
 export const SecondaryMode: Story = {
   render: () => (
-    <Button>
-      <ButtonItem mode="secondary">취소</ButtonItem>
-    </Button>
+    <ButtonItem mode="secondary" isLoading>
+      취소
+    </ButtonItem>
   ),
 };
 
@@ -45,5 +45,13 @@ export const DisabledMode: Story = {
     <Button>
       <ButtonItem mode="disabled">비활성화</ButtonItem>
     </Button>
+  ),
+};
+
+export const LoadingMode: Story = {
+  render: () => (
+    <ButtonItem isLoading mode="disabled">
+      제출
+    </ButtonItem>
   ),
 };

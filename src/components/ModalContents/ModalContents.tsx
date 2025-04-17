@@ -4,7 +4,7 @@ import {
   ModalCloseButtonStyled,
   ModalContentsBoxStyled,
   ModalContentsStyled,
-} from '@/stories/shared/ui/Modal/styled';
+} from '@/stories/widgets/Modal/styled';
 import { cx } from '@/utils/cx';
 
 type ModalContentsProps = {

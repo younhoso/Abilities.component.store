@@ -6,7 +6,7 @@ import { useArgs } from '@storybook/preview-api';
 import { Modal, ModalContents, ModalContentsBox } from '.';
 
 const meta: Meta<typeof Modal> = {
-  title: 'Shared/Modal',
+  title: 'Widgets/Modal',
   component: Modal,
   tags: ['autodocs'],
   parameters: {

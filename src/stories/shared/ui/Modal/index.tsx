@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import ModalContents from './ModalContents';
+import ModalContentsBox from './ModalContentsBox';
 
 interface Props extends PropsWithChildren {
   isOpenModal?: boolean;
@@ -23,7 +24,7 @@ const createTemplateNode = (): Element | null => {
   return doc.body.firstElementChild; // 생성된 DOM 노드를 반환
 };
 
-const BaseModalPortal = ({ children }: Props) => {
+const BaseModalPortal = ({ isOpenModal, children }: Props) => {
   const [portalNode, setPortalNode] = useState<Element | null>(null);
 
   useEffect(() => {
@@ -47,9 +48,18 @@ const BaseModalPortal = ({ children }: Props) => {
     return null;
   }
 
+  if (!isOpenModal) {
+    return null;
+  }
+
   return createPortal(children, portalNode);
 };
 
+BaseModalPortal.displayName = 'Modal';
+
 export const Modal = Object.assign(BaseModalPortal, {
   ModalContents,
+  ModalContentsBox,
 });
+
+export { ModalContents, ModalContentsBox };

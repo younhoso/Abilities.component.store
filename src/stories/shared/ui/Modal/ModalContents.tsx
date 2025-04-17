@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cx } from '@/utils/cx';
 
-import { ModalContentsStyled, ModalContentsStyledBox } from './styled';
+import { ModalCloseButtonStyled, ModalContentsStyled } from './styled';
 
 interface ModalContentsProps {
   isShow: boolean;
@@ -18,11 +18,15 @@ const ModalContents = ({ isShow, onClose, children }: ModalContentsProps) => (
           onClose?.(false);
         }
       }}
-      className={clsx('PostModal')}
+      className={cx('PostModal')}
       backgroundcolor={`rgba(0, 0, 0, 0.7)`}
     >
-      {isShow && <button onClick={() => onClose?.(false)}>닫기</button>}
-      <ModalContentsStyledBox>{children}</ModalContentsStyledBox>
+      <div className={cx('modalContentsInner')}>
+        {children}
+        {isShow && (
+          <ModalCloseButtonStyled onClick={() => onClose?.(false)}>닫기</ModalCloseButtonStyled>
+        )}
+      </div>
     </ModalContentsStyled>
   </>
 );

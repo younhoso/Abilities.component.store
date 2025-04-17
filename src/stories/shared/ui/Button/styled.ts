@@ -27,6 +27,7 @@ export const ButtonStyled = styled.div`
     cursor: pointer;
     width: 100%;
     background-color: ${props => props.theme.colors.main260};
+    color: ${props => props.theme.colors.white};
     border: 1px solid transparent;
   }
 `;

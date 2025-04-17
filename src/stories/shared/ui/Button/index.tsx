@@ -11,7 +11,7 @@ interface Props extends PropsWithChildren {
 }
 
 const BaseButton = ({ className, children }: Props) => {
-  return <ButtonStyled className={cx('buttonInner', className)}>{children}</ButtonStyled>;
+  return <ButtonStyled className={cx(className)}>{children}</ButtonStyled>;
 };
 
 export const Button = Object.assign(BaseButton, {

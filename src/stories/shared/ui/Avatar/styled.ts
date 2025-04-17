@@ -22,10 +22,8 @@ export const AvatarStyled = styled.div<AvatarProps>`
   display: flex;
   align-items: center;
 
-  .avatarItem {
-    + .avatarItem {
-      margin-left: -8px;
-    }
+  & > :not(:first-child) {
+    margin-left: -8px;
   }
 `;
 

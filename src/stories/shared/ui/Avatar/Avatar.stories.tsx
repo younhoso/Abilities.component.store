@@ -46,7 +46,6 @@ export const AvatarGroup: AvatarImageStory = {
     alt: '샘플 이미지',
     isBordered: true,
     size: 'md',
-    className: 'avatarItem',
   },
   render: args => {
     const sources = [profile, profile2, profile];

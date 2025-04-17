@@ -1,38 +1,61 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentType } from 'react';
 
+import profile2 from 'public/profile2.png';
 import profile from 'public/profile.png';
 
-import { Avatar, AvatarFallback, AvatarImage } from '.';
+import { Avatar, AvatarImage } from '.';
 
 const meta: Meta<typeof AvatarImage> = {
   title: 'Shared/Avatar',
-  component: AvatarImage,
+  component: Avatar,
   tags: ['autodocs'],
   parameters: {
     backgrounds: {
       default: 'light',
     },
   },
-  argTypes: {},
+  subcomponents: {
+    AvatarImage: Avatar.AvatarImage as ComponentType<any>,
+    AvatarFallback: Avatar.AvatarFallback as ComponentType<any>,
+  },
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg', 'xl'],
+    },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof AvatarImage>;
+type AvatarImageStory = StoryObj<typeof AvatarImage>;
 
-export const Default: Story = {
+export const AvatarImages: AvatarImageStory = {
   args: {
     src: profile,
+    isBordered: false,
     alt: '샘플 이미지',
-    width: 300,
-    height: 200,
+    size: 'lg',
   },
-  render: ({ src, alt, width, height }) => {
+  render: args => <AvatarImage {...args} />,
+};
+
+export const AvatarGroup: AvatarImageStory = {
+  args: {
+    alt: '샘플 이미지',
+    isBordered: true,
+    size: 'md',
+    className: 'avatarItem',
+  },
+  render: args => {
+    const sources = [profile, profile2, profile];
+
     return (
       <Avatar>
-        <AvatarImage src={src} alt={alt} width={width} height={height} />
-        <AvatarFallback>name</AvatarFallback>
-        <AvatarFallback>email</AvatarFallback>
+        {sources.map((src, index) => (
+          <AvatarImage key={index} src={src} {...args} />
+        ))}
       </Avatar>
     );
   },

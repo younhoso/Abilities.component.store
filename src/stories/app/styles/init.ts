@@ -72,4 +72,8 @@ export const InitGlobalStyled = memo(createGlobalStyle`
       text-decoration:none; 
     }
   }
+  
+  img {
+    vertical-align: middle;
+  }
 `);

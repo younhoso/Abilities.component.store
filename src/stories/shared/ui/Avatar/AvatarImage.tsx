@@ -4,20 +4,19 @@ import { cx } from '@/utils/cx';
 
 import { AvatarImageStyled } from './styled';
 
-interface Props {
-  src: string | StaticImageData;
-  alt: string;
-  resize?: boolean;
-  width?: number;
-  height?: number;
+interface Props extends PropsWithChildren {
+  src?: string | StaticImageData;
+  alt?: string;
   fill?: boolean;
   className?: string;
+  isBordered?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-const AvatarImage = ({ src = '', alt = '', resize = false || undefined, ...rest }: Props) => {
+const AvatarImage = ({ src = '', alt = '', ...rest }: Props) => {
   return (
-    <AvatarImageStyled resize={resize} className={cx('avatarImage')}>
-      <Image src={src} alt={alt} {...rest} />
+    <AvatarImageStyled className={cx(rest.className)} {...rest}>
+      <Image src={src} alt={alt} />
     </AvatarImageStyled>
   );
 };

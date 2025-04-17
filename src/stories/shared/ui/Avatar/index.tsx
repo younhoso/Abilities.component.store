@@ -10,6 +10,8 @@ const BaseAvatar = ({ children }: Props) => {
   return <AvatarStyled className={cx('avatar')}>{children}</AvatarStyled>;
 };
 
+BaseAvatar.displayName = 'Avatar';
+
 export const Avatar = Object.assign(BaseAvatar, {
   AvatarImage,
   AvatarFallback,

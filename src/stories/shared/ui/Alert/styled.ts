@@ -2,19 +2,18 @@
 
 import styled from 'styled-components';
 
-export const AlertStyled = styled.div``;
+export const AlertStyled = styled.div`
+  .buttonInner {
+    padding-top: 20px;
+  }
+`;
 
-export const AlertBodyStyled = styled.div`
-  width: 100%;
-  max-width: 360px;
+export const AlertContentsStyled = styled.div`
+  min-width: 360px;
   display: inline-block;
   padding: 20px;
   border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.white};
 
   .inner {
     width: 100%;

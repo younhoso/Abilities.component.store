@@ -1,40 +1,26 @@
-import clsx from 'clsx';
+import { ReactNode } from 'react';
 
-import ModalContents from '@/components/ModalContents/ModalContents';
-import ModalPortal from '@/components/ModalPortal/ModalPortal';
 import { Button, ButtonItem } from '@/stories/shared/ui/Button';
+import { cx } from '@/utils/cx';
 
 import AlertContents from './AlertContents';
 import { AlertStyled } from './styled';
 
 interface Props {
-  isOpenModal: boolean;
-  setIsOpenModal: (v: boolean) => void;
+  description: ReactNode;
 }
 
-const BaseAlert = ({ isOpenModal, setIsOpenModal }: Props) => {
+const BaseAlert = ({ description }: Props) => {
   return (
-    <AlertStyled className={clsx('Alert')}>
-      {isOpenModal && (
-        <ModalPortal>
-          <ModalContents isShow={false} onClose={setIsOpenModal}>
-            <AlertContents
-              desc={
-                <>
-                  Alert창 내용 입니다.!
-                  <br />
-                  Alert창, Alert창
-                </>
-              }
-            >
-              <Button className="">
-                <ButtonItem mode="secondary">취소</ButtonItem>
-                <ButtonItem mode="primary">확인</ButtonItem>
-              </Button>
-            </AlertContents>
-          </ModalContents>
-        </ModalPortal>
-      )}
+    <AlertStyled>
+      <AlertContents desc={description}>
+        <div className={cx('buttonInner')}>
+          <Button>
+            <ButtonItem mode="secondary">취소</ButtonItem>
+            <ButtonItem mode="primary">확인</ButtonItem>
+          </Button>
+        </div>
+      </AlertContents>
     </AlertStyled>
   );
 };

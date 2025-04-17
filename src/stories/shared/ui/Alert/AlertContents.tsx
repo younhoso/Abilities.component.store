@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cx } from '@/utils/cx';
 
-import { AlertBodyStyled } from './styled';
+import { AlertContentsStyled } from './styled';
 
 interface Props extends PropsWithChildren {
   desc?: ReactNode;
@@ -10,12 +10,10 @@ interface Props extends PropsWithChildren {
 
 const AlertContents = ({ desc, children }: Props) => {
   return (
-    <AlertBodyStyled className={clsx('AlertBody')}>
-      <div className="inner">
-        {desc && <div className="desc">{desc}</div>}
-        {children}
-      </div>
-    </AlertBodyStyled>
+    <AlertContentsStyled className={cx()}>
+      {desc && <div className="desc">{desc}</div>}
+      {children}
+    </AlertContentsStyled>
   );
 };
 

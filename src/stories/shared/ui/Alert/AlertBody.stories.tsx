@@ -20,7 +20,12 @@ type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
   args: {
-    isOpenModal: true,
-    setIsOpenModal: () => {},
+    description: (
+      <>
+        Alert창 내용입니다.!
+        <br />
+        Alert창, Alert창
+      </>
+    ),
   },
 };

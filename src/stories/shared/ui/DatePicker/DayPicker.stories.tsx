@@ -3,12 +3,12 @@ import { useState } from 'react';
 
 import { ko } from 'date-fns/locale';
 
-import DayPick from '.';
-import { PickerProps } from '../../types/dayPicker';
+import DatePicker from '.';
+import { PickerProps } from '../../types/datePicker';
 
-const meta: Meta<typeof DayPick> = {
-  title: 'Shared/DayPick',
-  component: DayPick,
+const meta: Meta<typeof DatePicker> = {
+  title: 'Shared/DatePicker',
+  component: DatePicker,
   tags: ['autodocs'],
   parameters: {
     backgrounds: {
@@ -25,7 +25,7 @@ const meta: Meta<typeof DayPick> = {
 
 export default meta;
 
-type Story = StoryObj<typeof DayPick>;
+type Story = StoryObj<typeof DatePicker>;
 
 export const Single: Story = {
   args: {
@@ -42,7 +42,7 @@ export const Single: Story = {
     const typedArgs = args as PickerProps<'single'>;
     const [selected, setSelected] = useState<PickerProps<'single'>['selected']>();
 
-    return <DayPick selected={selected} onSelect={setSelected} {...typedArgs} />;
+    return <DatePicker selected={selected} onSelect={setSelected} {...typedArgs} />;
   },
 };
 
@@ -59,7 +59,7 @@ export const Range: Story = {
     const typedArgs = args as PickerProps<'range'>;
     const [selected, setSelected] = useState<PickerProps<'range'>['selected']>(typedArgs.selected);
 
-    return <DayPick selected={selected} onSelect={setSelected} {...typedArgs} />;
+    return <DatePicker selected={selected} onSelect={setSelected} {...typedArgs} />;
   },
 };
 
@@ -76,6 +76,6 @@ export const Multiple: Story = {
     const typedArgs = args as PickerProps<'multiple'>;
     const [selected, setSelected] = useState<PickerProps<'multiple'>['selected']>();
 
-    return <DayPick selected={selected} onSelect={setSelected} {...typedArgs} />;
+    return <DatePicker selected={selected} onSelect={setSelected} {...typedArgs} />;
   },
 };

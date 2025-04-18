@@ -22,9 +22,9 @@ export const Default: Story = {
   args: {
     description: (
       <>
-        Alert창 내용입니다.!
+        알림창 내용입니다.!
         <br />
-        Alert창, Alert창
+        알림
       </>
     ),
   },

@@ -23,9 +23,12 @@ export default meta;
 type Story = StoryObj<typeof CheckBoxGroup>;
 
 export const CheckGroup: Story = {
-  render: () => {
+  args: {
+    title: 'Select cities',
+  },
+  render: ({ title }) => {
     return (
-      <CheckBoxGroup>
+      <CheckBoxGroup title={title}>
         <CheckBoxGroupItem label="Option 1" />
         <CheckBoxGroupItem label="Option 2" />
         <CheckBoxGroupItem label="Option 3" />

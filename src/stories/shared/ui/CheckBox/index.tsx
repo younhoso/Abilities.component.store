@@ -10,10 +10,11 @@ import CheckBoxItem from './CheckBoxItem';
 import { CheckBoxGroupStyled } from './styled';
 
 interface Props extends PropsWithChildren {
+  title?: string;
   isGroupControlled?: boolean; // 그룹 상태를 관리할지 여부를 결정
 }
 
-const BaseCheckBoxGroupItems = ({ isGroupControlled = true, children }: Props) => {
+const BaseCheckBoxGroupItems = ({ title, isGroupControlled = true, children }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   // 상태 변경 함수
@@ -25,6 +26,7 @@ const BaseCheckBoxGroupItems = ({ isGroupControlled = true, children }: Props) =
 
   return (
     <CheckBoxGroupStyled className={cx('checkBoxGroup')}>
+      <span>{title}</span>
       {React.Children.map(children, child => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child as React.ReactElement, {

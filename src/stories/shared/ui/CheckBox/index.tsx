@@ -14,7 +14,7 @@ interface Props extends PropsWithChildren {
   isGroupControlled?: boolean; // 그룹 상태를 관리할지 여부를 결정
 }
 
-const BaseCheckBoxGroupItems = ({ title, isGroupControlled = true, children }: Props) => {
+const BaseCheckBoxGroupItems = ({ title, isGroupControlled = false, children }: Props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   // 상태 변경 함수

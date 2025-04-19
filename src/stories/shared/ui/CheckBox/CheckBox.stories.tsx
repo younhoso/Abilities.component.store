@@ -25,10 +25,11 @@ type Story = StoryObj<typeof CheckBoxGroup>;
 export const CheckGroup: Story = {
   args: {
     title: 'Select cities',
+    isGroupControlled: true,
   },
-  render: ({ title }) => {
+  render: args => {
     return (
-      <CheckBoxGroup title={title}>
+      <CheckBoxGroup {...args}>
         <CheckBoxGroupItem label="Option 1" />
         <CheckBoxGroupItem label="Option 2" />
         <CheckBoxGroupItem label="Option 3" />

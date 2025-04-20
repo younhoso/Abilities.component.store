@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { cx } from '@/utils/cx';
 
 import TransitionItem from './TransitionItem';
+import { isTuple } from './internal';
 import { TransitionStyled } from './styled';
 
 interface Props extends PropsWithChildren {
@@ -15,16 +16,11 @@ interface Props extends PropsWithChildren {
   delay?: number; // 개별 아이템 간 딜레이
 }
 
-// 튜플인지 확인하는 타입 가드
-function isTuple(value: unknown): value is [number, number] {
-  return Array.isArray(value) && value.length === 2;
-}
-
 const BaseTransition = ({
   x = 0,
   y = 10,
   opacity = 0,
-  duration = 0.3,
+  duration = 0,
   delay = 0.1,
   children,
 }: Props) => {
@@ -35,7 +31,7 @@ const BaseTransition = ({
   return (
     <TransitionStyled className={cx('transition')}>
       <AnimatePresence>
-        {React.Children.map(children, (child, index) => {
+        {React.Children.map(children, child => {
           if (React.isValidElement(child)) {
             return (
               <motion.div
@@ -56,7 +52,7 @@ const BaseTransition = ({
                   x: exitX, // x나 y 값이 음수일 때 반대 방향으로 애니메이션
                   y: exitY,
                 }}
-                transition={{ duration: duration, delay: index * delay }}
+                transition={{ duration: duration, delay: delay }}
               >
                 {child}
               </motion.div>

@@ -22,7 +22,24 @@ export default meta;
 
 type Story = StoryObj<typeof Transition>;
 
-export const Default: Story = {
+export const Item: Story = {
+  args: {
+    x: 50,
+    y: 0,
+    opacity: 0,
+    delay: 0.1,
+  },
+  render: args => {
+    return (
+      <>
+        <TransitionItem {...args} duration={0.2} />
+        <TransitionItem {...args} duration={0.4} />
+      </>
+    );
+  },
+};
+
+export const Group: Story = {
   args: {
     x: 50,
     y: 0,
@@ -31,9 +48,13 @@ export const Default: Story = {
     delay: 0.1,
   },
   render: args => {
+    const datas = ['A', 'B', 'C'];
+
     return (
       <Transition {...args}>
-        <TransitionItem></TransitionItem>
+        {datas.map((data, index) => {
+          return <TransitionItem key={index} data={data}></TransitionItem>;
+        })}
       </Transition>
     );
   },

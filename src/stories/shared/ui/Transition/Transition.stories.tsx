@@ -32,8 +32,12 @@ export const Item: Story = {
   render: args => {
     return (
       <>
-        <TransitionItem {...args} duration={0.2} />
-        <TransitionItem {...args} duration={0.4} />
+        <TransitionItem {...args} duration={0.2}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.4}>
+          itemB
+        </TransitionItem>
       </>
     );
   },
@@ -48,12 +52,12 @@ export const Group: Story = {
     delay: 0.1,
   },
   render: args => {
-    const datas = ['A', 'B', 'C'];
+    const datas = ['itemA', 'itemB', 'itemC'];
 
     return (
       <Transition {...args}>
         {datas.map((data, index) => {
-          return <TransitionItem key={index} data={data}></TransitionItem>;
+          return <TransitionItem key={index}>{data}</TransitionItem>;
         })}
       </Transition>
     );

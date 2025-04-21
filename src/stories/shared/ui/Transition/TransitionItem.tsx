@@ -1,14 +1,9 @@
 import { motion } from 'framer-motion';
 
-import { cx } from '@/utils/cx';
-
 import { isTuple } from './internal';
 import { TransitionItemStyled } from './styled';
 
-const items = ['A', 'B', 'C'];
-
-interface Props {
-  data?: string;
+interface Props extends PropsWithChildren {
   x?: number | [number, number];
   y?: number | [number, number];
   opacity?: number;
@@ -16,13 +11,20 @@ interface Props {
   delay?: number;
 }
 
-const TransitionItem = ({ data, x = 0, y = 0, opacity = 0, duration = 0.3, delay = 0 }: Props) => {
+const TransitionItem = ({
+  x = 0,
+  y = 0,
+  opacity = 0,
+  duration = 0.3,
+  delay = 0,
+  children,
+}: Props) => {
   // x, y[등장 시 값, 사라질 때 값] 값이 단일 값이면 배열로 변환
   const [initialX, exitX] = isTuple(x) ? x : [x, x];
   const [initialY, exitY] = isTuple(y) ? y : [y, y];
 
   return (
-    <TransitionItemStyled className={cx('')}>
+    <TransitionItemStyled>
       <motion.div
         initial={{ x: initialX, y: initialY, opacity: opacity ?? 0 }}
         animate={{
@@ -44,7 +46,7 @@ const TransitionItem = ({ data, x = 0, y = 0, opacity = 0, duration = 0.3, delay
           fontSize: '16px',
         }}
       >
-        List {data}
+        {children}
       </motion.div>
     </TransitionItemStyled>
   );

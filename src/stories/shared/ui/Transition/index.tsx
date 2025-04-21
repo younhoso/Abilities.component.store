@@ -14,6 +14,8 @@ interface Props extends PropsWithChildren {
   opacity?: number;
   duration?: number; // 전체 아이템 듀레이션
   delay?: number; // 개별 아이템 간 딜레이
+  isObserver?: boolean; // ✅ observer를 사용할지 여부
+  observeOnce?: boolean; // ✅ 한 번만 감지할지 여부
 }
 
 const BaseTransition = ({
@@ -35,10 +37,10 @@ const BaseTransition = ({
           if (React.isValidElement(child)) {
             return (
               <motion.div
-                className="item"
+                className={cx('baseTransition')}
                 key={child.key?.toString()} // key가 있어야 애니메이션이 정상 작동
                 initial={{
-                  opacity: opacity ?? 0,
+                  opacity,
                   x: initialX,
                   y: initialY,
                 }}

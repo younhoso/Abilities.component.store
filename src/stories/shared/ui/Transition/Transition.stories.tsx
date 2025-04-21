@@ -28,14 +28,16 @@ export const Item: Story = {
     y: 0,
     opacity: 0,
     delay: 0.1,
+    isObserver: false,
+    observeOnce: true,
   },
   render: args => {
     return (
       <>
-        <TransitionItem {...args} duration={0.2}>
+        <TransitionItem {...args} duration={0.8}>
           itemA
         </TransitionItem>
-        <TransitionItem {...args} duration={0.4}>
+        <TransitionItem {...args} duration={1}>
           itemB
         </TransitionItem>
       </>
@@ -60,6 +62,68 @@ export const Group: Story = {
           return <TransitionItem key={index}>{data}</TransitionItem>;
         })}
       </Transition>
+    );
+  },
+};
+
+export const Observer: Story = {
+  args: {
+    x: 50,
+    y: 0,
+    opacity: 0,
+    delay: 0.1,
+    isObserver: false,
+    observeOnce: true,
+  },
+  render: args => {
+    return (
+      <>
+        <TransitionItem {...args} duration={0.1}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.2}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.3}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.4}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.5}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.6}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.7}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.8}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={0.9}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={1}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={1.1}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={1.2}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={1.3}>
+          itemA
+        </TransitionItem>
+        <TransitionItem {...args} duration={1.4}>
+          itemB
+        </TransitionItem>
+        <TransitionItem {...args} duration={1.5}>
+          itemA
+        </TransitionItem>
+      </>
     );
   },
 };

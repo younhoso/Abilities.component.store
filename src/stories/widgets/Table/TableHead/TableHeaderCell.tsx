@@ -7,11 +7,7 @@ interface Props extends PropsWithChildren {
 }
 
 const TableHeaderCell = ({ align = 'left', children }: Props) => {
-  return (
-    <TableHeaderCellStyled align={align} className={cx('')}>
-      {children}
-    </TableHeaderCellStyled>
-  );
+  return <TableHeaderCellStyled align={align}>{children}</TableHeaderCellStyled>;
 };
 
 export default TableHeaderCell;

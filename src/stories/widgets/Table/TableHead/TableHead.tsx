@@ -5,7 +5,7 @@ import { TableHeadStyled } from '../styled';
 interface Props extends PropsWithChildren {}
 
 const TableHead = ({ children }: Props) => {
-  return <TableHeadStyled className={cx('')}>{children}</TableHeadStyled>;
+  return <TableHeadStyled>{children}</TableHeadStyled>;
 };
 
 export default TableHead;

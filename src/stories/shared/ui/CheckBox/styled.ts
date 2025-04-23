@@ -14,7 +14,7 @@ interface LabelProps {
 export const CheckBoxStyled = styled.div`
   display: flex;
   gap: 8px;
-  margin: 8px 0;
+  justify-content: center;
 `;
 
 export const HiddenCheckBox = styled.input`
@@ -32,6 +32,7 @@ export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
   align-items: center;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   background-color: ${({ disabled }) => (disabled ? '#ccc' : 'transparent')};
+  text-align: center;
 
   ${({ disabled }) =>
     disabled

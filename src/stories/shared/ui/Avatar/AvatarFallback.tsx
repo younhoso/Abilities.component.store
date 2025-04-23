@@ -1,11 +1,17 @@
-import { cx } from '@/utils/cx';
-
 import { AvatarFallbackStyled } from './styled';
 
-interface Props extends PropsWithChildren {}
+interface Props extends PropsWithChildren {
+  justify?:
+    | 'flex-start'
+    | 'center'
+    | 'flex-end'
+    | 'space-around'
+    | 'space-between'
+    | 'space-evenly';
+}
 
-const AvatarFallback = ({ children }: Props) => {
-  return <AvatarFallbackStyled className={cx('avatarFallback')}>{children}</AvatarFallbackStyled>;
+const AvatarFallback = ({ justify, children }: Props) => {
+  return <AvatarFallbackStyled justify={justify}>{children}</AvatarFallbackStyled>;
 };
 
 export default AvatarFallback;

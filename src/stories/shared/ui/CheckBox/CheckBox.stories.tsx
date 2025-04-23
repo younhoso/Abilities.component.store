@@ -40,11 +40,6 @@ export const CheckGroup: Story = {
 
 export const CheckItem: Story = {
   render: () => {
-    return (
-      <>
-        <CheckBoxItem label="Option 1" />
-        <CheckBoxItem label="Option 2" />
-      </>
-    );
+    return <CheckBoxItem label="Option 1" />;
   },
 };

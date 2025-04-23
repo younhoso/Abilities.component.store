@@ -1,8 +1,8 @@
-import profileImg from '../../../../public/images/profile.png';
+import { AvatarFallback, AvatarImage, AvatarInfo } from '@/stories/shared/ui/Avatar';
+import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
+
+import profileImg from '../../../../../public/images/profile.png';
 import { UserRow } from '../types/user';
-import { AvatarFallback, AvatarImage } from '../ui/Avatar';
-import { AvatarInfoStyled } from '../ui/Avatar/styled';
-import { CheckBoxItem } from '../ui/CheckBox';
 
 export const headers = [
   {
@@ -22,10 +22,10 @@ export const data: UserRow[] = [
     profile: (
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
-        <AvatarInfoStyled>
+        <AvatarInfo>
           <p>Test Steiner</p>
           <p>Avatar@avatar.com</p>
-        </AvatarInfoStyled>
+        </AvatarInfo>
       </AvatarFallback>
     ),
     email: 'hong@example.com',
@@ -42,10 +42,10 @@ export const data: UserRow[] = [
     profile: (
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
-        <AvatarInfoStyled>
+        <AvatarInfo>
           <p>Test Steiner</p>
           <p>Avatar@avatar.com</p>
-        </AvatarInfoStyled>
+        </AvatarInfo>
       </AvatarFallback>
     ),
     email: 'hong@example.com',

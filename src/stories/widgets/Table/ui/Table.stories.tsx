@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Body, BodyCell, Head, HeaderCell, Row, Table } from '.';
-import { data, headers } from '../../shared/constants/TableData';
+import Table, { Body, BodyCell, Head, HeaderCell, Row } from '.';
+import { data, headers } from '../constants/TableData';
 
 const meta: Meta<typeof Table> = {
   title: 'Widgets/Table',

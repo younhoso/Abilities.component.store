@@ -13,7 +13,7 @@ const BaseTable = ({ children }: Props) => {
   return <TableStyled className={cx('table')}>{children}</TableStyled>;
 };
 
-export const Table = Object.assign(BaseTable, {
+const Table = Object.assign(BaseTable, {
   Head: TableHead,
   HeaderCell: TableHeaderCell,
   Body: TableBody,
@@ -28,3 +28,5 @@ export {
   TableBody as Body,
   TableBodyCell as BodyCell,
 };
+
+export default Table;

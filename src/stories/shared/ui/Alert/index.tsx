@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Button, ButtonItem } from '@/stories/shared/ui/Button';
+import Button, { ButtonItem } from '@/stories/shared/ui/Button';
 import { cx } from '@/utils/cx';
 
 import AlertContents from './AlertContents';
@@ -24,6 +24,8 @@ const BaseAlert = ({ description }: Props) => {
   );
 };
 
-export const Alert = Object.assign(BaseAlert, {
+const Alert = Object.assign(BaseAlert, {
   AlertContents,
 });
+
+export default Alert;

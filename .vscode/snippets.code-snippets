@@ -1,0 +1,38 @@
+{
+  "Export-in-Default": {
+    "prefix": "ed",
+    "body": ["export { default as $1} from '$2';"],
+  },
+
+  "CSS-in-JS": {
+    "prefix": "sc",
+    "body": [
+      "'use client';",
+      "",
+      "import styled from 'styled-components';",
+      "",
+      "interface ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Props {}",
+      "",
+      "export const ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled = styled.div<${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Props>``;",
+    ],
+  },
+
+  "React Function Compont": {
+    "prefix": "rfc",
+    "body": [
+      "import { ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled } from '@/styles/pages/${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled';",
+      "",
+      "interface Props {}",
+      "",
+      "const ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/} = ({}: Props) => {",
+      " $3",
+      " return (",
+      "   <${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled className={cx('')}>",
+      "   </${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/}Styled>",
+      " );",
+      "};",
+      "",
+      "export default ${TM_DIRECTORY/(.*\\/)?([^\\/]+)$/${2:/pascalcase}/};",
+    ],
+  },
+}

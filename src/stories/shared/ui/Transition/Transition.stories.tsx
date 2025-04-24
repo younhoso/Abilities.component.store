@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentType } from 'react';
 
-import { Transition, TransitionItem } from '.';
+import Transition, { TransitionItem } from '.';
 
 const meta: Meta<typeof Transition> = {
   title: 'Shared/Transition',

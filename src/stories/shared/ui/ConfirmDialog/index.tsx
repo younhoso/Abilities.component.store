@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Button, ButtonItem } from '@/stories/shared/ui/Button';
+import Button, { ButtonItem } from '@/stories/shared/ui/Button';
 import { cx } from '@/utils/cx';
 
 import ConfirmDialogContents from './ConfirmDialogContents';
@@ -25,6 +25,8 @@ const BaseConfirmDialog = ({ description }: Props) => {
   );
 };
 
-export const Alert = Object.assign(BaseConfirmDialog, {
+const ConfirmDialog = Object.assign(BaseConfirmDialog, {
   ConfirmDialogContents,
 });
+
+export default ConfirmDialog;

@@ -27,7 +27,6 @@ export const Default: Story = {
     const [checkedItems, setCheckedItems] = useState<boolean[]>(data.map(() => false));
 
     const allChecked = checkedItems.every(Boolean);
-    const someChecked = checkedItems.some(Boolean);
 
     const toggleAll = (checked: boolean) => {
       setCheckedItems(data.map(() => checked));

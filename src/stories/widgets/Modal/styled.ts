@@ -6,7 +6,13 @@ interface ModalContentsProps {
   backgroundcolor?: string;
 }
 
+interface ModalContentsInnerProps {}
+
 interface ModalContentsBoxProps {
+  width?: string;
+}
+
+interface ModalCheckBoxProps {
   width?: string;
 }
 
@@ -21,10 +27,12 @@ export const ModalContentsStyled = styled.div<ModalContentsProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  .modalContentsInner {
-    position: relative;
-  }
+export const ModalContentsInnerStyled = styled.div<ModalContentsInnerProps>`
+  position: relative;
+  border-radius: 10px;
+  background-color: ${props => props.theme.colors.white};
 `;
 
 export const ModalCloseButtonStyled = styled.button`
@@ -37,6 +45,12 @@ export const ModalCloseButtonStyled = styled.button`
 
 export const ModalContentsBoxStyled = styled.div<ModalContentsBoxProps>`
   padding: 20px;
-  border-radius: 10px;
-  background-color: ${props => props.theme.colors.white};
+`;
+
+export const ModalFooterBoxStyled = styled.div<ModalCheckBoxProps>`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 18px 20px;
+  border-top: 1px solid #d2d6db;
 `;

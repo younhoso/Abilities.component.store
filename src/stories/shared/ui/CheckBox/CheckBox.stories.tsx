@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentType } from 'react';
 
-import { CheckBoxGroup, CheckBoxGroupItem, CheckBoxItem } from '.';
+import CheckBox, { CheckBoxGroupItem, CheckBoxItem } from '.';
 
-const meta: Meta<typeof CheckBoxGroup> = {
+const meta: Meta<typeof CheckBox> = {
   title: 'Shared/CheckBox',
-  component: CheckBoxGroup,
+  component: CheckBox,
   tags: ['autodocs'],
   parameters: {
     backgrounds: {
@@ -13,14 +13,14 @@ const meta: Meta<typeof CheckBoxGroup> = {
     },
   },
   subcomponents: {
-    CheckBoxGroupItem: CheckBoxGroup.CheckBoxGroupItem as ComponentType<any>,
+    CheckBoxGroupItem: CheckBox.CheckBoxGroupItem as ComponentType<any>,
   },
   argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CheckBoxGroup>;
+type Story = StoryObj<typeof CheckBox>;
 
 export const CheckGroup: Story = {
   args: {
@@ -29,11 +29,11 @@ export const CheckGroup: Story = {
   },
   render: args => {
     return (
-      <CheckBoxGroup {...args}>
+      <CheckBox {...args}>
         <CheckBoxGroupItem label="Option 1" />
         <CheckBoxGroupItem label="Option 2" />
         <CheckBoxGroupItem label="Option 3" />
-      </CheckBoxGroup>
+      </CheckBox>
     );
   },
 };

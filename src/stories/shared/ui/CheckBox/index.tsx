@@ -40,9 +40,13 @@ const BaseCheckBoxGroupItems = ({ title, isGroupControlled = false, children }: 
   );
 };
 
-export const CheckBoxGroup = Object.assign(BaseCheckBoxGroupItems, {
+BaseCheckBoxGroupItems.displayName = 'CheckBox';
+
+const CheckBox = Object.assign(BaseCheckBoxGroupItems, {
   CheckBoxGroupItem,
   CheckBoxItem,
 });
 
 export { CheckBoxGroupItem, CheckBoxItem };
+
+export default CheckBox;

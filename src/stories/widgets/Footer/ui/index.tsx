@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <FooterStyled className={clsx('Footer')}>
       <div>
-        <span>CreayerFix</span> / Company Profile
+        <span>Abilities</span> / Company Profile
       </div>
-      <div>Copyright © 2024 CreayerFix. All rights reserved.</div>
+      <div>Copyright © 2024 Abilities. All rights reserved.</div>
     </FooterStyled>
   );
 };

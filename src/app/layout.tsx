@@ -9,14 +9,14 @@ import RecoilProvider from '@/provider/RecoilProvider';
 
 import { PRETENDARD } from '../libs/fonts';
 
-const metaTitle = 'CreayerFix';
+const metaTitle = 'Abilities';
 
 export const metadata: Metadata = {
   title: {
     template: metaTitle + ' | %s',
     default: metaTitle,
   },
-  description: 'CreayerFix',
+  description: 'Abilities',
   metadataBase: new URL('https://creayer-fix-component-store.vercel.app'),
   icons: {
     icon: [{ url: '/favicon.ico', rel: 'shortcut icon' }],

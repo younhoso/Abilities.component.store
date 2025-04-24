@@ -2,7 +2,7 @@
   "name": "component-store",
   "version": "1.1.0",
   "bin": {
-    "creayerfix": "./bin/index.js"
+    "abilities": "./bin/index.js"
   },
   "type": "module",
   "private": true,

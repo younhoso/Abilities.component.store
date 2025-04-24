@@ -14,7 +14,6 @@ export default function AlertPage() {
       <div onClick={() => setOpenMoal(true)}>
         <button>Alert 버튼</button>
       </div>
-
       <Alert isOpenModal={openModal} setOpenMoal={setOpenMoal} />
     </div>
   );

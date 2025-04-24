@@ -4,14 +4,14 @@ import React, { ReactNode } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-type TransitionGroupProps = {
+interface TransitionGroupProps {
   y?: number | [number, number];
   x?: number | [number, number];
   opacity?: number;
   duration?: number; // 전체 아이템 듀레이션
   delay?: number; // 개별 아이템 간 딜레이
   children: ReactNode;
-};
+}
 
 // 튜플인지 확인하는 타입 가드
 function isTuple(value: unknown): value is [number, number] {

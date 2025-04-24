@@ -2,7 +2,7 @@
   "name": "component-store",
   "version": "1.1.0",
   "bin": {
-    "creayerfix": "./bin/index.js"
+    "abilities": "./bin/index.js"
   },
   "type": "module",
   "private": true,
@@ -12,7 +12,10 @@
     "start": "next start",
     "lint": "next lint",
     "pretty": "yarn prettier 'src/**/*.{ts,js,tsx,jsx}' --write",
-    "db": "json-server db.json --port 3001 --delay 1000"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "db": "json-server db.json --port 3001 --delay 1000",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.1",
@@ -22,29 +25,57 @@
     "date-fns": "^3.6.0",
     "formidable": "^3.5.1",
     "framer-motion": "^11.5.4",
+    "json-server": "^0.17.0",
     "memoize": "^10.0.0",
     "ncp": "^2.0.0",
     "next": "14.2.3",
     "next-auth": "^4.24.11",
     "react": "^18",
-    "react-day-picker": "9.0.5",
+    "react-day-picker": "^9.6.5",
     "react-dom": "^18",
     "react-quill": "^2.0.0",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.11",
     "swiper": "^11.2.1",
-    "json-server": "^0.17.0"
+    "iconoir-react": "^7.10.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3",
+    "@storybook/addon-essentials": "^8.6.11",
+    "@storybook/addon-onboarding": "^8.6.11",
+    "@storybook/blocks": "^8.6.11",
+    "@storybook/experimental-addon-test": "^8.6.11",
+    "@storybook/experimental-nextjs-vite": "^8.6.11",
+    "@storybook/nextjs": "^8.6.11",
+    "@storybook/react": "^8.6.11",
+    "@storybook/test": "^8.6.11",
+    "@svgr/webpack": "^8.1.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitest/browser": "^3.0.9",
+    "@vitest/coverage-v8": "^3.0.9",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.1.0",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.5.0",
+    "playwright": "^1.51.1",
     "prettier": "^3.1.1",
-    "typescript": "^5"
+    "storybook": "^8.6.11",
+    "typescript": "^5",
+    "vitest": "^3.0.9"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": "eslint --fix",
+    "**/*.{js,ts,jsx,tsx,css,scss,md}": "prettier --write"
   }
 }

@@ -189,6 +189,7 @@ const titleSite = [
   { title: 'Sign In', url: '/signin' },
   { title: 'Transition', url: '/transition' },
   { title: 'MembershipLevel', url: '/membershipLevel' },
+  { title: 'scrollElements', url: '/scrollElements' },
   { title: '', url: '' },
 ];
 

@@ -7,16 +7,16 @@ import CustomThemeProvider from '@/provider/CustomThemeProvider';
 import ReactQueryProvider from '@/provider/ReactQueryProvider';
 import RecoilProvider from '@/provider/RecoilProvider';
 
-import { gmarket } from '../libs/fonts';
+import { PRETENDARD } from '../libs/fonts';
 
-const metaTitle = 'CreayerFix';
+const metaTitle = 'Abilities';
 
 export const metadata: Metadata = {
   title: {
     template: metaTitle + ' | %s',
     default: metaTitle,
   },
-  description: 'CreayerFix',
+  description: 'Abilities',
   metadataBase: new URL('https://creayer-fix-component-store.vercel.app'),
   icons: {
     icon: [{ url: '/favicon.ico', rel: 'shortcut icon' }],
@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
-      <body className={gmarket.className}>
+      <body className={PRETENDARD.className}>
         <RecoilProvider>
           <ClientSessionProvider>
             <CustomThemeProvider>

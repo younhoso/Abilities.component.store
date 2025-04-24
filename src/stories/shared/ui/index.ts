@@ -3,6 +3,7 @@ export { default as AutoSizeImage } from './AutoSizeImage';
 export { default as Avatar } from './Avatar';
 export { default as Button } from './Button';
 export { default as CheckBox } from './CheckBox';
+export { default as CheckBoxGroup } from './CheckBoxGroup';
 export { default as ConfirmDialog } from './ConfirmDialog';
 export { default as DatePicker } from './DatePicker';
 export { default as FadeContent } from './FadeContent';

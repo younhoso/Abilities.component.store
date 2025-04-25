@@ -30,6 +30,20 @@ interface AvatarFallbackProps {
 
 interface AvatarInfoProps {}
 
+interface AvatarExtraProps {
+  isBordered?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const sizeMap = {
+  sm: 32,
+  md: 48,
+  lg: 72,
+  xl: 100,
+} as const;
+
+type SizeKey = keyof typeof sizeMap;
+
 export const AvatarStyled = styled.div<AvatarProps>`
   display: flex;
   align-items: center;
@@ -39,31 +53,29 @@ export const AvatarStyled = styled.div<AvatarProps>`
   }
 `;
 
-const sizeMap = {
-  sm: '32px',
-  md: '48px',
-  lg: '72px',
-  xl: '100px',
-};
-
 export const AvatarImageStyled = styled.div.withConfig({
   shouldForwardProp: shouldOmit,
 })<AvatarImageProps>`
   position: relative;
-
   padding: 2px;
   border-radius: 50%;
 
-  ${({ isBordered }) =>
-    isBordered &&
-    css`
-      border: 1px solid ${({ theme }) => theme.colors.gray4e4};
-    `}
+  ${({ isBordered }) => {
+    return (
+      isBordered &&
+      css`
+        border: 1px solid ${({ theme }) => theme.colors.gray4e4};
+      `
+    );
+  }};
 
-  ${({ size = 'sm' }) => css`
-    width: ${sizeMap[size]};
-    height: ${sizeMap[size]};
-  `}
+  ${({ size = 'sm' }) => {
+    const base = sizeMap[size as SizeKey];
+    return css`
+      width: ${base}px;
+      height: ${base}px;
+    `;
+  }};
 
   img {
     width: 100%;
@@ -84,4 +96,29 @@ export const AvatarInfoStyled = styled.div<AvatarInfoProps>`
   flex-direction: column;
   gap: 5px;
   font-size: 14px;
+`;
+
+export const AvatarExtraStyled = styled.div<AvatarExtraProps>`
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #ececec;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${({ isBordered }) =>
+    isBordered &&
+    css`
+      border: 1px solid ${({ theme }) => theme.colors.gray4e4};
+    `}
+
+  ${({ size = 'sm' }) => {
+    const base = sizeMap[size as SizeKey];
+
+    return css`
+      width: ${base}px;
+      height: ${base}px;
+    `;
+  }}
 `;

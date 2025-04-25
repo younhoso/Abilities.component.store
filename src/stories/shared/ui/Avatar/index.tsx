@@ -1,19 +1,35 @@
+import { Children, isValidElement } from 'react';
+
 import { cx } from '@/utils/cx';
 
 import AvatarFallback from './AvatarFallback';
 import AvatarImage from './AvatarImage';
 import AvatarInfo from './AvatarInfo';
-import { AvatarStyled } from './styled';
+import { AvatarExtraStyled, AvatarStyled } from './styled';
 
-interface Props extends PropsWithChildren {}
+interface Props extends PropsWithChildren {
+  max?: number;
+  alt?: string;
+  isBordered?: boolean;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
 
-const BaseAvatar = ({ children }: Props) => {
-  return <AvatarStyled className={cx('avatar')}>{children}</AvatarStyled>;
+const BaseAvatarGroup = ({ max, children, ...rest }: Props) => {
+  const allChildren = Children.toArray(children).filter(isValidElement);
+  const visible = allChildren.slice(0, max);
+  const hiddenCount = allChildren.length - visible.length;
+
+  return (
+    <AvatarStyled className={cx('avatar')}>
+      {visible}
+      {hiddenCount > 0 && <AvatarExtraStyled {...rest}>+{hiddenCount}</AvatarExtraStyled>}
+    </AvatarStyled>
+  );
 };
 
-BaseAvatar.displayName = 'Avatar';
+BaseAvatarGroup.displayName = 'Avatar';
 
-const Avatar = Object.assign(BaseAvatar, {
+const Avatar = Object.assign(BaseAvatarGroup, {
   AvatarImage,
   AvatarFallback,
   AvatarInfo,

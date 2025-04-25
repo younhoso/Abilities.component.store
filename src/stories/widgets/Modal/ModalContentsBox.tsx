@@ -1,4 +1,4 @@
-import { ModalCloseButtonStyled, ModalContentsBoxStyled } from './styled';
+import { ModalContentsBoxStyled } from './styled';
 
 interface Props extends PropsWithChildren {}
 

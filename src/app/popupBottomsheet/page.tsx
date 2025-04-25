@@ -6,11 +6,12 @@ import Image from 'next/image';
 
 import clsx from 'clsx';
 
-import popupImage1 from '@/assets/imgs/popupImage1.png';
-import popupImage2 from '@/assets/imgs/popupImage2.png';
 import Bottomsheet from '@/components/Bottomsheet/Bottomsheet';
 import SwiperProvider from '@/provider/SwiperProvider';
 import { PopupBottomsheetPageStyled } from '@/styles/pageStyled/PopupBottomsheetPageStyled';
+
+import popupImage1 from '../../../public/images/popupImage1.png';
+import popupImage2 from '../../../public/images/popupImage2.png';
 
 const images = [
   { id: 1, src: popupImage1, label: 'Image 1' },

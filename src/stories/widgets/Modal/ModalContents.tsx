@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { cx } from '@/utils/cx';
 
-import { ModalCloseButtonStyled, ModalContentsStyled } from './styled';
+import { ModalCloseButtonStyled, ModalContentsInnerStyled, ModalContentsStyled } from './styled';
 
 interface ModalContentsProps {
   isShow: boolean;
@@ -21,12 +21,12 @@ const ModalContents = ({ isShow, onClose, children }: ModalContentsProps) => (
       className={cx('PostModal')}
       backgroundcolor={`rgba(0, 0, 0, 0.7)`}
     >
-      <div className={cx('modalContentsInner')}>
+      <ModalContentsInnerStyled>
         {children}
         {isShow && (
           <ModalCloseButtonStyled onClick={() => onClose?.(false)}>닫기</ModalCloseButtonStyled>
         )}
-      </div>
+      </ModalContentsInnerStyled>
     </ModalContentsStyled>
   </>
 );

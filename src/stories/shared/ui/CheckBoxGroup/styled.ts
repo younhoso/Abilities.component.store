@@ -2,8 +2,6 @@
 
 import styled, { css } from 'styled-components';
 
-interface CheckBoxProps {}
-
 interface CustomCheckBoxProps {
   checked?: boolean;
   disabled?: boolean;
@@ -13,10 +11,14 @@ interface LabelProps {
   disabled?: boolean;
 }
 
-export const CheckBoxStyled = styled.div<CheckBoxProps>`
+export const CheckBoxStyled = styled.div`
   display: flex;
   gap: 8px;
-  justify-content: center;
+  justify-content: flex-start;
+`;
+
+export const HiddenCheckBox = styled.input`
+  display: none;
 `;
 
 export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
@@ -50,10 +52,6 @@ export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
         `}
 `;
 
-export const HiddenCheckBox = styled.input`
-  display: none;
-`;
-
 export const Label = styled.label<LabelProps>`
   display: inline-block;
   position: relative;
@@ -69,3 +67,5 @@ export const Label = styled.label<LabelProps>`
     top: 0;
   }
 `;
+
+export const CheckBoxGroupStyled = styled.div``;

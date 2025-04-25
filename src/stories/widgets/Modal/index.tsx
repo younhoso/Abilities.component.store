@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 
 import ModalContents from './ModalContents';
 import ModalContentsBox from './ModalContentsBox';
+import ModalFooterBox from './ModalFooterBox';
 
 interface Props extends PropsWithChildren {
   isOpenModal?: boolean;
@@ -57,9 +58,12 @@ const BaseModalPortal = ({ isOpenModal, children }: Props) => {
 
 BaseModalPortal.displayName = 'Modal';
 
-export const Modal = Object.assign(BaseModalPortal, {
+const Modal = Object.assign(BaseModalPortal, {
   ModalContents,
   ModalContentsBox,
+  ModalFooterBox,
 });
 
-export { ModalContents, ModalContentsBox };
+export { ModalContents, ModalContentsBox, ModalFooterBox };
+
+export default Modal;

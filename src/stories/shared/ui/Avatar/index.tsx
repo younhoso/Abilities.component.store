@@ -13,10 +13,12 @@ const BaseAvatar = ({ children }: Props) => {
 
 BaseAvatar.displayName = 'Avatar';
 
-export const Avatar = Object.assign(BaseAvatar, {
+const Avatar = Object.assign(BaseAvatar, {
   AvatarImage,
   AvatarFallback,
   AvatarInfo,
 });
 
 export { AvatarImage, AvatarFallback, AvatarInfo };
+
+export default Avatar;

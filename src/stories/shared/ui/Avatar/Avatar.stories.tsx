@@ -5,7 +5,7 @@ import profile2 from 'public/profile2.png';
 import profile3 from 'public/profile3.png';
 import profile from 'public/profile.png';
 
-import { Avatar, AvatarFallback, AvatarImage } from '.';
+import Avatar, { AvatarFallback, AvatarImage } from '.';
 import { AvatarInfoStyled } from './styled';
 
 const meta: Meta<typeof AvatarImage> = {

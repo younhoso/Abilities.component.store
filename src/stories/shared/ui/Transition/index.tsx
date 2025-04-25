@@ -68,8 +68,10 @@ const BaseTransition = ({
 
 BaseTransition.displayName = 'Transition';
 
-export const Transition = Object.assign(BaseTransition, {
+const Transition = Object.assign(BaseTransition, {
   TransitionItem,
 });
 
 export { TransitionItem };
+
+export default Transition;

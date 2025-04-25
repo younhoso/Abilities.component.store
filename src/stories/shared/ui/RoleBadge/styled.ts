@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 
-import { RoleType } from '../../types/Role';
+import { RoleType } from '../../types/role';
 
 interface RoleBadgeProps {
   roleColor: RoleType;

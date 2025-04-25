@@ -1,6 +1,6 @@
 import { cx } from '@/utils/cx';
 
-import { RoleType } from '../../types/Role';
+import { RoleType } from '../../types/role';
 import { RoleBadgeStyled } from './styled';
 
 interface Props {

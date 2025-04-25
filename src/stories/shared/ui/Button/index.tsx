@@ -14,8 +14,10 @@ const BaseButton = ({ className, children }: Props) => {
   return <ButtonStyled className={cx(className)}>{children}</ButtonStyled>;
 };
 
-export const Button = Object.assign(BaseButton, {
+const Button = Object.assign(BaseButton, {
   ButtonItem,
 });
 
 export { ButtonItem };
+
+export default Button;

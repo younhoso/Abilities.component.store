@@ -1,45 +1,38 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ComponentType } from 'react';
 
-import { CheckBoxGroup, CheckBoxGroupItem, CheckBoxItem } from '.';
+import { useArgs } from '@storybook/preview-api';
 
-const meta: Meta<typeof CheckBoxGroup> = {
+import CheckBox from '.';
+
+const meta: Meta<typeof CheckBox> = {
   title: 'Shared/CheckBox',
-  component: CheckBoxGroup,
+  component: CheckBox,
   tags: ['autodocs'],
   parameters: {
     backgrounds: {
       default: 'light',
     },
   },
-  subcomponents: {
-    CheckBoxGroupItem: CheckBoxGroup.CheckBoxGroupItem as ComponentType<any>,
-  },
   argTypes: {},
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CheckBoxGroup>;
-
-export const CheckGroup: Story = {
-  args: {
-    title: 'Select cities',
-    isGroupControlled: true,
-  },
-  render: args => {
-    return (
-      <CheckBoxGroup {...args}>
-        <CheckBoxGroupItem label="Option 1" />
-        <CheckBoxGroupItem label="Option 2" />
-        <CheckBoxGroupItem label="Option 3" />
-      </CheckBoxGroup>
-    );
-  },
-};
+type Story = StoryObj<typeof CheckBox>;
 
 export const CheckItem: Story = {
-  render: () => {
-    return <CheckBoxItem label="Option 1" />;
+  args: {
+    label: 'Select Item',
+    checked: false,
+    disabled: false,
+  },
+  render: args => {
+    const [_, updateArgs] = useArgs();
+
+    const toggleOne = (checked: boolean) => {
+      updateArgs({ checked }); // 상태를 직접 업데이트
+    };
+
+    return <CheckBox {...args} onChange={toggleOne} />;
   },
 };

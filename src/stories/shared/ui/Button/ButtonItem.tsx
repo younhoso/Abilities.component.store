@@ -1,17 +1,22 @@
-import { ReactNode } from 'react';
-
 import { cx } from '@/utils/cx';
 
+import { IconSize } from '.';
 import { ButtonItemStyled } from './styled';
 
-interface Props {
-  mode: 'primary' | 'secondary' | 'disabled';
+interface Props extends PropsWithChildren {
+  mode?: 'primary' | 'secondary' | 'disabled';
+  size?: IconSize;
   isLoading?: boolean;
   className?: string;
-  children: ReactNode;
 }
 
-const ButtonItem = ({ mode = 'secondary', isLoading = false, className, children }: Props) => {
+const ButtonItem = ({
+  mode = 'secondary',
+  size = 'md',
+  isLoading = false,
+  className,
+  children,
+}: Props) => {
   const content = isLoading ? (
     <span className="loading">
       {/* 로딩 스피너나 텍스트 */}
@@ -26,7 +31,7 @@ const ButtonItem = ({ mode = 'secondary', isLoading = false, className, children
   );
 
   return (
-    <ButtonItemStyled className={cx(className)}>
+    <ButtonItemStyled className={cx(className)} size={size}>
       {mode === 'disabled' && (
         <button className={mode} disabled={mode === 'disabled' || isLoading}>
           {content}

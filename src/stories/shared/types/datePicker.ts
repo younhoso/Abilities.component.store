@@ -20,6 +20,10 @@ type OnSelectType<M extends Mode> = M extends 'single'
 
 export type PickerProps<M extends Mode> = DayPickerProps & {
   mode: M;
+  today: Date;
   selected?: SelectedType<M>;
   onSelect?: OnSelectType<M>;
+  handlePrevMonth?: () => void;
+  handleNextMonth?: () => void;
+  setCurrentMonth: (month: Date) => void;
 };

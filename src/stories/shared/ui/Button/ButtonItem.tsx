@@ -8,6 +8,7 @@ interface Props extends PropsWithChildren {
   size?: IconSize;
   isLoading?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 const ButtonItem = ({
@@ -15,6 +16,7 @@ const ButtonItem = ({
   size = 'md',
   isLoading = false,
   className,
+  onClick,
   children,
 }: Props) => {
   const content = isLoading ? (
@@ -31,7 +33,7 @@ const ButtonItem = ({
   );
 
   return (
-    <ButtonItemStyled className={cx(className)} size={size}>
+    <ButtonItemStyled className={cx(className)} size={size} onClick={onClick}>
       {mode === 'disabled' && (
         <button className={mode} disabled={mode === 'disabled' || isLoading}>
           {content}

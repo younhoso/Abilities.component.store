@@ -1,15 +1,40 @@
 import { DateRange, DayPicker } from 'react-day-picker';
 
+import { ko } from 'date-fns/locale';
+
+import { DatePickerHeader, DayPickerNav } from '.';
+import { PickerProps } from '../../types/datePicker';
 import { DayPickerStyled } from './styled';
 
-interface RangeDatePickerProps {
-  selected?: DateRange;
-  onSelect?: (value: DateRange | undefined) => void;
-}
+const RangeDatePicker = ({
+  mode,
+  handlePrevMonth,
+  handleNextMonth,
+  today,
+  selected,
+  setCurrentMonth,
+}: PickerProps<'range'>) => (
+  <DayPickerStyled className="range">
+    <DatePickerHeader>
+      <h3>캘린더</h3>
+      <DayPickerNav
+        today={today}
+        handlePrevMonth={handlePrevMonth}
+        handleNextMonth={handleNextMonth}
+      />
+    </DatePickerHeader>
 
-const RangeDatePicker = ({ selected, onSelect }: RangeDatePickerProps) => (
-  <DayPickerStyled>
-    <DayPicker mode="range" selected={selected} onSelect={onSelect} />
+    {mode === 'range' && (
+      <DayPicker
+        mode={mode}
+        locale={ko}
+        weekStartsOn={0}
+        month={today}
+        selected={selected as DateRange | undefined}
+        onMonthChange={setCurrentMonth}
+        required={false}
+      />
+    )}
   </DayPickerStyled>
 );
 

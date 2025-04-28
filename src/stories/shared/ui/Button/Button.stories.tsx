@@ -20,11 +20,14 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
 type ButtonItemStory = StoryObj<typeof ButtonItem>;
 
-export const PrimaryMode: Story = {
-  args: {},
+export const PrimaryMode: ButtonItemStory = {
+  args: {
+    mode: 'secondary',
+    size: 'full',
+    isLoading: true,
+  },
   render: args => {
     return (
       <Button>
@@ -45,11 +48,15 @@ export const SecondaryMode: ButtonItemStory = {
   render: args => <ButtonItem {...args}>취소</ButtonItem>,
 };
 
-export const DisabledMode: Story = {
-  args: {},
-  render: () => (
+export const DisabledMode: ButtonItemStory = {
+  args: {
+    mode: 'disabled',
+    size: 'md',
+    isLoading: false,
+  },
+  render: args => (
     <Button>
-      <ButtonItem mode="disabled">비활성화</ButtonItem>
+      <ButtonItem {...args}>비활성화</ButtonItem>
     </Button>
   ),
 };

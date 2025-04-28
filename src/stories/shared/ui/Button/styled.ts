@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'full';
 }
 
 export const ButtonStyled = styled.div`
@@ -20,21 +20,33 @@ export const ButtonStyled = styled.div`
 `;
 
 export const ButtonItemStyled = styled.div<ButtonProps>`
+  display: inline-block;
+  width: ${({ size }) => {
+    switch (size) {
+      case 'sm':
+        return 'auto';
+      case 'md':
+        return 'auto';
+      case 'lg':
+        return 'auto';
+      case 'full':
+        return '100%';
+      default:
+        return 'auto';
+    }
+  }};
+
   button {
     border: 1px solid #eee;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
     font-weight: 500;
 
     padding: ${({ size }) => {
       switch (size) {
         case 'sm':
-          return '8px 12px';
+          return '4px 8px';
         case 'md':
-          return '12px 16px';
+          return '8px 16px';
         case 'lg':
           return '16px 20px';
         default:

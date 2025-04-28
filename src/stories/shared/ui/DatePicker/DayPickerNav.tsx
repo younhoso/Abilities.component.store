@@ -24,11 +24,11 @@ const DayPickerNav = ({ today, handlePrevMonth, handleNextMonth }: Props) => {
       </div>
       <div>
         <Button>
-          <ButtonItem mode="secondary" size="sm" onClick={handlePrevMonth}>
-            <Icon icon={ICONS_DATAS.LeftIcon.icon} />
+          <ButtonItem mode="secondary" onClick={handlePrevMonth}>
+            <Icon icon={ICONS_DATAS.LeftIcon.icon} size={20} />
           </ButtonItem>
-          <ButtonItem mode="secondary" size="sm" onClick={handleNextMonth}>
-            <Icon icon={ICONS_DATAS.RightIcon.icon} />
+          <ButtonItem mode="secondary" onClick={handleNextMonth}>
+            <Icon icon={ICONS_DATAS.RightIcon.icon} size={20} />
           </ButtonItem>
         </Button>
       </div>

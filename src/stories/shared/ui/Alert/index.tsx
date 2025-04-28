@@ -16,7 +16,9 @@ const BaseAlert = ({ description }: Props) => {
       <AlertContents desc={description}>
         <div className={cx('buttonInner')}>
           <Button>
-            <ButtonItem mode="primary">확인</ButtonItem>
+            <ButtonItem size="full" mode="primary">
+              확인
+            </ButtonItem>
           </Button>
         </div>
       </AlertContents>

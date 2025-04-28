@@ -8,4 +8,5 @@ export type SvgIconProps = SVGProps<SVGSVGElement>;
 export interface IconData {
   icon: ReactNode;
   label?: string;
+  size?: number;
 }

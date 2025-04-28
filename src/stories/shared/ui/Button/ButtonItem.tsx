@@ -1,11 +1,11 @@
 import { cx } from '@/utils/cx';
 
-import { IconSize } from '.';
+import { ButtonSize } from '../../types/button';
 import { ButtonItemStyled } from './styled';
 
 interface Props extends PropsWithChildren {
   mode?: 'primary' | 'secondary' | 'disabled';
-  size?: IconSize;
+  size?: ButtonSize;
   isLoading?: boolean;
   className?: string;
   onClick?: () => void;
@@ -13,7 +13,7 @@ interface Props extends PropsWithChildren {
 
 const ButtonItem = ({
   mode = 'secondary',
-  size = 'md',
+  size = 'sm',
   isLoading = false,
   className,
   onClick,

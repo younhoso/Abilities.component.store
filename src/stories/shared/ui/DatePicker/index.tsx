@@ -5,7 +5,6 @@ import { ko } from 'date-fns/locale';
 import { Mode, PickerProps } from '../../types/datePicker';
 import DatePickerContents from './DatePickerContents';
 import DatePickerHeader from './DatePickerHeader';
-import DayPickerModeSelector from './DayPickerModeSelector';
 import DayPickerNav from './DayPickerNav';
 import { DayPickerStyled } from './styled';
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 
-import { addMonths, format, subMonths } from 'date-fns';
+import { addMonths, subMonths } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 import SingleDatePicker from '.';

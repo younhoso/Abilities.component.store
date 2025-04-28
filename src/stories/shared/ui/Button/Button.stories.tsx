@@ -24,16 +24,14 @@ type ButtonItemStory = StoryObj<typeof ButtonItem>;
 
 export const PrimaryMode: ButtonItemStory = {
   args: {
-    mode: 'secondary',
+    mode: 'primary',
     size: 'full',
-    isLoading: true,
+    isLoading: false,
   },
   render: args => {
     return (
       <Button>
-        <ButtonItem mode="primary" {...args}>
-          제출
-        </ButtonItem>
+        <ButtonItem {...args}>제출</ButtonItem>
       </Button>
     );
   },
@@ -43,7 +41,7 @@ export const SecondaryMode: ButtonItemStory = {
   args: {
     mode: 'secondary',
     size: 'lg',
-    isLoading: true,
+    isLoading: false,
   },
   render: args => <ButtonItem {...args}>취소</ButtonItem>,
 };
@@ -63,8 +61,8 @@ export const DisabledMode: ButtonItemStory = {
 
 export const LoadingMode: ButtonItemStory = {
   args: {
-    mode: 'secondary',
-    size: 'sm',
+    mode: 'disabled',
+    size: 'md',
     isLoading: true,
   },
   render: args => <ButtonItem {...args}>제출</ButtonItem>,

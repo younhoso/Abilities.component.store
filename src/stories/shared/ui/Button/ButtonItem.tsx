@@ -1,6 +1,7 @@
 import { cx } from '@/utils/cx';
 
 import { ButtonSize } from '../../types/button';
+import LoadingContent from './LoadingContent';
 import { ButtonItemStyled } from './styled';
 
 interface Props extends PropsWithChildren {
@@ -19,28 +20,19 @@ const ButtonItem = ({
   onClick,
   children,
 }: Props) => {
-  const content = isLoading ? (
-    <span className="loading">
-      {/* 로딩 스피너나 텍스트 */}
-      <svg className="spinner" fill="none" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" className="path" />
-        <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-      </svg>
-      Loading
-    </span>
-  ) : (
-    children
-  );
-
   return (
     <ButtonItemStyled className={cx(className)} size={size} onClick={onClick}>
       {mode === 'disabled' && (
         <button className={mode} disabled={mode === 'disabled' || isLoading}>
-          {content}
+          <LoadingContent isLoading={isLoading}>{children}</LoadingContent>
         </button>
       )}
       {mode === 'secondary' && <button className="secondary">{children}</button>}
-      {mode === 'primary' && <button className="primary">{content}</button>}
+      {mode === 'primary' && (
+        <button className="primary">
+          <LoadingContent isLoading={isLoading}>{children}</LoadingContent>
+        </button>
+      )}
     </ButtonItemStyled>
   );
 };

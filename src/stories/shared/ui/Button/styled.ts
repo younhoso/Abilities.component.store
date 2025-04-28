@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface ButtonItemProps {
+interface ButtonProps {
   size: 'sm' | 'md' | 'lg';
 }
 
@@ -19,7 +19,7 @@ export const ButtonStyled = styled.div`
   }
 `;
 
-export const ButtonItemStyled = styled.div<ButtonItemProps>`
+export const ButtonItemStyled = styled.div<ButtonProps>`
   button {
     border: 1px solid #eee;
     border-radius: 10px;

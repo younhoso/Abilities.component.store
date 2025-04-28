@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
+import { ICONS_DATAS } from '@/stories/app/libs';
 import { cx } from '@/utils/cx';
 
 import Button, { ButtonItem } from '../Button';
+import Icon from '../Icons/Icon';
 import DayPickerModeSelector from './DayPickerModeSelector';
 import { DayPickerNavStyled } from './styled';
 
@@ -23,10 +25,10 @@ const DayPickerNav = ({ today, handlePrevMonth, handleNextMonth }: Props) => {
       <div>
         <Button>
           <ButtonItem mode="secondary" size="sm" onClick={handlePrevMonth}>
-            이전
+            <Icon icon={ICONS_DATAS.LeftIcon.icon} />
           </ButtonItem>
           <ButtonItem mode="secondary" size="sm" onClick={handleNextMonth}>
-            다음
+            <Icon icon={ICONS_DATAS.RightIcon.icon} />
           </ButtonItem>
         </Button>
       </div>

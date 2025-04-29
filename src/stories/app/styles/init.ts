@@ -43,7 +43,6 @@ export const InitGlobalStyled = memo(createGlobalStyle`
   }
   
   button{
-    width: 100%;
     background-color: transparent;
   }
 

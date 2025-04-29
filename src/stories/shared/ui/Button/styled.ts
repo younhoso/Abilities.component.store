@@ -37,6 +37,7 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
   }};
 
   button {
+    width: 100%;
     border: 1px solid #eee;
     border-radius: 10px;
     font-weight: 500;

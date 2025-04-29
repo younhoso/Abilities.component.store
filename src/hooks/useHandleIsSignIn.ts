@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilStateLoadable, useRecoilValueLoadable } from 'recoil';
 
 import { signIn, signOut } from '@/libs/customNextAuth';
-import { isSignInSelector } from '@/stores/isSignIn';
+import { isSignInSelector } from '@/store/isSignIn';
 
 export const useHandleIsSignIn = () => {
   const { contents: isSignInContents, state } = useRecoilValueLoadable(isSignInSelector);

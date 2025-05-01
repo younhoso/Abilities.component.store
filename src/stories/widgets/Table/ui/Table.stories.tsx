@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { CheckBox } from '@/stories/shared/ui';
-import { TransitionItem } from '@/stories/shared/ui/Transition';
+import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
 
 import Table, { Body, BodyCell, Head, HeaderCell, Row } from '.';
 import { data, headers } from '../constants/TableData';
@@ -25,7 +24,7 @@ type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
   render: () => {
-    const [checkedItems, setCheckedItems] = useState<boolean[]>(data.map(() => false));
+    const [checkedItems, setCheckedItems] = useState<boolean[]>(data.map(item => item.checkedItem));
 
     const allChecked = checkedItems.every(Boolean);
 
@@ -44,7 +43,7 @@ export const Default: Story = {
         <Head>
           <Row isTransition>
             <HeaderCell align="left">
-              <CheckBox checked={allChecked} onChange={toggleAll} />
+              <CheckBoxItem checked={allChecked} onChange={toggleAll} isGroupControlled />
             </HeaderCell>
             {headers.map(({ label, key }) => (
               <HeaderCell key={key} align="left">
@@ -57,9 +56,10 @@ export const Default: Story = {
           {data.map((item, rowIdx) => (
             <Row key={rowIdx} isTransition useDelay index={rowIdx}>
               <BodyCell align="left">
-                <CheckBox
+                <CheckBoxItem
                   checked={checkedItems[rowIdx]}
                   onChange={checked => toggleOne(rowIdx, checked)}
+                  isGroupControlled
                 />
               </BodyCell>
               {headers.map(({ key }) => (

@@ -29,12 +29,12 @@ export const CheckItem: Story = {
   },
   render: args => {
     return (
-      <CheckBox {...args}>
+      <>
         <CheckBoxTrigger>Select Item</CheckBoxTrigger>
-        <CheckBoxItem label="Option 1" />
-        <CheckBoxItem label="Option 2" />
-        <CheckBoxItem label="Option 3" />
-      </CheckBox>
+        <CheckBoxItem {...args} label="Option 1" />
+        <CheckBoxItem {...args} label="Option 2" />
+        <CheckBoxItem {...args} label="Option 3" />
+      </>
     );
   },
 };

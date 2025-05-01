@@ -5,15 +5,11 @@ import React from 'react';
 
 import { cx } from '@/utils/cx';
 
+import { CheckBoxProps } from '../../types/CheckBox';
 import CheckBoxItem from './CheckBoxItem';
 import { CheckBoxGroupStyled } from './styled';
 
-interface Props extends PropsWithChildren {
-  className?: string;
-  isGroupControlled?: boolean; // 그룹 상태를 관리할지 여부를 결정
-}
-
-const BaseCheckBoxGroupItems = ({ isGroupControlled = false, children }: Props) => {
+const BaseCheckBoxItems = ({ isGroupControlled = false, children }: CheckBoxProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   // 상태 변경 함수
@@ -38,12 +34,12 @@ const BaseCheckBoxGroupItems = ({ isGroupControlled = false, children }: Props) 
   );
 };
 
-BaseCheckBoxGroupItems.displayName = 'CheckBox';
+BaseCheckBoxItems.displayName = 'CheckBox';
 
-const CheckBoxGroup = Object.assign(BaseCheckBoxGroupItems, {
+const CheckBox = Object.assign(BaseCheckBoxItems, {
   CheckBoxItem,
 });
 
 export { CheckBoxItem };
 
-export default CheckBoxGroup;
+export default CheckBox;

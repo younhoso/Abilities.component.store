@@ -46,6 +46,7 @@ interface AppMetadata {
 }
 
 export interface UserRow {
+  checkedItem: boolean;
   profile: ReactElement;
   email: string;
   phone: string;

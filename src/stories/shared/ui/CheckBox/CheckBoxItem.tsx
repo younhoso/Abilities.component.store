@@ -16,7 +16,7 @@ interface Props extends PropsWithChildren {
   onChange?: (checked: boolean) => void;
 }
 
-const CheckBoxGroupItem = ({
+const CheckBoxItem = ({
   label,
   className,
   checked,
@@ -47,7 +47,7 @@ const CheckBoxGroupItem = ({
   const currentChecked = isGroupControlled ? checked : isChecked;
 
   return (
-    <CheckBoxStyled className={cx('checkbox-container', className)}>
+    <CheckBoxStyled className={cx(className)}>
       <HiddenCheckBox
         id={checkboxId}
         type="checkbox"
@@ -79,4 +79,4 @@ const CheckBoxGroupItem = ({
   );
 };
 
-export default CheckBoxGroupItem;
+export default CheckBoxItem;

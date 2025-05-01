@@ -1,6 +1,6 @@
 'use client';
 
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 interface CheckBoxProps {}
 
@@ -12,6 +12,21 @@ interface CustomCheckBoxProps {
 interface LabelProps {
   disabled?: boolean;
 }
+
+const checkAnim = keyframes`
+  0% {
+    transform: scale(0.4) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+`;
 
 export const CheckBoxStyled = styled.div<CheckBoxProps>`
   display: flex;
@@ -41,11 +56,22 @@ export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
             display: none;
           }
         `
-      : css`
+      : css<CustomCheckBoxProps>`
           & svg {
-            color: #333;
-            font-size: 14px;
-            display: block;
+            width: 12px;
+            height: 12px;
+            stroke: #007bff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 22;
+            stroke-dashoffset: ${({ checked }) => (checked ? 0 : 22)};
+            transition:
+              stroke-dashoffset 250ms linear 0.2s,
+              opacity 0.3s ease;
+            opacity: ${({ checked }) => (checked ? 1 : 0)};
+            pointer-events: none;
           }
         `}
 `;

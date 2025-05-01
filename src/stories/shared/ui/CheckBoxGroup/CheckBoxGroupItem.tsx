@@ -1,6 +1,5 @@
 'use client';
 
-import { Check } from 'iconoir-react';
 import { PropsWithChildren, useEffect, useState } from 'react';
 
 import { cx } from '@/utils/cx';
@@ -62,7 +61,9 @@ const CheckBoxGroupItem = ({
         disabled={disabled}
         onClick={handleChange}
       >
-        {currentChecked && <Check />}
+        <svg viewBox="0 0 17 18" aria-hidden="true" role="presentation">
+          <polyline points="1 9 7 14 15 4" />
+        </svg>
       </CustomCheckBox>
 
       {label && (

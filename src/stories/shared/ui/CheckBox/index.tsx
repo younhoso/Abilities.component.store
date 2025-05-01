@@ -1,5 +1,3 @@
-import { Check } from 'iconoir-react';
-
 import { cx } from '@/utils/cx';
 
 import { CheckBoxStyled, CustomCheckBox, HiddenCheckBox, Label } from './styled';
@@ -23,7 +21,7 @@ const BaseCheckBox = ({ label, className, checked, disabled = false, onChange }:
   const checkboxId = 'checkbox-' + Math.random().toString(36).slice(2, 11); // 동적으로 고유한 ID 생성
 
   return (
-    <CheckBoxStyled className={cx('')}>
+    <CheckBoxStyled>
       <HiddenCheckBox
         id={checkboxId}
         type="checkbox"
@@ -37,7 +35,9 @@ const BaseCheckBox = ({ label, className, checked, disabled = false, onChange }:
         disabled={disabled}
         onClick={handleChange}
       >
-        {checked && <Check />}
+        <svg viewBox="0 0 17 18" aria-hidden="true" role="presentation">
+          <polyline points="1 9 7 14 15 4" />
+        </svg>
       </CustomCheckBox>
       {label && (
         <Label

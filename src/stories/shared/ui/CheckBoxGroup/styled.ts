@@ -43,11 +43,22 @@ export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
             display: none;
           }
         `
-      : css`
+      : css<CustomCheckBoxProps>`
           & svg {
-            color: #333;
-            font-size: 14px;
-            display: block;
+            width: 12px;
+            height: 12px;
+            stroke: #007bff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            stroke-dasharray: 22;
+            stroke-dashoffset: ${({ checked }) => (checked ? 0 : 22)};
+            transition:
+              stroke-dashoffset 250ms linear 0.2s,
+              opacity 0.3s ease;
+            opacity: ${({ checked }) => (checked ? 1 : 0)};
+            pointer-events: none;
           }
         `}
 `;

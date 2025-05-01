@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
 import { CheckBox } from '@/stories/shared/ui';
+import { TransitionItem } from '@/stories/shared/ui/Transition';
 
 import Table, { Body, BodyCell, Head, HeaderCell, Row } from '.';
 import { data, headers } from '../constants/TableData';
@@ -41,7 +42,7 @@ export const Default: Story = {
     return (
       <Table>
         <Head>
-          <Row>
+          <Row isTransition>
             <HeaderCell align="left">
               <CheckBox checked={allChecked} onChange={toggleAll} />
             </HeaderCell>
@@ -54,7 +55,7 @@ export const Default: Story = {
         </Head>
         <Body>
           {data.map((item, rowIdx) => (
-            <Row key={rowIdx}>
+            <Row key={rowIdx} isTransition useDelay index={rowIdx}>
               <BodyCell align="left">
                 <CheckBox
                   checked={checkedItems[rowIdx]}

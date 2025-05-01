@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 type AlignType = 'left' | 'center' | 'right';
@@ -86,7 +87,7 @@ export const TableBodyCellStyled = styled.td<TableBodyCellProps>`
   }
 `;
 
-export const TableRowStyled = styled.tr<TableRowProps>`
+export const TableRowStyled = styled(motion.tr)<TableRowProps>`
   border-bottom: 1px solid #d2d6db;
   + :last-child {
     border-bottom: none;

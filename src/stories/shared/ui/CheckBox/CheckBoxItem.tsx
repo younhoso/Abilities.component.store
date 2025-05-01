@@ -13,6 +13,7 @@ const CheckBoxItem = ({
   checked,
   disabled = false,
   isGroupControlled = false,
+  align = 'left',
   onChange,
 }: CheckBoxProps) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -31,7 +32,7 @@ const CheckBoxItem = ({
   const currentChecked = isGroupControlled ? checked : isChecked;
 
   return (
-    <CheckBoxStyled className={cx(className)}>
+    <CheckBoxStyled className={cx(className)} align={align}>
       <HiddenCheckBox
         id={checkboxId}
         type="checkbox"

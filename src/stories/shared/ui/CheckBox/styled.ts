@@ -11,10 +11,14 @@ interface LabelProps {
   disabled?: boolean;
 }
 
-export const CheckBoxStyled = styled.div`
+interface CheckBoxStyledProps {
+  align?: 'left' | 'center' | 'right';
+}
+
+export const CheckBoxStyled = styled.div<CheckBoxStyledProps>`
   display: flex;
   gap: 8px;
-  justify-content: flex-start;
+  justify-content: ${({ align = 'flex-start' }) => align};
 `;
 
 export const HiddenCheckBox = styled.input`

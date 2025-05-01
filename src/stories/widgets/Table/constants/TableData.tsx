@@ -13,6 +13,7 @@ export const headers = [
 
 export const data: UserRow[] = [
   {
+    id: 1,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -33,6 +34,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 2,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -53,6 +55,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 3,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -73,6 +76,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 4,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -93,6 +97,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 5,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -113,6 +118,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 6,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -133,6 +139,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 7,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -153,6 +160,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 8,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -173,6 +181,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 9,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">
@@ -193,6 +202,7 @@ export const data: UserRow[] = [
     ),
   },
   {
+    id: 10,
     checkedItem: false,
     profile: (
       <AvatarFallback justify="flex-start">

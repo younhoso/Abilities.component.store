@@ -31,8 +31,8 @@ export const Default: Story = {
   args: {
     value: '옵션 1',
   },
-  render: () => {
-    const [args, updateArgs] = useArgs();
+  render: args => {
+    const [_, updateArgs] = useArgs();
 
     const handleChange = (newValue: string) => {
       updateArgs({ value: newValue });

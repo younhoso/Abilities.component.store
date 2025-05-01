@@ -38,7 +38,7 @@ export const TableHeadStyled = styled.thead<TableHeadProps>`
 
 export const TableHeaderCellStyled = styled.th<TableHeaderCellProps>`
   border: none;
-  padding: 12px 20px;
+  padding: 12px 14px;
   font-size: 14px;
   color: #333;
   text-align: ${({ align }) => align};
@@ -67,9 +67,10 @@ export const TableBodyStyled = styled.tbody<TableBodyProps>`
 
 export const TableBodyCellStyled = styled.td<TableBodyCellProps>`
   border: none;
-  padding: 10px 20px;
+  padding: 12px 14px;
   font-size: 14px;
   color: #666;
+  cursor: pointer;
   text-align: ${({ align }) => align};
 
   &:first-child {
@@ -91,6 +92,10 @@ export const TableRowStyled = styled(motion.tr)<TableRowProps>`
   border-bottom: 1px solid #d2d6db;
   + :last-child {
     border-bottom: none;
+  }
+  transition: background-color 0.25s ease-in;
+  &:hover {
+    background-color: #eee;
   }
 `;
 

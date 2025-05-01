@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
 
 import Table, { Body, BodyCell, Head, HeaderCell, Row } from '.';
 import { data, headers } from '../constants/TableData';
+import { UserRow } from '../types/user';
 
 const meta: Meta<typeof Table> = {
   title: 'Widgets/Table',
@@ -24,26 +25,34 @@ type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
   render: () => {
-    const [checkedItems, setCheckedItems] = useState<boolean[]>(data.map(item => item.checkedItem));
+    const [tableData, setTableData] = useState<UserRow[]>(() => data.map(item => ({ ...item })));
 
-    const allChecked = checkedItems.every(Boolean);
+    const allChecked = useMemo(() => tableData.every(row => row.checkedItem), [tableData]);
 
     const toggleAll = (checked: boolean) => {
-      setCheckedItems(data.map(() => checked));
+      setTableData(prev => prev.map(row => ({ ...row, checkedItem: checked })));
     };
 
-    const toggleOne = (idx: number, checked: boolean) => {
-      const updated = [...checkedItems];
-      updated[idx] = checked;
-      setCheckedItems(updated);
+    const toggleOne = (id: number, checked: boolean) => {
+      setTableData(prev =>
+        prev.map(row => (row.id === id ? { ...row, checkedItem: checked } : row)),
+      );
     };
+
+    const selectedItems = tableData.filter(row => row.checkedItem);
+    console.log(selectedItems);
 
     return (
       <Table>
         <Head>
           <Row isTransition>
-            <HeaderCell align="left">
-              <CheckBoxItem checked={allChecked} onChange={toggleAll} isGroupControlled />
+            <HeaderCell>
+              <CheckBoxItem
+                checked={allChecked}
+                onChange={toggleAll}
+                isGroupControlled
+                align="right"
+              />
             </HeaderCell>
             {headers.map(({ label, key }) => (
               <HeaderCell key={key} align="left">
@@ -53,22 +62,38 @@ export const Default: Story = {
           </Row>
         </Head>
         <Body>
-          {data.map((item, rowIdx) => (
-            <Row key={rowIdx} isTransition useDelay index={rowIdx}>
-              <BodyCell align="left">
-                <CheckBoxItem
-                  checked={checkedItems[rowIdx]}
-                  onChange={checked => toggleOne(rowIdx, checked)}
-                  isGroupControlled
-                />
-              </BodyCell>
-              {headers.map(({ key }) => (
-                <BodyCell key={key} align="left">
-                  {item[key]}
+          {data.map(item => {
+            const row = tableData.find(row => row.id === item.id);
+            if (!row) return null; // 안전 처리
+
+            return (
+              <Row key={item.id} isTransition useDelay index={item.id}>
+                <BodyCell onClick={() => toggleOne(item.id, !row.checkedItem)}>
+                  <CheckBoxItem
+                    checked={row.checkedItem}
+                    onChange={checked => toggleOne(item.id, checked)}
+                    isGroupControlled
+                    align="right"
+                  />
                 </BodyCell>
-              ))}
-            </Row>
-          ))}
+                {headers.map(({ key }, index) => {
+                  const isLastColumn = index === headers.length - 1;
+
+                  return (
+                    <BodyCell
+                      key={key}
+                      align="left"
+                      onClick={
+                        !isLastColumn ? () => toggleOne(item.id, !row.checkedItem) : undefined
+                      }
+                    >
+                      {item[key]}
+                    </BodyCell>
+                  );
+                })}
+              </Row>
+            );
+          })}
         </Body>
       </Table>
     );

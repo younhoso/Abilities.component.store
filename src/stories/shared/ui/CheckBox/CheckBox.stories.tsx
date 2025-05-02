@@ -25,7 +25,9 @@ type Story = StoryObj<typeof CheckBox>;
 
 export const CheckItem: Story = {
   args: {
-    isGroupControlled: false,
+    color: '#fff',
+    borderColor: '#f31260',
+    backgroundColor: '#f31260',
   },
   render: args => {
     return (

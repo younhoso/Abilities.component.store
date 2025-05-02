@@ -2,10 +2,7 @@
 
 import styled, { css } from 'styled-components';
 
-interface CustomCheckBoxProps {
-  checked?: boolean;
-  disabled?: boolean;
-}
+import { CheckBoxProps } from '../../types/CheckBox';
 
 interface LabelProps {
   disabled?: boolean;
@@ -25,20 +22,21 @@ export const HiddenCheckBox = styled.input`
   display: none;
 `;
 
-export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
+export const CustomCheckBox = styled.div<CheckBoxProps>`
   width: 20px;
   height: 20px;
-  border: 2px solid #007bff;
+  border: 2px solid ${({ borderColor = '#007bff', color = '#007bff' }) => borderColor || color};
   border-radius: 4px;
   transition: background-color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
-  background-color: ${({ disabled }) => (disabled ? '#ccc' : 'transparent')};
+  background-color: ${({ disabled, backgroundColor }) =>
+    disabled ? '#ccc' : backgroundColor || 'transparent'};
   text-align: center;
 
-  ${({ disabled }) =>
+  ${({ disabled, color = '#007bff' }) =>
     disabled
       ? css`
           & svg {
@@ -47,11 +45,11 @@ export const CustomCheckBox = styled.div<CustomCheckBoxProps>`
             display: none;
           }
         `
-      : css<CustomCheckBoxProps>`
+      : css<CheckBoxProps>`
           & svg {
             width: 12px;
             height: 12px;
-            stroke: #007bff;
+            stroke: ${color};
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;

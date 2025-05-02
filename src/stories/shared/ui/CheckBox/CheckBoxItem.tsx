@@ -14,6 +14,9 @@ const CheckBoxItem = ({
   disabled = false,
   isGroupControlled = false,
   align = 'left',
+  color,
+  borderColor,
+  backgroundColor,
   onChange,
 }: CheckBoxProps) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -45,6 +48,9 @@ const CheckBoxItem = ({
         checked={currentChecked} // 그룹 상태 또는 자체 상태 사용
         disabled={disabled}
         onClick={handleChange}
+        color={color}
+        borderColor={borderColor}
+        backgroundColor={backgroundColor}
       >
         <svg viewBox="0 0 17 18" aria-hidden="true" role="presentation">
           <polyline points="1 9 7 14 15 4" />

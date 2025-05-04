@@ -28,7 +28,7 @@ export const SkeletonLoading: Story = {
     useEffect(() => {
       (async () => {
         await delay(1000);
-        setUser({ name: 'Younho' });
+        setUser({ name: 'SkeletonLoading' });
       })();
     }, []);
 
@@ -45,7 +45,7 @@ export const SkeletonAvatar: Story = {
     useEffect(() => {
       (async () => {
         await delay(1000);
-        setUser({ name: 'Younho' });
+        setUser({ name: 'SkeletonLoading' });
       })();
     }, []);
 
@@ -62,28 +62,11 @@ export const SkeletonTitle: Story = {
     useEffect(() => {
       (async () => {
         await delay(1000);
-        setUser({ name: 'Younho' });
+        setUser({ name: 'SkeletonLoading' });
       })();
     }, []);
 
     if (!user) return <SkeletonProfile type="title" />;
-
-    return <div>{user.name}</div>;
-  },
-};
-
-export const SkeletonThumbnail: Story = {
-  render: () => {
-    const [user, setUser] = useState<null | { name: string }>(null);
-
-    useEffect(() => {
-      (async () => {
-        await delay(1000);
-        setUser({ name: 'Younho' });
-      })();
-    }, []);
-
-    if (!user) return <SkeletonProfile type="thumbnail" />;
 
     return <div>{user.name}</div>;
   },
@@ -101,6 +84,23 @@ export const SkeletonText: Story = {
     }, []);
 
     if (!user) return <SkeletonProfile type="text" />;
+
+    return <div>{user.name}</div>;
+  },
+};
+
+export const SkeletonThumbnail: Story = {
+  render: () => {
+    const [user, setUser] = useState<null | { name: string }>(null);
+
+    useEffect(() => {
+      (async () => {
+        await delay(1000);
+        setUser({ name: 'SkeletonLoading' });
+      })();
+    }, []);
+
+    if (!user) return <SkeletonProfile type="thumbnail" />;
 
     return <div>{user.name}</div>;
   },

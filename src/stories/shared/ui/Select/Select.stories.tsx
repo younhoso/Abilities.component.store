@@ -18,7 +18,7 @@ const meta: Meta<typeof Select> = {
       control: {
         type: 'select',
       },
-      options: ['옵션 1', '옵션 2', '옵션 3'],
+      options: ['옵션1', '옵션2', '옵션3'],
     },
   },
 };
@@ -29,22 +29,22 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   args: {
-    value: '옵션 1',
+    value: '옵션1',
   },
   render: args => {
-    const [_, updateArgs] = useArgs();
+    const [{ isChecked }, updateArgs] = useArgs();
 
     const handleChange = (newValue: string) => {
-      updateArgs({ value: newValue });
+      updateArgs({ isChecked: !isChecked, value: newValue });
     };
 
     return (
       <Select value={args.value} onValueChange={handleChange}>
         <SelectTrigger />
         <SelectContent>
-          <SelectItem value="옵션 1">옵션 1</SelectItem>
-          <SelectItem value="옵션 2">옵션 2</SelectItem>
-          <SelectItem value="옵션 3">옵션 3</SelectItem>
+          <SelectItem value="옵션1">옵션 1</SelectItem>
+          <SelectItem value="옵션2">옵션 2</SelectItem>
+          <SelectItem value="옵션3">옵션 3</SelectItem>
         </SelectContent>
       </Select>
     );

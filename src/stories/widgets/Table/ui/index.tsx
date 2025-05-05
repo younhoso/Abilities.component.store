@@ -2,6 +2,8 @@ import { cx } from '@/utils/cx';
 
 import TableBody from './TableBody/TableBody';
 import TableBodyCell from './TableBody/TableBodyCell';
+import TableFooter from './TableFooter/TableFooter';
+import TableFooterCell from './TableFooter/TableFooterCell';
 import TableHead from './TableHead/TableHead';
 import TableHeaderCell from './TableHead/TableHeaderCell';
 import TableRow from './TableRow';
@@ -14,19 +16,23 @@ const BaseTable = ({ children }: Props) => {
 };
 
 const Table = Object.assign(BaseTable, {
+  Row: TableRow,
   Head: TableHead,
   HeaderCell: TableHeaderCell,
   Body: TableBody,
   BodyCell: TableBodyCell,
-  Row: TableRow,
+  Footer: TableFooter,
+  FooterCell: TableFooterCell,
 });
 
 export {
-  TableHead as Head,
   TableRow as Row,
+  TableHead as Head,
   TableHeaderCell as HeaderCell,
   TableBody as Body,
   TableBodyCell as BodyCell,
+  TableFooter as Footer,
+  TableFooterCell as FooterCell,
 };
 
 export default Table;

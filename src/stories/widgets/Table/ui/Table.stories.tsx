@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 
 import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
 
-import Table, { Body, BodyCell, Head, HeaderCell, Row } from '.';
+import Table, { Body, BodyCell, Footer, Head, HeaderCell, Row } from '.';
 import { data, headers } from '../constants/TableData';
 import { UserRow } from '../types/user';
 
@@ -40,7 +40,6 @@ export const Default: Story = {
     };
 
     const selectedItems = tableData.filter(row => row.checkedItem);
-    console.log(selectedItems);
 
     return (
       <Table>
@@ -64,7 +63,7 @@ export const Default: Story = {
         <Body>
           {data.map(item => {
             const row = tableData.find(row => row.id === item.id);
-            if (!row) return null; // 안전 처리
+            if (!row) return null;
 
             return (
               <Row key={item.id} isTransition useDelay index={item.id}>
@@ -95,6 +94,7 @@ export const Default: Story = {
             );
           })}
         </Body>
+        <Footer>dsf</Footer>
       </Table>
     );
   },

@@ -9,13 +9,17 @@ interface TableProps {}
 
 interface TableHeadProps {}
 
+interface TableBodyProps {}
+
 interface TableHeaderCellProps {
   align?: AlignType;
 }
 
-interface TableBodyProps {}
-
 interface TableBodyCellProps {
+  align?: AlignType;
+}
+
+interface TableFooterCellProps {
   align?: AlignType;
 }
 
@@ -87,6 +91,15 @@ export const TableBodyCellStyled = styled.td<TableBodyCellProps>`
     }
   }
 `;
+
+export const TableFooterStyled = styled.tfoot`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TableFooterCellStyled = styled.td<TableFooterCellProps>``;
 
 export const TableRowStyled = styled(motion.tr)<TableRowProps>`
   border-bottom: 1px solid #d2d6db;

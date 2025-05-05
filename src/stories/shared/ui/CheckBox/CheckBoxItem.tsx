@@ -16,6 +16,7 @@ const CheckBoxItem = ({
   align = 'left',
   color,
   borderColor,
+  borderWidth = '2',
   backgroundColor,
   onChange,
 }: CheckBoxProps) => {
@@ -53,7 +54,7 @@ const CheckBoxItem = ({
         backgroundColor={backgroundColor}
       >
         <svg viewBox="0 0 17 18" aria-hidden="true" role="presentation">
-          <polyline points="1 9 7 14 15 4" />
+          <polyline points="1 9 7 14 15 4" strokeWidth={borderWidth} />
         </svg>
       </CustomCheckBox>
 

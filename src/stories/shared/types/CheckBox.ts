@@ -9,6 +9,7 @@ export interface CheckBoxProps extends PropsWithChildren {
   align?: 'left' | 'center' | 'right';
   color?: string;
   borderColor?: string;
+  borderWidth?: string;
   backgroundColor?: string;
   onChange?: (checked: boolean) => void;
 }

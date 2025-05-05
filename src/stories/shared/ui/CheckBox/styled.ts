@@ -25,7 +25,7 @@ export const HiddenCheckBox = styled.input`
 export const CustomCheckBox = styled.div<CheckBoxProps>`
   width: 20px;
   height: 20px;
-  border: 2px solid ${({ borderColor = '#007bff', color = '#007bff' }) => borderColor || color};
+  border: 2px solid ${({ borderColor = '#D5D7DA', color = '#D5D7DA' }) => borderColor || color};
   border-radius: 4px;
   transition: background-color 0.3s ease;
   display: flex;
@@ -36,7 +36,7 @@ export const CustomCheckBox = styled.div<CheckBoxProps>`
     disabled ? '#ccc' : backgroundColor || 'transparent'};
   text-align: center;
 
-  ${({ disabled, color = '#007bff' }) =>
+  ${({ disabled, color = '#D5D7DA' }) =>
     disabled
       ? css`
           & svg {

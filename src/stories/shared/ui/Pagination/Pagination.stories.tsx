@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+
+import { useArgs } from '@storybook/preview-api';
 
 import Pagination from '.';
 
@@ -20,9 +21,18 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: () => {
-    const [page, setPage] = useState(1);
+  args: {
+    totalPages: 5,
+    currentPage: 1,
+    isPageOptions: false,
+  },
+  render: args => {
+    const [{ isChecked }, updateArgs] = useArgs();
 
-    return <Pagination currentPage={page} totalPages={5} onChange={setPage} />;
+    const handleChange = (newValue: number) => {
+      updateArgs({ isChecked: !isChecked, currentPage: newValue });
+    };
+
+    return <Pagination {...args} onChange={handleChange} />;
   },
 };

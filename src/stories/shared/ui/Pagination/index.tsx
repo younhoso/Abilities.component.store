@@ -8,10 +8,11 @@ import { PageButton, PaginationStyled } from './styled';
 interface Props {
   currentPage: number;
   totalPages: number;
+  isPageOptions?: boolean;
   onChange: (page: number) => void;
 }
 
-const Pagination = ({ currentPage, totalPages, onChange }: Props) => {
+const Pagination = ({ currentPage, totalPages, isPageOptions = false, onChange }: Props) => {
   const [currentTab, setCurrentTab] = useState(String(currentPage));
 
   const handleClick = (page: number) => {
@@ -27,9 +28,11 @@ const Pagination = ({ currentPage, totalPages, onChange }: Props) => {
 
   return (
     <PaginationStyled className={cx('pagination')}>
-      <PageButton onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
-        이전
-      </PageButton>
+      {isPageOptions && (
+        <PageButton onClick={() => handleClick(currentPage - 1)} disabled={currentPage === 1}>
+          이전
+        </PageButton>
+      )}
       <OptionTabs
         options={visibleOptions}
         value={currentTab as (typeof visibleOptions)[number]}
@@ -41,12 +44,14 @@ const Pagination = ({ currentPage, totalPages, onChange }: Props) => {
         color="#fff"
         backgroundColor="#333"
       />
-      <PageButton
-        onClick={() => handleClick(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        다음
-      </PageButton>
+      {isPageOptions && (
+        <PageButton
+          onClick={() => handleClick(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          다음
+        </PageButton>
+      )}
     </PaginationStyled>
   );
 };

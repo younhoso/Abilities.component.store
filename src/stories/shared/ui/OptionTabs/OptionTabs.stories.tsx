@@ -29,7 +29,7 @@ type Story = StoryObj<typeof OptionTabs>;
 export const Default: Story = {
   args: {
     options: ['일', '주', '월'],
-    value: '월',
+    value: '일',
   },
   render: () => {
     const [args, updateArgs] = useArgs();

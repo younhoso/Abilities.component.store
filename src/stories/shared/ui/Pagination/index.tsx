@@ -21,7 +21,6 @@ const Pagination = ({ currentPage, totalPages, onChange }: Props) => {
 
   const visibleOptions = Array.from({ length: totalPages }, (_, i) => String(i + 1)).slice(0, 5);
 
-  // 부모의 currentPage가 바뀔 때 local state도 반영
   useEffect(() => {
     setCurrentTab(String(currentPage));
   }, [currentPage]);

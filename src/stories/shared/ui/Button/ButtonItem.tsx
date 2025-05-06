@@ -17,8 +17,8 @@ const ButtonItem = ({
   size = 'sm',
   isLoading = false,
   className,
-  onClick,
   children,
+  onClick,
 }: Props) => {
   return (
     <ButtonItemStyled className={cx(className)} size={size} onClick={onClick}>

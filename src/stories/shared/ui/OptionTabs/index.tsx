@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 
 import { motion } from 'framer-motion';
 
@@ -30,6 +30,14 @@ const OptionTabs = <T extends TabOption>({
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const itemWidth = options?.length ? containerWidth / options.length : 0;
+
+  useEffect(() => {
+    if (!options?.length || value === '...') return;
+
+    const foundIndex = options.findIndex(option => option === value);
+    if (foundIndex >= 0) setActiveIndex(foundIndex);
+  }, [value, options]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -41,35 +49,34 @@ const OptionTabs = <T extends TabOption>({
     });
 
     resizeObserver.observe(containerRef.current);
+
     return () => resizeObserver.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!options?.length) return;
-
-    const foundIndex = options.findIndex(option => option === value);
-    if (foundIndex >= 0) {
-      setActiveIndex(foundIndex);
-    }
-  }, [value, options]);
-
-  const itemWidth = containerWidth / options?.length!;
+  }, [options?.length]); // ✅ options 갯수 바뀔 때도 다시 측정
 
   return (
     <OptionTabsStyled ref={containerRef} className={cx(className)}>
-      {options?.map(option => (
-        <OptionTabsItemStyled
-          key={option}
-          color={color}
-          className={value === option ? 'active' : ''}
-          onClick={() => onChange?.(option)}
-          role="radio"
-          aria-checked={value === option}
-        >
-          <span className={cx('option')}>{option}</span>
-        </OptionTabsItemStyled>
-      ))}
+      <Fragment key={value}>
+        {options?.map(option => (
+          <OptionTabsItemStyled
+            key={option}
+            color={color}
+            className={value === option ? 'active' : ''}
+            onClick={() => {
+              if (option === '...') return; // 클릭 방지
+              onChange?.(option);
+            }}
+            role="radio"
+            aria-checked={value === option}
+            aria-disabled={option === '...'}
+          >
+            <span className={cx('option')}>
+              {String(option).startsWith('ellipsis') ? '...' : option}
+            </span>
+          </OptionTabsItemStyled>
+        ))}
+      </Fragment>
       <MotionActiveBackground
+        layoutId="option-tab-background"
         layout
         initial={false}
         animate={{ x: itemWidth * activeIndex }}

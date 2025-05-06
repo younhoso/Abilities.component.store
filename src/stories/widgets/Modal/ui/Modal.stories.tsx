@@ -58,7 +58,7 @@ export const Default: Story = {
   },
 };
 
-export const Check: Story = {
+export const Footer: Story = {
   args: {
     isOpenModal: false,
   },

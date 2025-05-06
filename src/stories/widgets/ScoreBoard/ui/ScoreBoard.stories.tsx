@@ -23,7 +23,7 @@ type Story = StoryObj<typeof ScoreBoard>;
 
 export const Default: Story = {
   args: {
-    date: '2025.04.20(일)',
+    date: '2025.05.10(토)',
     TeamA: {
       name: 'A 팀',
       logoUrl: K05,
@@ -34,6 +34,6 @@ export const Default: Story = {
       logoUrl: K29,
       score: 0,
     },
-    sportName: '배드민턴',
+    sportName: '축구',
   },
 };

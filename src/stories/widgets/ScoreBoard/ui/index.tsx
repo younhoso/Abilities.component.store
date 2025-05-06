@@ -2,10 +2,10 @@
 
 import { useMemo, useRef, useState } from 'react';
 
-import { StaticImageData } from 'next/image';
-
 import { delay } from '@/utils/delay';
 
+import { DELAY_MS } from '../constants';
+import { ScoreBoardProps } from '../types';
 import TeamSection from './TeamSection';
 import {
   ClickAreaStyled,
@@ -18,26 +18,7 @@ import {
   TeamsWrapperStyled,
 } from './styled';
 
-type LogoUrl = string | StaticImageData;
-
-interface Props {
-  date: string;
-  TeamA: {
-    name: string;
-    logoUrl: LogoUrl;
-    score: number;
-  };
-  TeamB: {
-    name: string;
-    logoUrl: LogoUrl;
-    score: number;
-  };
-  sport?: string;
-}
-
-const DELAY_MS = 250;
-
-const ScoreBoard = ({ date, TeamA, TeamB, sport }: Props) => {
+const ScoreBoard = ({ date, TeamA, TeamB, sportName }: ScoreBoardProps) => {
   const [teamAScore, setTeamAScore] = useState(TeamA.score);
   const [teamBScore, setTeamBScore] = useState(TeamB.score);
 
@@ -87,7 +68,7 @@ const ScoreBoard = ({ date, TeamA, TeamB, sport }: Props) => {
             position="right"
           />
 
-          {sport && <HomeBadgeStyled>{sport}</HomeBadgeStyled>}
+          {sportName && <HomeBadgeStyled>{sportName}</HomeBadgeStyled>}
         </ScoreWrapperStyled>
 
         <TeamSection team={TeamB} />

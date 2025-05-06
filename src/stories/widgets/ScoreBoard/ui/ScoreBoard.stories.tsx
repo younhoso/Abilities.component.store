@@ -34,6 +34,6 @@ export const Default: Story = {
       logoUrl: K29,
       score: 0,
     },
-    sport: '배드민턴',
+    sportName: '배드민턴',
   },
 };

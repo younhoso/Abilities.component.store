@@ -1,20 +1,9 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
+import { TeamSectionProps } from '../types';
 import { TeamLogoWrapperStyled, TeamNameStyled, TeamStyled } from './styled';
 
-type LogoUrl = string | StaticImageData;
-
-interface TeamInfo {
-  name: string;
-  logoUrl: LogoUrl;
-  score: number;
-}
-
-interface Props {
-  team: TeamInfo;
-}
-
-const TeamSection = ({ team }: Props) => {
+const TeamSection = ({ team }: TeamSectionProps) => {
   return (
     <TeamStyled>
       <TeamLogoWrapperStyled>

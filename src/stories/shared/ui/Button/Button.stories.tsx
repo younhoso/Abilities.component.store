@@ -28,6 +28,7 @@ export const PrimaryMode: ButtonItemStory = {
     size: 'full',
     isLoading: false,
     isRippleEffect: true,
+    isRippleColor: 'white',
   },
   render: args => {
     return (
@@ -44,6 +45,7 @@ export const SecondaryMode: ButtonItemStory = {
     size: 'lg',
     isLoading: false,
     isRippleEffect: true,
+    isRippleColor: 'black',
   },
   render: args => <ButtonItem {...args}>취소</ButtonItem>,
 };

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface ButtonProps {
   size: 'sm' | 'md' | 'lg' | 'full';
+  isRippleColor?: 'white' | 'black';
 }
 
 export const ButtonStyled = styled.div`
@@ -61,7 +62,14 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
   .ripple {
     position: absolute;
     border-radius: 50%;
-    background-color: rgba(110, 110, 110, 0.5);
+    background-color: ${({ isRippleColor }) => {
+      switch (isRippleColor) {
+        case 'black':
+          return 'rgba(110, 110, 110, 0.5)';
+        default:
+          return 'rgba(190, 190, 190, 0.5)';
+      }
+    }};
     transform: scale(0);
     animation: ripple-animation 600ms linear;
     pointer-events: none;

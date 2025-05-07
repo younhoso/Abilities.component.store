@@ -5,7 +5,6 @@ import { ButtonStyled } from './styled';
 
 interface Props extends PropsWithChildren {
   className?: string;
-  isRippleEffect?: boolean;
 }
 
 const BaseButton = ({ className, children }: Props) => {

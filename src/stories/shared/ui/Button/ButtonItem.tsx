@@ -13,6 +13,7 @@ interface Props extends PropsWithChildren {
   isLoading?: boolean;
   className?: string;
   isRippleEffect?: boolean;
+  isRippleColor?: 'white' | 'black';
 }
 
 const ButtonItem = ({
@@ -22,12 +23,13 @@ const ButtonItem = ({
   className,
   children,
   isRippleEffect = false,
+  isRippleColor = 'white',
 }: Props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { triggerRipple, RippleElements } = useRipple(buttonRef, isRippleEffect);
 
   return (
-    <ButtonItemStyled className={cx(className)} size={size}>
+    <ButtonItemStyled className={cx(className)} size={size} isRippleColor={isRippleColor}>
       <button
         ref={buttonRef}
         className={cx(mode)}

@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { cx } from '@/utils/cx';
 
 import ButtonItem from './ButtonItem';
@@ -7,12 +5,14 @@ import { ButtonStyled } from './styled';
 
 interface Props extends PropsWithChildren {
   className?: string;
-  children: ReactNode;
+  isRippleEffect?: boolean;
 }
 
 const BaseButton = ({ className, children }: Props) => {
   return <ButtonStyled className={cx(className)}>{children}</ButtonStyled>;
 };
+
+BaseButton.displayName = 'Button';
 
 const Button = Object.assign(BaseButton, {
   ButtonItem,

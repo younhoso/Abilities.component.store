@@ -1,5 +1,8 @@
+import { useRef } from 'react';
+
 import { cx } from '@/utils/cx';
 
+import { useRipple } from '../../hooks/useRipple';
 import { ButtonSize } from '../../types/button';
 import LoadingContent from './LoadingContent';
 import { ButtonItemStyled } from './styled';
@@ -9,7 +12,7 @@ interface Props extends PropsWithChildren {
   size?: ButtonSize;
   isLoading?: boolean;
   className?: string;
-  onClick?: () => void;
+  isRippleEffect?: boolean;
 }
 
 const ButtonItem = ({
@@ -18,21 +21,22 @@ const ButtonItem = ({
   isLoading = false,
   className,
   children,
-  onClick,
+  isRippleEffect = false,
 }: Props) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { triggerRipple, RippleElements } = useRipple(buttonRef, isRippleEffect);
+
   return (
-    <ButtonItemStyled className={cx(className)} size={size} onClick={onClick}>
-      {mode === 'disabled' && (
-        <button className={mode} disabled={mode === 'disabled' || isLoading}>
-          <LoadingContent isLoading={isLoading}>{children}</LoadingContent>
-        </button>
-      )}
-      {mode === 'secondary' && <button className="secondary">{children}</button>}
-      {mode === 'primary' && (
-        <button className="primary">
-          <LoadingContent isLoading={isLoading}>{children}</LoadingContent>
-        </button>
-      )}
+    <ButtonItemStyled className={cx(className)} size={size}>
+      <button
+        ref={buttonRef}
+        className={cx(mode)}
+        disabled={mode === 'disabled' || isLoading}
+        onClick={e => triggerRipple(e)}
+      >
+        {RippleElements}
+        <LoadingContent isLoading={isLoading}>{children}</LoadingContent>
+      </button>
     </ButtonItemStyled>
   );
 };

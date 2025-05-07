@@ -41,6 +41,8 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
     border: 1px solid #eee;
     border-radius: 10px;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
 
     padding: ${({ size }) => {
       switch (size) {
@@ -54,6 +56,22 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
           return '12px 16px';
       }
     }};
+  }
+
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(110, 110, 110, 0.5);
+    transform: scale(0);
+    animation: ripple-animation 600ms linear;
+    pointer-events: none;
+  }
+
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
   }
 
   .disabled {

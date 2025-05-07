@@ -27,6 +27,7 @@ export const PrimaryMode: ButtonItemStory = {
     mode: 'primary',
     size: 'full',
     isLoading: false,
+    isRippleEffect: true,
   },
   render: args => {
     return (
@@ -42,6 +43,7 @@ export const SecondaryMode: ButtonItemStory = {
     mode: 'secondary',
     size: 'lg',
     isLoading: false,
+    isRippleEffect: true,
   },
   render: args => <ButtonItem {...args}>취소</ButtonItem>,
 };
@@ -51,6 +53,7 @@ export const DisabledMode: ButtonItemStory = {
     mode: 'disabled',
     size: 'md',
     isLoading: false,
+    isRippleEffect: false,
   },
   render: args => (
     <Button>
@@ -64,6 +67,7 @@ export const LoadingMode: ButtonItemStory = {
     mode: 'disabled',
     size: 'md',
     isLoading: true,
+    isRippleEffect: false,
   },
   render: args => <ButtonItem {...args}>제출</ButtonItem>,
 };

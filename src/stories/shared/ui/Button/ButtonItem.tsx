@@ -14,6 +14,7 @@ interface Props extends PropsWithChildren {
   className?: string;
   isRippleEffect?: boolean;
   isRippleColor?: 'white' | 'black';
+  onClick?: () => void;
 }
 
 const ButtonItem = ({
@@ -24,12 +25,18 @@ const ButtonItem = ({
   children,
   isRippleEffect = false,
   isRippleColor = 'white',
+  onClick,
 }: Props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { triggerRipple, RippleElements } = useRipple(buttonRef, isRippleEffect);
 
   return (
-    <ButtonItemStyled className={cx(className)} size={size} isRippleColor={isRippleColor}>
+    <ButtonItemStyled
+      className={cx(className)}
+      size={size}
+      isripplecolor={isRippleColor}
+      onClick={onClick}
+    >
       <button
         ref={buttonRef}
         className={cx(mode)}

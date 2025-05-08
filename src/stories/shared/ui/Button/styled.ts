@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface ButtonProps {
   size: 'sm' | 'md' | 'lg' | 'full';
-  isRippleColor?: 'white' | 'black';
+  isripplecolor?: 'white' | 'black';
 }
 
 export const ButtonStyled = styled.div`
@@ -62,8 +62,8 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
   .ripple {
     position: absolute;
     border-radius: 50%;
-    background-color: ${({ isRippleColor }) => {
-      switch (isRippleColor) {
+    background-color: ${({ isripplecolor }) => {
+      switch (isripplecolor) {
         case 'black':
           return 'rgba(110, 110, 110, 0.5)';
         default:
@@ -73,13 +73,6 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
     transform: scale(0);
     animation: ripple-animation 600ms linear;
     pointer-events: none;
-  }
-
-  @keyframes ripple-animation {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
   }
 
   .disabled {
@@ -126,6 +119,13 @@ export const ButtonItemStyled = styled.div<ButtonProps>`
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
     }
   }
 `;

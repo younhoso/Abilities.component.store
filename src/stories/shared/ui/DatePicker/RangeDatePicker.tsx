@@ -1,4 +1,4 @@
-import { DateRange, DayPicker } from 'react-day-picker';
+import { DateRange, DayPicker, OnSelectHandler } from 'react-day-picker';
 
 import { ko } from 'date-fns/locale';
 
@@ -12,6 +12,7 @@ const RangeDatePicker = ({
   handleNextMonth,
   today,
   selected,
+  onSelect,
   setCurrentMonth,
 }: PickerProps<'range'>) => (
   <DayPickerStyled className="range">
@@ -31,6 +32,7 @@ const RangeDatePicker = ({
         weekStartsOn={0}
         month={today}
         selected={selected as DateRange | undefined}
+        onSelect={onSelect as OnSelectHandler<DateRange | undefined>}
         onMonthChange={setCurrentMonth}
         required={false}
       />

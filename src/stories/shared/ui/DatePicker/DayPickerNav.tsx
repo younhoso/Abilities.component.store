@@ -20,14 +20,14 @@ const DayPickerNav = ({ today, handlePrevMonth, handleNextMonth }: Props) => {
     <DayPickerNavStyled className={cx('')}>
       <div>{format(today, 'yyyy년 M월', { locale: ko })}</div>
       <div>
-        <DayPickerModeSelector value="day" onChange={() => {}} />
+        <DayPickerModeSelector onChange={() => {}} />
       </div>
       <div>
         <Button>
-          <ButtonItem mode="secondary" onClick={handlePrevMonth}>
+          <ButtonItem mode="secondary" isRippleEffect onClick={handlePrevMonth}>
             <Icon icon={ICONS_DATAS.LeftIcon.icon} size={20} />
           </ButtonItem>
-          <ButtonItem mode="secondary" onClick={handleNextMonth}>
+          <ButtonItem mode="secondary" isRippleEffect onClick={handleNextMonth}>
             <Icon icon={ICONS_DATAS.RightIcon.icon} size={20} />
           </ButtonItem>
         </Button>

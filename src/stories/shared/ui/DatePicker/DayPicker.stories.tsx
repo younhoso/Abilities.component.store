@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 
-import { addMonths, subMonths } from 'date-fns';
+import { addMonths, format, subMonths } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 import SingleDatePicker from '.';
@@ -47,16 +47,8 @@ export const Single: Story = {
     const [selected, setSelected] = useState<PickerProps<'single'>['selected']>();
     const [currentMonth, setCurrentMonth] = useState(new Date());
 
-    const handleSelect = (selected: Date | undefined) => {
-      setSelected(selected);
-    };
-
-    const handlePrevMonth = () => {
-      setCurrentMonth(subMonths(currentMonth, 1));
-    };
-
-    const handleNextMonth = () => {
-      setCurrentMonth(addMonths(currentMonth, 1));
+    const handleSelect = (date: Date | undefined) => {
+      setSelected(date);
     };
 
     return (
@@ -66,8 +58,8 @@ export const Single: Story = {
         selected={selected}
         onSelect={handleSelect}
         setCurrentMonth={setCurrentMonth}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
+        handlePrevMonth={() => setCurrentMonth(subMonths(currentMonth, 1))}
+        handleNextMonth={() => setCurrentMonth(addMonths(currentMonth, 1))}
       />
     );
   },
@@ -87,17 +79,18 @@ export const Range: Story = {
     const [selected, setSelected] = useState<PickerProps<'range'>['selected']>(typedArgs.selected);
     const [currentMonth, setCurrentMonth] = useState(new Date());
 
-    const handleSelect = (selected: DateRange | undefined) => {
-      setSelected(selected);
+    const handleSelect = (date: DateRange | undefined) => {
+      setSelected(date);
     };
 
-    const handlePrevMonth = () => {
-      setCurrentMonth(subMonths(currentMonth, 1));
-    };
+    if (selected?.from && selected?.to) {
+      const payload = {
+        from: format(selected.from, 'yyyy-MM-dd'),
+        to: format(selected.to, 'yyyy-MM-dd'),
+      };
 
-    const handleNextMonth = () => {
-      setCurrentMonth(addMonths(currentMonth, 1));
-    };
+      console.log(payload);
+    }
 
     return (
       <RangeDatePicker
@@ -106,8 +99,8 @@ export const Range: Story = {
         selected={selected}
         onSelect={handleSelect}
         setCurrentMonth={setCurrentMonth}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
+        handlePrevMonth={() => setCurrentMonth(subMonths(currentMonth, 1))}
+        handleNextMonth={() => setCurrentMonth(addMonths(currentMonth, 1))}
       />
     );
   },
@@ -127,17 +120,17 @@ export const Multiple: Story = {
     const [selected, setSelected] = useState<PickerProps<'multiple'>['selected']>();
     const [currentMonth, setCurrentMonth] = useState(new Date());
 
-    const handleSelect = (selected: Date[] | undefined) => {
-      setSelected(selected);
+    const handleSelect = (date: Date[] | undefined) => {
+      setSelected(date);
     };
 
-    const handlePrevMonth = () => {
-      setCurrentMonth(subMonths(currentMonth, 1));
-    };
+    if (selected && selected.length > 0) {
+      const payload = {
+        dates: selected.map(date => format(date, 'yyyy-MM-dd')),
+      };
 
-    const handleNextMonth = () => {
-      setCurrentMonth(addMonths(currentMonth, 1));
-    };
+      console.log(payload);
+    }
 
     return (
       <MultipleDatePicker
@@ -146,8 +139,8 @@ export const Multiple: Story = {
         selected={selected}
         onSelect={handleSelect}
         setCurrentMonth={setCurrentMonth}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
+        handlePrevMonth={() => setCurrentMonth(subMonths(currentMonth, 1))}
+        handleNextMonth={() => setCurrentMonth(addMonths(currentMonth, 1))}
       />
     );
   },

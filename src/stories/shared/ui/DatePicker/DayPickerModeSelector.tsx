@@ -1,11 +1,11 @@
 'use client';
 
 interface Props {
-  value: 'day' | 'week' | 'month';
+  value?: 'day' | 'week' | 'month';
   onChange: (mode: 'day' | 'week' | 'month') => void;
 }
 
-export const DayPickerModeSelector = ({ value, onChange }: Props) => {
+export const DayPickerModeSelector = ({ value = 'day', onChange }: Props) => {
   return (
     <div style={{ display: 'flex', gap: '8px' }}>
       {['day', 'week', 'month'].map(mode => (

@@ -1,4 +1,4 @@
-import { DayPicker } from 'react-day-picker';
+import { DayPicker, OnSelectHandler } from 'react-day-picker';
 
 import { ko } from 'date-fns/locale';
 
@@ -14,6 +14,7 @@ const BaseDatePicker = <M extends Mode>({
   handleNextMonth,
   today,
   selected,
+  onSelect,
   setCurrentMonth,
 }: PickerProps<M>) => {
   return (
@@ -34,6 +35,7 @@ const BaseDatePicker = <M extends Mode>({
           weekStartsOn={0}
           month={today}
           selected={selected as Date | undefined}
+          onSelect={onSelect as OnSelectHandler<Date | undefined>}
           onMonthChange={setCurrentMonth}
           required={false}
           showOutsideDays

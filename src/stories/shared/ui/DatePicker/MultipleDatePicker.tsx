@@ -1,4 +1,4 @@
-import { DayPicker } from 'react-day-picker';
+import { DayPicker, OnSelectHandler } from 'react-day-picker';
 
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
@@ -14,6 +14,7 @@ const MultipleDatePicker = ({
   handleNextMonth,
   today,
   selected,
+  onSelect,
   setCurrentMonth,
 }: PickerProps<'multiple'>) => (
   <DayPickerStyled className="multiple">
@@ -34,6 +35,7 @@ const MultipleDatePicker = ({
         month={today}
         onMonthChange={setCurrentMonth}
         selected={selected as Date[] | undefined}
+        onSelect={onSelect as OnSelectHandler<Date[] | undefined>}
         required={false}
       />
     )}

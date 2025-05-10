@@ -22,8 +22,8 @@ type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
   args: {
-    totalItems: 110, // 데이터 총개수
     currentItem: 1, // 초기값
+    totalItems: 110, // 데이터 총개수
     pageItemsSize: 10, // 한 페이지에 항목 몇개를 보여줄것인가.
     isPageOptions: true, //양 옆에 이전,다음 버튼 노출 여부
   },

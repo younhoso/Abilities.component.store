@@ -4,7 +4,8 @@ import { useMemo, useState } from 'react';
 import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
 
 import Table, { Body, BodyCell, Footer, Head, HeaderCell, Row } from '.';
-import { data, headers } from '../constants/TableData';
+import { Pagination } from '../../Pagination';
+import { PAGEITEMSSIZE, data, headersColumns } from '../constants/TableData';
 import { UserRow } from '../types/user';
 
 const meta: Meta<typeof Table> = {
@@ -26,6 +27,17 @@ type Story = StoryObj<typeof Table>;
 export const Default: Story = {
   render: () => {
     const [tableData, setTableData] = useState<UserRow[]>(() => data.map(item => ({ ...item })));
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = useMemo(() => {
+      return Math.ceil(tableData.length / PAGEITEMSSIZE);
+    }, [tableData]);
+
+    const pagedData = useMemo(() => {
+      const start = (currentPage - 1) * PAGEITEMSSIZE;
+      const end = start + PAGEITEMSSIZE;
+      return tableData.slice(start, end);
+    }, [tableData, currentPage]);
 
     const allChecked = useMemo(() => tableData.every(row => row.checkedItem), [tableData]);
 
@@ -40,62 +52,29 @@ export const Default: Story = {
     };
 
     const selectedItems = tableData.filter(row => row.checkedItem);
+    console.log(selectedItems);
 
     return (
-      <Table>
-        <Head>
-          <Row isTransition>
-            <HeaderCell>
-              <CheckBoxItem
-                checked={allChecked}
-                onChange={toggleAll}
-                isGroupControlled
-                align="right"
-              />
-            </HeaderCell>
-            {headers.map(({ label, key }) => (
-              <HeaderCell key={key} align="left">
-                {label}
-              </HeaderCell>
-            ))}
-          </Row>
-        </Head>
-        <Body>
-          {data.map(item => {
-            const row = tableData.find(row => row.id === item.id);
-            if (!row) return null;
-
-            return (
-              <Row key={item.id} isTransition useDelay index={item.id}>
-                <BodyCell onClick={() => toggleOne(item.id, !row.checkedItem)}>
-                  <CheckBoxItem
-                    checked={row.checkedItem}
-                    onChange={checked => toggleOne(item.id, checked)}
-                    isGroupControlled
-                    align="right"
-                  />
-                </BodyCell>
-                {headers.map(({ key }, index) => {
-                  const isLastColumn = index === headers.length - 1;
-
-                  return (
-                    <BodyCell
-                      key={key}
-                      align="left"
-                      onClick={
-                        !isLastColumn ? () => toggleOne(item.id, !row.checkedItem) : undefined
-                      }
-                    >
-                      {item[key]}
-                    </BodyCell>
-                  );
-                })}
-              </Row>
-            );
-          })}
-        </Body>
-        <Footer>dsf</Footer>
-      </Table>
+      <>
+        <Table>
+          <Head headersColumns={headersColumns} allChecked={allChecked} toggleAll={toggleAll} />
+          <Body
+            data={pagedData}
+            allData={tableData}
+            headersColumns={headersColumns}
+            toggleOne={toggleOne}
+          />
+        </Table>
+        <Footer>
+          <Pagination
+            currentItem={currentPage}
+            totalItems={totalPages}
+            pageItemsSize={PAGEITEMSSIZE}
+            onChange={page => setCurrentPage(page)}
+            isPageOptions
+          />
+        </Footer>
+      </>
     );
   },
 };

@@ -3,7 +3,14 @@ import { AvatarFallback, AvatarImage, AvatarInfo } from '@/stories/shared/ui/Ava
 import profileImg from '../../../../../public/images/profile.png';
 import { UserRow } from '../types/user';
 
-export const headers = [
+export const PAGEITEMSSIZE = 4; // 한 페이지당 데이타 항목 수
+
+type Column = Readonly<{
+  label: string;
+  key: keyof UserRow;
+}>;
+
+export const headersColumns: Column[] = [
   { label: '프로필', key: 'profile' },
   { label: '이메일', key: 'email' },
   { label: '전화번호', key: 'phone' },
@@ -19,7 +26,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner1</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -40,7 +47,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner2</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -61,7 +68,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner3</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -82,7 +89,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner4</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -103,7 +110,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner5</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -124,7 +131,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner6</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -145,7 +152,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner7</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -166,7 +173,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner8</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -187,7 +194,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner9</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>
@@ -208,7 +215,7 @@ export const data: UserRow[] = [
       <AvatarFallback justify="flex-start">
         <AvatarImage src={profileImg} isBordered={false} size="md" alt="샘플 이미지" />
         <AvatarInfo>
-          <p>Test Steiner</p>
+          <p>Test Steiner10</p>
           <p>Avatar@avatar.com</p>
         </AvatarInfo>
       </AvatarFallback>

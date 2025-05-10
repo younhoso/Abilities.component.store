@@ -92,11 +92,12 @@ export const TableBodyCellStyled = styled.td<TableBodyCellProps>`
   }
 `;
 
-export const TableFooterStyled = styled.tfoot`
+export const TableFooterStyled = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 16px;
 `;
 
 export const TableFooterCellStyled = styled.td<TableFooterCellProps>``;

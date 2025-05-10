@@ -4,7 +4,7 @@ export default create({
   base: 'light',
   brandTitle: 'CreateFix UI',
   brandUrl: '/',
-  brandImage: 'logo.png',
+  brandImage: 'logoStorybook.png',
   brandTarget: '_self',
 
   //

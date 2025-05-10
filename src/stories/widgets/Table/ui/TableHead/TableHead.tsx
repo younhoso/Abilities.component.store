@@ -15,7 +15,13 @@ const TableHead = ({ headersColumns, allChecked, toggleAll }: Props) => {
     <TableHeadStyled>
       <Row isTransition>
         <HeaderCell>
-          <CheckBoxItem checked={allChecked} onChange={toggleAll} isGroupControlled align="right" />
+          <CheckBoxItem
+            checked={allChecked}
+            onChange={toggleAll}
+            isGroupControlled
+            align="right"
+            color="red"
+          />
         </HeaderCell>
         {headersColumns.map(({ label, key }) => (
           <HeaderCell key={key} align="left">

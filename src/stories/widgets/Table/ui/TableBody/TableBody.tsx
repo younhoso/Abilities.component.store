@@ -25,6 +25,7 @@ const TableBody = ({ data, allData, headersColumns, toggleOne }: Props) => {
                 checked={row.checkedItem}
                 onChange={checked => toggleOne(row.id, checked)}
                 isGroupControlled
+                color="red"
                 align="right"
               />
             </BodyCell>

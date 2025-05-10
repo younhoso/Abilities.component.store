@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useMemo, useState } from 'react';
 
-import { CheckBoxItem } from '@/stories/shared/ui/CheckBox';
-
-import Table, { Body, BodyCell, Footer, Head, HeaderCell, Row } from '.';
+import Table, { Body, Footer, Head } from '.';
 import { Pagination } from '../../Pagination';
-import { PAGEITEMSSIZE, data, headersColumns } from '../constants/TableData';
+import { data, headersColumns } from '../constants/TableData';
 import { UserRow } from '../types/user';
 
 const meta: Meta<typeof Table> = {
@@ -25,19 +23,22 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
-  render: () => {
+  args: {
+    PAGEITEMSSIZE: 5, // 한 페이지에 항목 몇개를 보여줄것인가.
+  },
+  render: args => {
     const [tableData, setTableData] = useState<UserRow[]>(() => data.map(item => ({ ...item })));
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = useMemo(() => {
-      return Math.ceil(tableData.length / PAGEITEMSSIZE);
-    }, [tableData]);
+      return Math.ceil(tableData.length / args.PAGEITEMSSIZE!);
+    }, [args.PAGEITEMSSIZE, tableData.length]);
 
     const pagedData = useMemo(() => {
-      const start = (currentPage - 1) * PAGEITEMSSIZE;
-      const end = start + PAGEITEMSSIZE;
+      const start = (currentPage - 1) * args.PAGEITEMSSIZE!;
+      const end = start + args.PAGEITEMSSIZE!;
       return tableData.slice(start, end);
-    }, [tableData, currentPage]);
+    }, [currentPage, args.PAGEITEMSSIZE, tableData]);
 
     const allChecked = useMemo(() => tableData.every(row => row.checkedItem), [tableData]);
 
@@ -52,7 +53,6 @@ export const Default: Story = {
     };
 
     const selectedItems = tableData.filter(row => row.checkedItem);
-    console.log(selectedItems);
 
     return (
       <>
@@ -69,7 +69,7 @@ export const Default: Story = {
           <Pagination
             currentItem={currentPage}
             totalItems={totalPages}
-            pageItemsSize={PAGEITEMSSIZE}
+            pageItemsSize={args.PAGEITEMSSIZE!}
             onChange={page => setCurrentPage(page)}
             isPageOptions
           />

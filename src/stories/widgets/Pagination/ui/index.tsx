@@ -1,4 +1,7 @@
-import { ButtonItem } from '@/stories/shared/ui/Button';
+import LeftIcon from 'public/icons/leftIcon.svg';
+import RightIcon from 'public/icons/rightIcon.svg';
+
+import ButtonItem from '@/stories/shared/ui/Button/ButtonItem';
 import OptionTabs from '@/stories/shared/ui/OptionTabs';
 import { getVisibleOptions } from '@/stories/widgets/Pagination/model';
 import { cx } from '@/utils/cx';
@@ -29,8 +32,9 @@ const Pagination = ({ currentItem, totalItems, isPageOptions = false, onChange }
           mode={currentItem === 1 ? 'disabled' : 'secondary'}
           size="md"
           onClick={() => handleClick(currentItem - 1)}
+          className={cx('buttonItem')}
         >
-          이전
+          <LeftIcon />
         </ButtonItem>
       )}
       <OptionTabs
@@ -41,15 +45,17 @@ const Pagination = ({ currentItem, totalItems, isPageOptions = false, onChange }
         }}
         className={cx('pageButton')}
         color="#fff"
-        backgroundColor="#333"
+        backgroundColor="red"
       />
       {isPageOptions && (
         <ButtonItem
           mode={currentItem === totalItems ? 'disabled' : 'secondary'}
           size="md"
           onClick={() => handleClick(currentItem + 1)}
+          className={cx('buttonItem')}
         >
-          다음
+          {/* {ICONS_DATAS.RightIcon.icon} */}
+          <RightIcon />
         </ButtonItem>
       )}
     </PaginationStyled>

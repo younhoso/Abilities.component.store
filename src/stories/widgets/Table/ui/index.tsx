@@ -9,9 +9,11 @@ import TableHeaderCell from './TableHead/TableHeaderCell';
 import TableRow from './TableRow';
 import { TableStyled } from './styled';
 
-interface Props extends PropsWithChildren {}
+interface Props extends PropsWithChildren {
+  PAGEITEMSSIZE?: number; // 사용하지는 않지만 타입오류를 없애려면
+}
 
-const BaseTable = ({ children }: Props) => {
+const BaseTable = ({ PAGEITEMSSIZE = 5, children }: Props) => {
   return <TableStyled className={cx('table')}>{children}</TableStyled>;
 };
 

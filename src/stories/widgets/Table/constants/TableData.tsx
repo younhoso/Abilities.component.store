@@ -3,8 +3,6 @@ import { AvatarFallback, AvatarImage, AvatarInfo } from '@/stories/shared/ui/Ava
 import profileImg from '../../../../../public/images/profile.png';
 import { UserRow } from '../types/user';
 
-export const PAGEITEMSSIZE = 4; // 한 페이지당 데이타 항목 수
-
 type Column = Readonly<{
   label: string;
   key: keyof UserRow;

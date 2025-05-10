@@ -10,7 +10,7 @@ import CheckBoxItem from './CheckBoxItem';
 import { CheckBoxGroupStyled } from './styled';
 
 const BaseCheckBoxItems = ({ isGroupControlled = false, children }: CheckBoxProps) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   // 상태 변경 함수
   const handleCheckChange = (checked: boolean) => {

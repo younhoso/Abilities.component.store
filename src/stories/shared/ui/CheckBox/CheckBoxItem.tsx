@@ -20,7 +20,8 @@ const CheckBoxItem = ({
   backgroundColor,
   onChange,
 }: CheckBoxProps) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const checkboxId = 'checkbox-' + Math.random().toString(36).slice(2, 11); // 동적으로 고유한 ID 생성
+  const [isChecked, setIsChecked] = useState(true);
 
   // 상태 변경 함수 (onChange가 없으면 부모에서 상태를 관리할 수 없음)
   const handleChange = () => {
@@ -29,8 +30,6 @@ const CheckBoxItem = ({
       onChange(!checked); // 상태 변경 시 부모의 onChange 호출
     }
   };
-
-  const checkboxId = 'checkbox-' + Math.random().toString(36).slice(2, 11); // 동적으로 고유한 ID 생성
 
   // CheckBoxGroup이 있을 때는 부모에서 관리하는 checked 사용, 없을 때는 자체 상태 관리
   const currentChecked = isGroupControlled ? checked : isChecked;
